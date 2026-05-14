@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Edenilson Mendes — Credenciamento Estratégico para Clínicas</title>
+<title>Edenilson Mendes | Credenciamento Estratégico para Clínicas</title>
 <meta name="description" content="Destrave e aumente o faturamento da sua clínica com planos de saúde, sem depender de tentativa e erro. Mentoria B2B com Edenilson Mendes." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -91,7 +91,7 @@ body {
   background: var(--ink-1000);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  padding-top: 60px;
+  padding-top: 0;
 }
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
@@ -108,7 +108,7 @@ ul, ol { list-style: none; padding: 0; }
   text-transform: uppercase;
 }
 .display { font-size: clamp(4rem, 9vw, var(--t-display)); }
-.h1 { font-size: clamp(2.5rem, 8vw, var(--t-h1)); line-height: .94; }
+.h1 { font-size: clamp(2.5rem, 5.5vw, 3.75rem); line-height: .94; }
 .h2 { font-size: clamp(2rem, 6vw, var(--t-h2)); line-height: .96; }
 .h3 { font-size: clamp(1.8rem, 4vw, var(--t-h3)); }
 .h4 { font-size: clamp(1.5rem, 3.5vw, var(--t-h4)); }
@@ -353,7 +353,7 @@ ul, ol { list-style: none; padding: 0; }
 .hero-copy { padding: var(--s-6) var(--s-4) var(--s-16); }
 .hero-copy .h1 { color: var(--white); margin: var(--s-4) 0; line-height: 1.22; }
 .hero-copy .lead { color: var(--ink-300); max-width: 520px; margin-bottom: var(--s-6); }
-.hero-bullets { display: flex; flex-direction: column; gap: var(--s-3); margin: var(--s-4) 0 var(--s-6); }
+.hero-bullets { display: flex; flex-direction: column; gap: var(--s-2); margin: var(--s-2) 0 var(--s-3); }
 .hero-bullets li { display: flex; align-items: flex-start; gap: var(--s-3); font-size: 15px; color: var(--ink-200); line-height: 1.4; }
 .hero-bullets li::before { content: "✓"; color: var(--em-orange); font-weight: 700; flex: none; font-size: 14px; margin-top: 1px; }
 .hero-cta-row { display: flex; flex-direction: column; gap: var(--s-3); }
@@ -383,7 +383,7 @@ ul, ol { list-style: none; padding: 0; }
 .belief-text strong { color: var(--white); }
 .problema-closer {
   background: var(--ink-800); border-radius: var(--r-xl);
-  padding: var(--s-8); border-left: 4px solid var(--em-orange);
+  padding: var(--s-8);
 }
 .problema-closer p { font-size: 1rem; color: var(--ink-200); line-height: 1.65; }
 .problema-closer p + p { margin-top: var(--s-4); }
@@ -494,7 +494,41 @@ ul, ol { list-style: none; padding: 0; }
 
 /* ---- DEPOIMENTOS ---- */
 #depoimentos { background: var(--ink-1000); }
-.testimonial-grid { display: grid; grid-template-columns: 1fr; gap: var(--s-4); }
+.tc-wrap {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+@keyframes tc-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.tc-track {
+  display: flex; gap: 16px;
+  width: max-content;
+  animation: tc-scroll 40s linear infinite;
+  user-select: none;
+}
+.tc-wrap:hover .tc-track { animation-play-state: paused; }
+.tc-track .testimonial { flex: none; width: 340px; }
+.tc-controls { display: none; }
+.tc-btn {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--ink-800); border: 1px solid var(--ink-700);
+  color: var(--white); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background var(--t-fast), border-color var(--t-fast); flex: none;
+}
+.tc-btn:hover:not(:disabled) { background: var(--em-orange); border-color: var(--em-orange); }
+.tc-btn:disabled { opacity: .3; cursor: default; }
+.tc-btn svg { width: 18px; height: 18px; stroke-width: 2; }
+.tc-dots { display: flex; align-items: center; gap: 8px; }
+.tc-dot {
+  width: 6px; height: 6px; border-radius: 999px;
+  background: var(--ink-700); border: none; cursor: pointer; padding: 0;
+  transition: background .25s, width .25s;
+}
+.tc-dot.active { width: 20px; background: var(--em-orange); }
 .companies-bar {
   display: flex; flex-wrap: wrap; justify-content: center;
   gap: var(--s-3) var(--s-6); padding-top: var(--s-8);
@@ -513,8 +547,8 @@ ul, ol { list-style: none; padding: 0; }
 #sobre { background: var(--ink-1000); }
 .sobre-inner { display: grid; grid-template-columns: 1fr; gap: var(--s-8); }
 .sobre-photo { width: 100%; border-radius: var(--r-xl); display: block; }
-.sobre-stats { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: var(--s-5); border-top: 1px solid var(--ink-800); }
-.sobre-stat { padding: var(--s-5) var(--s-3); }
+.sobre-stats { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: var(--s-5); border-top: 1px solid var(--ink-800); }
+.sobre-stat { padding: var(--s-5) var(--s-3); text-align: center; }
 .sobre-stat + .sobre-stat { border-left: 1px solid var(--ink-800); }
 .sobre-stat .num { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); color: var(--em-orange); line-height: .9; }
 .sobre-stat .label { font-size: 12px; color: var(--ink-400); margin-top: var(--s-1); line-height: 1.4; }
@@ -627,7 +661,6 @@ ul, ol { list-style: none; padding: 0; }
   .strategy-compare { grid-template-columns: 1fr 1fr; }
   .strategy-compare .col.bad { border-bottom: none; border-right: 1px solid var(--ink-800); }
   .mapa-grid { grid-template-columns: 1fr 1fr; }
-  .testimonial-grid { grid-template-columns: 1fr 1fr; }
   .diferenciais-grid { grid-template-columns: 1fr 1fr; }
   .for-grid { grid-template-columns: 1fr 1fr; }
   .objections-grid { grid-template-columns: 1fr 1fr; }
@@ -639,7 +672,7 @@ ul, ol { list-style: none; padding: 0; }
    RESPONSIVE — DESKTOP (min-width: 980px)
    ================================================================ */
 @media (min-width: 980px) {
-  body { padding-top: 72px; }
+  body { padding-top: 0; }
   .lp-container { padding: 0 var(--s-8); }
   .lp-s { padding: var(--s-24) 0; }
   .lp-sh { margin-bottom: var(--s-12); }
@@ -650,10 +683,10 @@ ul, ol { list-style: none; padding: 0; }
 
   /* Hero — switch to split layout */
   .hero-photo-mobile { display: none; }
-  .hero-copy { padding: 0; }
+  .hero-copy { display: none; }
   .hero-desktop {
     display: grid; grid-template-columns: 1.2fr 1fr;
-    min-height: calc(100dvh - 72px); position: relative; overflow: hidden;
+    min-height: 520px; position: relative; overflow: hidden;
   }
   .hero-desktop::before {
     content: ""; position: absolute; inset: 0;
@@ -663,8 +696,8 @@ ul, ol { list-style: none; padding: 0; }
     pointer-events: none;
   }
   .hero-desktop .hero-col-copy {
-    padding: var(--s-16) var(--s-10) var(--s-16) var(--s-10);
-    display: flex; flex-direction: column; justify-content: center; gap: var(--s-5);
+    padding: var(--s-8) var(--s-10);
+    display: flex; flex-direction: column; justify-content: center; gap: var(--s-3);
     position: relative; z-index: 1;
   }
   .hero-desktop .hero-col-photo {
@@ -680,8 +713,6 @@ ul, ol { list-style: none; padding: 0; }
   /* Other grids */
   .ninguem-grid { grid-template-columns: repeat(3, 1fr); }
   .mapa-grid { grid-template-columns: repeat(4, 1fr); }
-  .testimonial-grid { grid-template-columns: repeat(3, 1fr); }
-  .testimonial-grid .featured { grid-column: span 2; }
   .diferenciais-grid { grid-template-columns: repeat(4, 1fr); }
   .problema-inner { grid-template-columns: 1.1fr 1fr; gap: var(--s-12); }
   .transformacao-inner { grid-template-columns: 1fr 1.4fr; gap: var(--s-16); align-items: start; }
@@ -699,20 +730,6 @@ ul, ol { list-style: none; padding: 0; }
 </head>
 <body>
 
-<!-- ================================================================
-     NAV
-     ================================================================ -->
-<header id="site-nav">
-  <div class="nav-inner">
-    <a class="nav-logo" href="#">
-      <img src="assets/logo-laranja-branco.png" alt="Edenilson Mendes" />
-      <span class="nav-logo-name">Edenilson Mendes</span>
-    </a>
-    <button class="btn btn-primary btn-sm nav-cta" data-scroll-to="cta-final">
-      Diagnóstico gratuito
-    </button>
-  </div>
-</header>
 
 <!-- Mobile CTA bar -->
 <div class="mobile-cta-bar">
@@ -730,13 +747,12 @@ ul, ol { list-style: none; padding: 0; }
   <!-- MOBILE layout -->
   <div class="hero-photo-mobile"></div>
   <div class="hero-copy lp-container">
-    <span class="eyebrow on-dark" data-anim>Credenciamento Estratégico · B2B Saúde</span>
     <h1 class="h1" data-anim data-delay="1">
       Destrave e aumente o faturamento da sua clínica com planos de saúde,
       sem depender de <span class="hl">tentativa e erro</span>.
     </h1>
     <p class="lead" data-anim data-delay="2">
-      Existe uma lógica por trás das aprovações, negociações e contratos que a maioria das clínicas ignora — e é isso que trava resultados. Edenilson Mendes mostra como aplicar essa lógica na prática para transformar planos de saúde em crescimento previsível.
+      Existe uma lógica por trás das aprovações, negociações e contratos que a maioria das clínicas ignora, e é isso que trava resultados. Edenilson Mendes mostra como aplicar essa lógica na prática para transformar planos de saúde em crescimento previsível.
     </p>
     <ul class="hero-bullets" data-anim data-delay="2">
       <li>Entenda por que seu credenciamento não avança</li>
@@ -749,25 +765,17 @@ ul, ol { list-style: none; padding: 0; }
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </button>
     </div>
-    <div class="hero-flag" data-anim data-delay="4">
-      <div class="flag-top">Diagnóstico inicial gratuito</div>
-      <div class="flag-badge">
-        <span class="badge dark"><span class="dot"></span> Atendimentos limitados</span>
-        <span class="badge dark">11+ anos de mercado</span>
-      </div>
-    </div>
   </div>
 
   <!-- DESKTOP layout (hidden on mobile via CSS) -->
   <div class="hero-desktop">
     <div class="hero-col-copy lp-container" style="max-width: none; padding-left: clamp(2rem, 5vw, 5rem);">
-      <span class="eyebrow on-dark">Credenciamento Estratégico · B2B Saúde</span>
-      <h1 class="h1" style="color:var(--white); margin: var(--s-4) 0; line-height: 1.22;">
+      <h1 class="h1" style="color:var(--white); margin: var(--s-2) 0; line-height: 1.22;">
         Destrave e aumente o faturamento da sua clínica com planos de saúde,
         sem depender de <span class="hl">tentativa e erro</span>.
       </h1>
       <p class="lead" style="color:var(--ink-300); max-width: 520px;">
-        Existe uma lógica por trás das aprovações, negociações e contratos que a maioria das clínicas ignora — e é isso que trava resultados. Edenilson Mendes mostra como aplicar essa lógica na prática.
+        Existe uma lógica por trás das aprovações, negociações e contratos que a maioria das clínicas ignora, e é isso que trava resultados. Edenilson Mendes mostra como aplicar essa lógica na prática.
       </p>
       <ul class="hero-bullets">
         <li>Entenda por que seu credenciamento não avança</li>
@@ -781,13 +789,6 @@ ul, ol { list-style: none; padding: 0; }
         </button>
         <button class="btn btn-outline-light btn-lg" data-scroll-to="depoimentos" style="width:auto;">Ver resultados</button>
       </div>
-      <div class="hero-flag" style="margin-top: var(--s-6);">
-        <div class="flag-top">Diagnóstico inicial gratuito</div>
-        <div class="flag-badge" style="margin-top: var(--s-2);">
-          <span class="badge dark"><span class="dot"></span> Atendimentos limitados</span>
-          <span class="badge dark">11+ anos de mercado</span>
-        </div>
-      </div>
     </div>
     <div class="hero-col-photo"></div>
   </div>
@@ -800,7 +801,6 @@ ul, ol { list-style: none; padding: 0; }
 <section id="problema" class="lp-s">
   <div class="lp-container">
     <div class="lp-sh" data-anim>
-      <span class="eyebrow on-dark">01 · O Problema</span>
       <h2 class="h2" style="color:var(--white); margin-top:var(--s-2);">
         O problema não é o plano de saúde.<br/>
         É como você <span class="hl">entra no jogo</span>.
@@ -812,21 +812,21 @@ ul, ol { list-style: none; padding: 0; }
         <ul class="belief-list">
           <li class="belief-item">
             <span class="belief-x">✕</span>
-            <span class="belief-text"><strong>Os planos pagam mal</strong> — e não vale a pena estruturar o negócio em torno deles.</span>
+            <span class="belief-text"><strong>Os planos pagam mal</strong>, e não vale a pena estruturar o negócio em torno deles.</span>
           </li>
           <li class="belief-item">
             <span class="belief-x">✕</span>
-            <span class="belief-text"><strong>O credenciamento é burocrático demais</strong> — e o tempo gasto nunca compensa o retorno.</span>
+            <span class="belief-text"><strong>O credenciamento é burocrático demais</strong>, e o tempo gasto nunca compensa o retorno.</span>
           </li>
           <li class="belief-item">
             <span class="belief-x">✕</span>
-            <span class="belief-text"><strong>Não vale a pena atender convênios</strong> — a margem é pequena e a operadora sempre leva vantagem.</span>
+            <span class="belief-text"><strong>Não vale a pena atender convênios</strong>, a margem é pequena e a operadora sempre leva vantagem.</span>
           </li>
         </ul>
       </div>
       <div class="problema-closer" data-anim data-delay="2">
         <p>Mas isso não explica por que seus concorrentes diretos estão <strong>crescendo com esse tipo de estratégia</strong>.</p>
-        <p>A diferença não está no mercado. Está em entender como o sistema funciona por trás — e usar isso a seu favor.</p>
+        <p>A diferença não está no mercado. Está em entender como o sistema funciona por trás, e usar isso a seu favor.</p>
       </div>
     </div>
   </div>
@@ -838,7 +838,6 @@ ul, ol { list-style: none; padding: 0; }
 <section id="ninguem-explica" class="lp-s">
   <div class="lp-container">
     <div class="lp-sh" data-anim>
-      <span class="eyebrow on-dark">02 · O que muda</span>
       <h2 class="h2" style="color:var(--white); margin-top:var(--s-2);">
         O que ninguém te explica<br/>sobre <span class="hl">credenciamento</span>
       </h2>
@@ -861,7 +860,7 @@ ul, ol { list-style: none; padding: 0; }
         <div>
           <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:var(--ink-500);text-transform:uppercase;margin-bottom:var(--s-2);">02 · Posicionamento muda a aprovação</div>
           <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;color:var(--white);text-transform:none;line-height:1.3;margin-bottom:var(--s-3);">Como você se apresenta muda tudo</h5>
-          <p style="font-size:14px;color:var(--ink-300);line-height:1.6;">A forma como você se posiciona — especialidades, volume de atendimento, proposta de valor — impacta diretamente na decisão de aprovação e nos valores negociados.</p>
+          <p style="font-size:14px;color:var(--ink-300);line-height:1.6;">A forma como você se posiciona impacta diretamente na decisão de aprovação e nos valores negociados.</p>
         </div>
       </div>
       <div class="card dark feature" data-anim data-delay="3">
@@ -910,10 +909,9 @@ ul, ol { list-style: none; padding: 0; }
 <section id="dores" class="lp-s">
   <div class="lp-container">
     <div class="lp-sh lp-sh--center" data-anim style="text-align:center; margin-left:auto; margin-right:auto; max-width:640px;">
-      <span class="eyebrow on-dark">03 · O prejuízo silencioso</span>
       <h2 class="h2" style="color:var(--white); margin-top:var(--s-2);">Enquanto isso, o prejuízo é silencioso</h2>
       <p class="lead" style="color:var(--ink-400); margin-top:var(--s-4); font-size:1rem;">
-        Você pode estar vivendo isso agora — e a sensação de que o problema está no mercado, quando na verdade está na estratégia.
+        Você pode estar vivendo isso agora, e a sensação de que o problema está no mercado, quando na verdade está na estratégia.
       </p>
     </div>
     <ul class="pain-list" data-anim>
@@ -947,7 +945,6 @@ ul, ol { list-style: none; padding: 0; }
   <div class="lp-container">
     <div class="transformacao-inner">
       <div class="transformacao-intro transformacao-sticky" data-anim>
-        <span class="eyebrow" style="color:var(--ink-500);">04 · A virada</span>
         <h2 class="h2" style="color:var(--ink-900); margin-top:var(--s-2);">
           Quando você entende o cenário, o <span style="color:var(--em-orange);">jogo muda</span>
         </h2>
@@ -955,7 +952,7 @@ ul, ol { list-style: none; padding: 0; }
           Com o método certo, é possível reduzir dramaticamente o tempo, o custo e o risco de cada etapa do credenciamento.
         </p>
         <div class="transf-note" style="margin-top:var(--s-6);">
-          <strong>Não é sobre entrar nos planos.</strong> É sobre entrar com estratégia — e construir uma estrutura que cresce com você.
+          <strong>Não é sobre entrar nos planos.</strong> É sobre entrar com estratégia, construindo uma estrutura que cresce com você.
         </div>
       </div>
       <div class="transf-steps" data-anim data-delay="1">
@@ -1005,13 +1002,12 @@ ul, ol { list-style: none; padding: 0; }
 <section id="metodo-mapa" class="lp-s">
   <div class="lp-container">
     <div class="lp-sh" data-anim>
-      <span class="eyebrow on-dark">05 · Método</span>
       <div class="mapa-eyebrow-row" style="margin-top:var(--s-2);">
         <h2 class="h2" style="color:var(--white);">O método aplicado na prática</h2>
         <span class="badge orange">M.A.P.A do Credenciamento</span>
       </div>
       <p class="lead" style="color:var(--ink-400); margin-top:var(--s-4); font-size:1rem;">
-        Um roteiro estruturado para sair do improviso e atravessar cada etapa com clareza — do diagnóstico à assinatura do contrato.
+        Um roteiro estruturado para sair do improviso e atravessar cada etapa com clareza, do diagnóstico à assinatura do contrato.
       </p>
     </div>
     <div class="mapa-grid">
@@ -1025,7 +1021,7 @@ ul, ol { list-style: none; padding: 0; }
         <span class="letter">A</span>
         <span class="step-label">02 · A</span>
         <div class="mapa-title">Análise</div>
-        <p>Identificação das operadoras ideais para o perfil do seu negócio. Nem toda operadora vale o esforço — a análise define quais priorizar e em que ordem.</p>
+        <p>Identificação das operadoras ideais para o perfil do seu negócio. Nem toda operadora vale o esforço. A análise define quais priorizar e em que ordem.</p>
       </div>
       <div class="mapa-card" data-anim data-delay="3">
         <span class="letter">P</span>
@@ -1041,7 +1037,7 @@ ul, ol { list-style: none; padding: 0; }
       </div>
     </div>
     <div class="mapa-closer" data-anim>
-      <p>Esse roteiro permite sair do improviso e atravessar com clareza cada etapa — do diagnóstico à assinatura do contrato.</p>
+      <p>Esse roteiro permite sair do improviso e atravessar com clareza cada etapa, do diagnóstico à assinatura do contrato.</p>
     </div>
   </div>
 </section>
@@ -1052,80 +1048,90 @@ ul, ol { list-style: none; padding: 0; }
 <section id="depoimentos" class="lp-s">
   <div class="lp-container">
     <div class="lp-sh" data-anim>
-      <span class="eyebrow on-dark">06 · Provas</span>
       <h2 class="h2" style="color:var(--white); margin-top:var(--s-2);">Depoimentos de quem trabalhou direto com <span class="hl">Edenilson</span></h2>
     </div>
-    <div class="testimonial-grid">
-      <div class="testimonial featured" data-anim data-delay="1">
-        <p class="quote">"Edenilson trouxe uma proposta nova com resultados positivos. Buscou conhecer a unidade, os contratos, as negociações e as necessidades. Vem fazendo um trabalho diferenciado, diferente dos profissionais que atuam na mesma área."</p>
-        <div class="who">
-          <div class="avatar">LH</div>
-          <div>
-            <div class="name">Luiza Helena</div>
-            <div class="role">Diretora · Hospital Sermege</div>
+    <div class="tc-wrap" data-anim>
+      <div class="tc-track">
+        <div class="testimonial">
+          <p class="quote">"Edenilson trouxe uma proposta nova com resultados positivos. Buscou conhecer a unidade, os contratos, as negociações e as necessidades. Vem fazendo um trabalho diferenciado, diferente dos profissionais que atuam na mesma área."</p>
+          <div class="who">
+            <div class="avatar">LH</div>
+            <div>
+              <div class="name">Luiza Helena</div>
+              <div class="role">Diretora · Hospital Sermege</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p class="quote">"Edenilson demonstra forte motivação, espírito de liderança e excepcional capacidade de aprendizado. Atua de forma ágil e consciente nos momentos de pressão. É um líder nato."</p>
+          <div class="who">
+            <div class="avatar">GT</div>
+            <div>
+              <div class="name">Geanny Taveira</div>
+              <div class="role">Gestora Administrativa · Itaimagem</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p class="quote">"Dedicado e resiliente, abraça a causa como se fosse sua. Destaca-se pela capacidade de resolver problemas inesperados e de gerir conflitos. Recomendo sem hesitar."</p>
+          <div class="who">
+            <div class="avatar">NC</div>
+            <div>
+              <div class="name">Nailton Carmo</div>
+              <div class="role">CEO · Centro Médico Cuidar</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p class="quote">"Não é só um profissional de excelência, é uma pessoa que coopera e constrói relacionamentos. Sou grata em ter encontrado Edenilson em minha jornada profissional."</p>
+          <div class="who">
+            <div class="avatar">NF</div>
+            <div>
+              <div class="name">Nara Fernandes</div>
+              <div class="role">Fatura Ideal</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p class="quote">"Falar de Edenilson é falar de superação e perseverança. Excelente profissional, recomendo de olhos fechados pela competência e eficiência em tudo que faz."</p>
+          <div class="who">
+            <div class="avatar">JS</div>
+            <div>
+              <div class="name">Jamily Santana</div>
+              <div class="role">Gestora de RH</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p class="quote">"Muita desenvoltura e networking. Domínio da área comercial, persuasão e relacionamento sólido com médicos e operadoras. Um dos profissionais mais versáteis que conheço."</p>
+          <div class="who">
+            <div class="avatar">EC</div>
+            <div>
+              <div class="name">Eugênio Colonzezzi</div>
+              <div class="role">Clínica do Coração</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p class="quote">"Cuidava do relacionamento com convênios com grande desenvoltura e habilidade de negociação. Sempre comprometido, organizado e focado em resultado."</p>
+          <div class="who">
+            <div class="avatar">MS</div>
+            <div>
+              <div class="name">Marcelo Sodré</div>
+              <div class="role">Presidente · Grupo São Jorge</div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="testimonial" data-anim data-delay="2">
-        <p class="quote">"Edenilson demonstra forte motivação, espírito de liderança e excepcional capacidade de aprendizado. Atua de forma ágil e consciente nos momentos de pressão — é um líder nato."</p>
-        <div class="who">
-          <div class="avatar">GT</div>
-          <div>
-            <div class="name">Geanny Taveira</div>
-            <div class="role">Gestora Administrativa · Itaimagem</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial" data-anim data-delay="3">
-        <p class="quote">"Dedicado e resiliente, abraça a causa como se fosse sua. Destaca-se pela capacidade de resolver problemas inesperados e de gerir conflitos. Recomendo sem hesitar."</p>
-        <div class="who">
-          <div class="avatar">NC</div>
-          <div>
-            <div class="name">Nailton Carmo</div>
-            <div class="role">CEO · Centro Médico Cuidar</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial" data-anim data-delay="1">
-        <p class="quote">"Não é só um profissional de excelência, é uma pessoa que coopera e constrói relacionamentos. Sou grata em ter encontrado Edenilson em minha jornada profissional."</p>
-        <div class="who">
-          <div class="avatar">NF</div>
-          <div>
-            <div class="name">Nara Fernandes</div>
-            <div class="role">Fatura Ideal</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial" data-anim data-delay="2">
-        <p class="quote">"Falar de Edenilson é falar de superação e perseverança. Excelente profissional — recomendo de olhos fechados pela competência e eficiência em tudo que faz."</p>
-        <div class="who">
-          <div class="avatar">JS</div>
-          <div>
-            <div class="name">Jamily Santana</div>
-            <div class="role">Gestora de RH</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial" data-anim data-delay="3">
-        <p class="quote">"Muita desenvoltura e networking. Domínio da área comercial, persuasão e relacionamento sólido com médicos e operadoras. Um dos profissionais mais versáteis que conheço."</p>
-        <div class="who">
-          <div class="avatar">EC</div>
-          <div>
-            <div class="name">Eugênio Colonzezzi</div>
-            <div class="role">Clínica do Coração</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial" data-anim data-delay="1">
-        <p class="quote">"Cuidava do relacionamento com convênios com grande desenvoltura e habilidade de negociação. Sempre comprometido, organizado e focado em resultado."</p>
-        <div class="who">
-          <div class="avatar">MS</div>
-          <div>
-            <div class="name">Marcelo Sodré</div>
-            <div class="role">Presidente · Grupo São Jorge</div>
-          </div>
-        </div>
-      </div>
+    </div>
+    <div class="tc-controls" data-anim>
+      <button class="tc-btn tc-prev" aria-label="Anterior" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      </button>
+      <div class="tc-dots"></div>
+      <button class="tc-btn tc-next" aria-label="Próximo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
     </div>
 
     <div class="companies-bar" data-anim>
@@ -1157,7 +1163,6 @@ ul, ol { list-style: none; padding: 0; }
 <section id="diferenciais" class="lp-s">
   <div class="lp-container">
     <div class="lp-sh" data-anim>
-      <span class="eyebrow" style="color:var(--ink-500);">07 · Diferenciais</span>
       <h2 class="h2" style="color:var(--ink-900); margin-top:var(--s-2);">Por que a maioria não consegue esse resultado</h2>
       <p class="lead" style="color:var(--ink-600); margin-top:var(--s-4);">
         Porque trata o credenciamento como burocracia. Aqui ele é tratado como estratégia de negócio.
@@ -1183,14 +1188,14 @@ ul, ol { list-style: none; padding: 0; }
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
         </div>
         <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;text-transform:none;line-height:1.3;">Direcionamento por casos reais</h5>
-        <p style="color:var(--ink-600);font-size:14px;line-height:1.6;">Decisões orientadas por dados e histórico — não por achismo. O método foi validado em dezenas de casos reais, de clínicas individuais a hospitais.</p>
+        <p style="color:var(--ink-600);font-size:14px;line-height:1.6;">Decisões orientadas por dados e histórico, não por achismo. O método foi validado em dezenas de casos reais, de clínicas individuais a hospitais.</p>
       </div>
       <div class="card feature" data-anim data-delay="4">
         <div class="icon blue">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
         <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;text-transform:none;line-height:1.3;">Visão de crescimento</h5>
-        <p style="color:var(--ink-600);font-size:14px;line-height:1.6;">Estruturar a clínica para escalar com previsibilidade — não apenas resolver o problema imediato e continuar dependente de improviso.</p>
+        <p style="color:var(--ink-600);font-size:14px;line-height:1.6;">Estruturar a clínica para escalar com previsibilidade, não apenas resolver o problema imediato e continuar dependente de improviso.</p>
       </div>
     </div>
   </div>
@@ -1203,30 +1208,20 @@ ul, ol { list-style: none; padding: 0; }
   <div class="lp-container">
     <div class="sobre-inner">
       <div data-anim>
-        <img src="assets/edenilson-2.png" alt="Edenilson Mendes" class="sobre-photo" loading="lazy" />
+        <img src="assets/Imagem 2 Edenilson editada.png" alt="Edenilson Mendes" class="sobre-photo" loading="lazy" style="transform: scaleX(-1);" />
         <div class="sobre-stats">
           <div class="sobre-stat">
-            <div class="num">120+</div>
+            <div class="num" data-count="11" data-prefix="+" data-suffix="">+11</div>
+            <div class="label">Anos de experiência</div>
+          </div>
+          <div class="sobre-stat">
+            <div class="num" data-count="150" data-prefix="+" data-suffix="">+150</div>
             <div class="label">Clínicas atendidas</div>
-          </div>
-          <div class="sobre-stat">
-            <div class="num">+38%</div>
-            <div class="label">Faturamento médio</div>
-          </div>
-          <div class="sobre-stat">
-            <div class="num">45d</div>
-            <div class="label">Tempo médio de resultado</div>
           </div>
         </div>
       </div>
       <div data-anim data-delay="1">
-        <div class="sobre-selos">
-          <span class="badge dark">11+ Anos de Experiência</span>
-          <span class="badge dark">Gestão</span>
-          <span class="badge dark">Credenciamento</span>
-          <span class="badge dark">Negociação</span>
-        </div>
-        <span class="eyebrow on-dark" style="display:block; margin-bottom:var(--s-2);">08 · Sobre o mentor</span>
+        <div class="sobre-selos"></div>
         <h2 class="h2" style="color:var(--white); margin-bottom:var(--s-5);">
           Quem vai te guiar<br/>nesse <span class="hl">processo</span>
         </h2>
@@ -1234,7 +1229,7 @@ ul, ol { list-style: none; padding: 0; }
           Edenilson Mendes atua há mais de <strong style="color:var(--white);">11 anos</strong> com gestão, credenciamento e negociação na área da saúde. Já participou de dezenas de processos reais, lidando diretamente com operadoras e prestadores em todo o Brasil.
         </p>
         <p style="color:var(--ink-400); font-size:15px; line-height:1.7; margin-bottom:var(--s-6);">
-          Hoje, ajuda clínicas, hospitais e consultórios a aumentar o faturamento com planos de saúde de forma estruturada — com foco em resultado prático, não em teoria.
+          Hoje, ajuda clínicas, hospitais e consultórios a aumentar o faturamento com planos de saúde de forma estruturada, com foco em resultado prático, não em teoria.
         </p>
         <ul class="sobre-bullets">
           <li>Sair do zero no credenciamento com o processo correto desde o início</li>
@@ -1255,7 +1250,6 @@ ul, ol { list-style: none; padding: 0; }
 <section id="para-quem" class="lp-s">
   <div class="lp-container">
     <div class="lp-sh" data-anim>
-      <span class="eyebrow" style="color:var(--ink-500);">09 · Qualificação</span>
       <h2 class="h2" style="color:var(--ink-900); margin-top:var(--s-2);">Para quem isso faz sentido</h2>
     </div>
     <div class="qual-grid">
@@ -1311,34 +1305,29 @@ ul, ol { list-style: none; padding: 0; }
 <section id="objecoes" class="lp-s">
   <div class="lp-container">
     <div class="lp-sh" data-anim>
-      <span class="eyebrow on-dark">10 · Objeções</span>
       <h2 class="h2" style="color:var(--white); margin-top:var(--s-2);">O que você precisa entender</h2>
     </div>
     <div class="objections-grid">
       <div class="objection-card" data-anim data-delay="1">
-        <span class="badge dark" style="align-self:flex-start;">Objeção</span>
-        <div class="obj-q">"Os planos pagam pouco"</div>
+<div class="obj-q">"Os planos pagam pouco"</div>
         <div class="obj-divider"></div>
         <div class="obj-answer-label">A resposta</div>
         <p class="obj-answer">Nem sempre. O problema está em como o contrato é estruturado. Clínicas com contratos bem negociados têm margens muito superiores à média do setor.</p>
       </div>
       <div class="objection-card" data-anim data-delay="2">
-        <span class="badge dark" style="align-self:flex-start;">Objeção</span>
-        <div class="obj-q">"Todo mundo recebe o mesmo valor"</div>
+<div class="obj-q">"Todo mundo recebe o mesmo valor"</div>
         <div class="obj-divider"></div>
         <div class="obj-answer-label">A resposta</div>
-        <p class="obj-answer">Não recebe. Negociação faz diferença — e a maioria das clínicas nunca pediu um reajuste sequer, mesmo com anos de contrato.</p>
+        <p class="obj-answer">Não recebe. Negociação faz diferença, e a maioria das clínicas nunca pediu um reajuste sequer, mesmo com anos de contrato.</p>
       </div>
       <div class="objection-card" data-anim data-delay="3">
-        <span class="badge dark" style="align-self:flex-start;">Objeção</span>
-        <div class="obj-q">"Não vale a pena atender convênios"</div>
+<div class="obj-q">"Não vale a pena atender convênios"</div>
         <div class="obj-divider"></div>
         <div class="obj-answer-label">A resposta</div>
-        <p class="obj-answer">Então por que grandes grupos hospitalares não param de crescer com esse modelo? A questão não é o convênio — é a estratégia de entrada e gestão contratual.</p>
+        <p class="obj-answer">Então por que grandes grupos hospitalares não param de crescer com esse modelo? A questão não é o convênio. É a estratégia de entrada e gestão contratual.</p>
       </div>
       <div class="objection-card" data-anim data-delay="4">
-        <span class="badge dark" style="align-self:flex-start;">Objeção</span>
-        <div class="obj-q">"Dá para fazer sozinho"</div>
+<div class="obj-q">"Dá para fazer sozinho"</div>
         <div class="obj-divider"></div>
         <div class="obj-answer-label">A resposta</div>
         <p class="obj-answer">Até dá. Mas erros nessa área custam meses de processo parado e anos de contratos defasados. O custo do improviso é muito maior do que parece no início.</p>
@@ -1354,7 +1343,6 @@ ul, ol { list-style: none; padding: 0; }
   <div class="lp-container">
     <div class="cta-inner">
       <div class="cta-copy" data-anim>
-        <span class="eyebrow on-dark">11 · Próximo passo</span>
         <h2 class="h2" style="color:var(--white);">
           Agora é simples.
         </h2>
@@ -1469,13 +1457,7 @@ ul, ol { list-style: none; padding: 0; }
 
 <script>
 (function () {
-  // 1. Nav scroll state
-  var nav = document.getElementById('site-nav');
-  window.addEventListener('scroll', function () {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
-
-  // 2. CTA scroll to target
+  // CTA scroll to target
   document.querySelectorAll('[data-scroll-to]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var target = document.getElementById(btn.dataset.scrollTo);
@@ -1483,7 +1465,7 @@ ul, ol { list-style: none; padding: 0; }
     });
   });
 
-  // 5. Entrance animations
+  // Entrance animations
   var animObs = new IntersectionObserver(function (entries, obs) {
     entries.forEach(function (e) {
       if (e.isIntersecting) {
@@ -1494,13 +1476,39 @@ ul, ol { list-style: none; padding: 0; }
   }, { threshold: 0.08 });
   document.querySelectorAll('[data-anim]').forEach(function (el) { animObs.observe(el); });
 
-  // 6. Mobile CTA bar — hide when form is visible
-  var mobileBar = document.querySelector('.mobile-cta-bar');
-  var ctaSection = document.getElementById('cta-final');
-  if (mobileBar && ctaSection) {
-    new IntersectionObserver(function (entries) {
-      mobileBar.style.display = entries[0].isIntersecting ? 'none' : '';
-    }, { threshold: 0.1 }).observe(ctaSection);
+  // Testimonial continuous marquee — duplicate slides for seamless loop
+  var tcTrack = document.querySelector('.tc-track');
+  if (tcTrack) {
+    Array.from(tcTrack.querySelectorAll('.testimonial')).forEach(function (s) {
+      tcTrack.appendChild(s.cloneNode(true));
+    });
+  }
+
+  // Counter animation for .num[data-count]
+  var countEls = document.querySelectorAll('.num[data-count]');
+  if (countEls.length) {
+    var countObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        countObs.unobserve(entry.target);
+        var el      = entry.target;
+        var target  = +el.dataset.count;
+        var prefix  = el.dataset.prefix || '';
+        var suffix  = el.dataset.suffix || '';
+        var duration = 1600;
+        var start   = null;
+        function tick(ts) {
+          if (!start) start = ts;
+          var progress = Math.min((ts - start) / duration, 1);
+          // ease-out cubic
+          var eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = prefix + Math.round(eased * target) + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.5 });
+    countEls.forEach(function (el) { countObs.observe(el); });
   }
 })();
 </script>
