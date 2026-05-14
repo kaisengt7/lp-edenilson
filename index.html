@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Edenilson Mendes — Credenciamento Estratégico para Clínicas</title>
+<meta name="description" content="Destrave e aumente o faturamento da sua clínica com planos de saúde, sem depender de tentativa e erro. Mentoria B2B com Edenilson Mendes." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* ================================================================
+   DESIGN SYSTEM TOKENS — Edenilson Mendes v1.0
+   ================================================================ */
+:root {
+  --em-blue:        #3048C8;
+  --em-blue-600:    #2638A8;
+  --em-blue-400:    #5A6FE0;
+  --em-blue-200:    #B8C2F0;
+  --em-blue-50:     #EEF1FD;
+  --em-orange:      #F89838;
+  --em-orange-600:  #E07820;
+  --em-orange-400:  #FFB46A;
+  --em-orange-200:  #FFD9B0;
+  --em-orange-50:   #FFF3E5;
+  --ink-1000: #0A0A0C;
+  --ink-900:  #141418;
+  --ink-800:  #1F1F25;
+  --ink-700:  #2A2A32;
+  --ink-600:  #44444F;
+  --ink-500:  #6B6B78;
+  --ink-400:  #94949F;
+  --ink-300:  #C2C2CB;
+  --ink-200:  #E1E1E7;
+  --ink-100:  #EFEFF2;
+  --ink-50:   #F7F7F9;
+  --paper:    #FAFAFA;
+  --white:    #FFFFFF;
+  --success: #1F8A5B;
+  --warning: #D97706;
+  --danger:  #C73838;
+  --info:    var(--em-blue);
+  --font-display: "Bebas Neue", "Oswald", "Arial Narrow", sans-serif;
+  --font-body:    "Manrope", "Helvetica Neue", system-ui, -apple-system, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+  --t-eyebrow: 0.75rem;
+  --t-small:   0.875rem;
+  --t-body:    1rem;
+  --t-lead:    1.125rem;
+  --t-h6:      1.25rem;
+  --t-h5:      1.5rem;
+  --t-h4:      2rem;
+  --t-h3:      2.75rem;
+  --t-h2:      3.75rem;
+  --t-h1:      5.25rem;
+  --t-display: 8rem;
+  --s-0: 0;
+  --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem;
+  --s-4: 1rem;    --s-5: 1.25rem; --s-6: 1.5rem;
+  --s-8: 2rem;    --s-10: 2.5rem; --s-12: 3rem;
+  --s-16: 4rem;   --s-20: 5rem;   --s-24: 6rem;
+  --s-32: 8rem;   --s-40: 10rem;
+  --r-none: 0;
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-xl: 20px;
+  --r-pill: 999px;
+  --sh-1: 0 1px 2px rgba(20,20,24,.06), 0 1px 1px rgba(20,20,24,.04);
+  --sh-2: 0 4px 12px rgba(20,20,24,.08), 0 2px 4px rgba(20,20,24,.04);
+  --sh-3: 0 12px 32px rgba(20,20,24,.12), 0 4px 8px rgba(20,20,24,.06);
+  --sh-4: 0 24px 60px rgba(20,20,24,.18), 0 8px 16px rgba(20,20,24,.08);
+  --sh-glow-orange: 0 10px 32px rgba(248,152,56,.32);
+  --ease: cubic-bezier(.2,.7,.2,1);
+  --t-fast: .15s;
+  --t-base: .25s;
+  --t-slow: .5s;
+  --container: 1180px;
+  --gutter: 1.5rem;
+}
+
+/* RESET */
+*,*::before,*::after { box-sizing: border-box; }
+* { margin: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: 1.55;
+  color: var(--ink-900);
+  background: var(--ink-1000);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  padding-top: 60px;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+ul, ol { list-style: none; padding: 0; }
+::selection { background: var(--em-orange); color: var(--ink-1000); }
+
+/* TYPE */
+.display, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: .92;
+  letter-spacing: .005em;
+  text-transform: uppercase;
+}
+.display { font-size: clamp(4rem, 9vw, var(--t-display)); }
+.h1 { font-size: clamp(2.5rem, 8vw, var(--t-h1)); line-height: .94; }
+.h2 { font-size: clamp(2rem, 6vw, var(--t-h2)); line-height: .96; }
+.h3 { font-size: clamp(1.8rem, 4vw, var(--t-h3)); }
+.h4 { font-size: clamp(1.5rem, 3.5vw, var(--t-h4)); }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--t-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--ink-500);
+}
+.eyebrow.on-dark { color: var(--ink-400); }
+.lead { font-size: var(--t-lead); line-height: 1.55; color: var(--ink-700); }
+.mono { font-family: var(--font-mono); font-size: var(--t-small); }
+
+/* HIGHLIGHT */
+.hl, .hl-blue {
+  color: var(--white);
+  padding: 0 .2em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.hl {
+  background: linear-gradient(
+    transparent 8%, var(--em-orange) 8%,
+    var(--em-orange) 92%, transparent 92%
+  );
+}
+.hl-blue {
+  background: linear-gradient(
+    transparent 8%, var(--em-blue) 8%,
+    var(--em-blue) 92%, transparent 92%
+  );
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  padding: 14px 22px;
+  border: 0; border-radius: var(--r-md);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: .01em;
+  transition: transform var(--t-fast), background var(--t-fast), color var(--t-fast), box-shadow var(--t-fast);
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn-primary { background: var(--em-orange); color: var(--white); box-shadow: var(--sh-glow-orange); }
+.btn-primary:hover { background: var(--em-orange-600); }
+.btn-secondary { background: var(--em-blue); color: var(--white); }
+.btn-secondary:hover { background: var(--em-blue-600); }
+.btn-dark { background: var(--ink-1000); color: var(--white); }
+.btn-outline { background: transparent; border: 1.5px solid var(--ink-900); color: var(--ink-900); }
+.btn-outline:hover { background: var(--ink-900); color: var(--white); }
+.btn-outline-light { background: transparent; border: 1.5px solid rgba(255,255,255,.3); color: var(--white); }
+.btn-outline-light:hover { background: var(--white); color: var(--ink-1000); border-color: var(--white); }
+.btn-sm { padding: 10px 16px; font-size: 13px; }
+.btn-lg { padding: 18px 28px; font-size: 17px; }
+.btn-xl { padding: 22px 36px; font-size: 19px; }
+.btn svg { width: 1.1em; height: 1.1em; }
+
+/* FORMS */
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 13px; font-weight: 600; }
+.field .hint { font-size: 12px; color: var(--ink-500); }
+.input, .select, .textarea {
+  font: inherit; width: 100%;
+  padding: 14px 16px;
+  background: var(--white);
+  border: 1.5px solid var(--ink-200);
+  border-radius: var(--r-md);
+  color: var(--ink-900);
+  transition: border-color var(--t-fast), box-shadow var(--t-fast);
+}
+.input::placeholder, .textarea::placeholder { color: var(--ink-400); }
+.input:focus, .select:focus, .textarea:focus {
+  outline: none; border-color: var(--em-blue);
+  box-shadow: 0 0 0 4px var(--em-blue-50);
+}
+.textarea { min-height: 120px; resize: vertical; }
+.select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%2344444F' stroke-width='1.8' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+.checkbox-row { display: flex; align-items: flex-start; gap: var(--s-3); padding: var(--s-2) 0; }
+.checkbox-row input { width: 18px; height: 18px; accent-color: var(--em-blue); margin-top: 2px; flex: none; }
+
+/* CARDS */
+.card {
+  background: var(--white); border: 1px solid var(--ink-200);
+  border-radius: var(--r-lg); padding: var(--s-6);
+  display: flex; flex-direction: column; gap: var(--s-4);
+  transition: transform var(--t-base), box-shadow var(--t-base);
+}
+.card:hover { transform: translateY(-2px); box-shadow: var(--sh-3); }
+.card.flat { box-shadow: none; }
+.card.dark { background: var(--ink-900); border-color: var(--ink-800); color: var(--ink-100); }
+.card.dark .lead { color: var(--ink-300); }
+.card.feature { padding: var(--s-8); border-radius: var(--r-xl); }
+.card .icon {
+  width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--em-orange-50); color: var(--em-orange-600);
+  border-radius: var(--r-md); margin-bottom: var(--s-2); flex: none;
+}
+.card .icon.blue { background: var(--em-blue-50); color: var(--em-blue); }
+.card .icon.dark { background: var(--ink-1000); color: var(--em-orange); }
+.card .icon svg { width: 24px; height: 24px; stroke-width: 1.8; }
+
+/* BADGES */
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px;
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: .08em; text-transform: uppercase; font-weight: 500;
+  border-radius: var(--r-pill); border: 1px solid;
+}
+.badge.orange { background: var(--em-orange-50); color: var(--em-orange-600); border-color: var(--em-orange-200); }
+.badge.blue   { background: var(--em-blue-50); color: var(--em-blue); border-color: var(--em-blue-200); }
+.badge.dark   { background: var(--ink-1000); color: var(--em-orange); border-color: var(--ink-800); }
+.badge.outline{ background: transparent; color: var(--ink-700); border-color: var(--ink-300); }
+.badge.success{ background: #E5F4ED; color: var(--success); border-color: #B8DECC; }
+.badge .dot { width: 6px; height: 6px; border-radius: 999px; background: currentColor; }
+
+/* TESTIMONIAL */
+.testimonial {
+  background: var(--ink-1000); color: var(--white);
+  border-radius: var(--r-xl); padding: var(--s-8) var(--s-6);
+  position: relative; overflow: hidden;
+}
+.testimonial::before {
+  content: "\201C"; position: absolute;
+  top: -20px; left: 20px;
+  font-family: Georgia, serif; font-size: 10rem;
+  color: rgba(248,152,56,.12); line-height: 1;
+}
+.testimonial .quote {
+  font-size: clamp(.95rem, 1.8vw, 1.2rem);
+  line-height: 1.5; font-weight: 500;
+  margin-bottom: var(--s-5); position: relative;
+}
+.testimonial .who {
+  display: flex; align-items: center; gap: var(--s-3);
+  border-top: 1px solid var(--ink-800); padding-top: var(--s-4);
+}
+.testimonial .who .avatar {
+  width: 44px; height: 44px; border-radius: 999px;
+  background: var(--ink-800);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 1.2rem; color: var(--em-orange);
+  flex: none;
+}
+.testimonial .who .name { font-family: var(--font-display); font-size: 1.2rem; letter-spacing: .02em; }
+.testimonial .who .role { font-size: 12px; color: var(--ink-400); }
+
+/* NOTE */
+.note {
+  border-left: 3px solid var(--em-orange);
+  padding: var(--s-3) var(--s-5);
+  background: var(--em-orange-50); font-size: 14px;
+  color: var(--ink-800); border-radius: 0 var(--r-md) var(--r-md) 0;
+}
+.note.blue { background: var(--em-blue-50); border-color: var(--em-blue); }
+
+/* FOOTER */
+.lp-footer { background: var(--ink-1000); color: var(--ink-300); padding: var(--s-10) var(--s-4); }
+.lp-footer .top { display: grid; grid-template-columns: 1fr; gap: var(--s-8); padding-bottom: var(--s-8); border-bottom: 1px solid var(--ink-800); }
+.lp-footer .brand-block .brand-name { font-family: var(--font-display); font-size: 1.8rem; color: var(--white); line-height: 1; letter-spacing: .02em; }
+.lp-footer .brand-block p { font-size: 14px; color: var(--ink-400); margin-top: var(--s-3); max-width: 300px; }
+.lp-footer h6 { color: var(--white); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; margin-bottom: var(--s-3); font-family: var(--font-mono); font-weight: 500; }
+.lp-footer ul { display: flex; flex-direction: column; gap: 10px; font-size: 14px; }
+.lp-footer ul li a:hover { color: var(--em-orange); }
+.lp-footer .bottom { padding-top: var(--s-6); display: flex; flex-direction: column; gap: var(--s-2); font-size: 12px; font-family: var(--font-mono); color: var(--ink-500); }
+
+/* ================================================================
+   LP SPECIFIC — MOBILE FIRST
+   ================================================================ */
+
+/* Container */
+.lp-container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 var(--s-4); }
+
+/* Section padding */
+.lp-s { padding: var(--s-12) 0; }
+
+/* Section head */
+.lp-sh { margin-bottom: var(--s-8); }
+.lp-sh .eyebrow { display: block; margin-bottom: var(--s-2); }
+.lp-sh .h2 { margin-top: var(--s-2); }
+.lp-sh.center { text-align: center; }
+
+/* Smooth scroll offset */
+[id] { scroll-margin-top: 72px; }
+
+/* ---- NAV ---- */
+#site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,10,12,.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--ink-800);
+  transition: background var(--t-base);
+}
+#site-nav.scrolled { background: var(--ink-1000); }
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px; padding: 0 var(--s-4);
+}
+.nav-logo { display: flex; align-items: center; gap: var(--s-3); text-decoration: none; }
+.nav-logo img { height: 32px; width: auto; }
+.nav-logo-name { font-family: var(--font-display); font-size: 1.3rem; color: var(--white); letter-spacing: .02em; line-height: 1; }
+.nav-cta { display: flex; }
+
+/* ---- STICKY MOBILE CTA BAR ---- */
+.mobile-cta-bar {
+  display: flex;
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 90;
+  padding: var(--s-3) var(--s-4);
+  padding-bottom: calc(var(--s-3) + env(safe-area-inset-bottom, 0px));
+  background: rgba(10,10,12,.97);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid var(--ink-800);
+  gap: var(--s-3);
+}
+.mobile-cta-bar .btn { flex: 1; justify-content: center; font-size: 14px; padding: 14px 12px; }
+
+/* ---- HERO ---- */
+#hero { background: var(--ink-1000); overflow: hidden; }
+.hero-photo-mobile {
+  width: 100%; aspect-ratio: 4/3; position: relative; overflow: hidden;
+  background: url("assets/edenilson-3.png") center 15% / cover no-repeat var(--ink-800);
+}
+.hero-photo-mobile::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to top, var(--ink-1000) 0%, rgba(10,10,12,.3) 60%, transparent 100%);
+}
+.hero-copy { padding: var(--s-6) var(--s-4) var(--s-16); }
+.hero-copy .h1 { color: var(--white); margin: var(--s-4) 0; line-height: 1.22; }
+.hero-copy .lead { color: var(--ink-300); max-width: 520px; margin-bottom: var(--s-6); }
+.hero-bullets { display: flex; flex-direction: column; gap: var(--s-3); margin: var(--s-4) 0 var(--s-6); }
+.hero-bullets li { display: flex; align-items: flex-start; gap: var(--s-3); font-size: 15px; color: var(--ink-200); line-height: 1.4; }
+.hero-bullets li::before { content: "✓"; color: var(--em-orange); font-weight: 700; flex: none; font-size: 14px; margin-top: 1px; }
+.hero-cta-row { display: flex; flex-direction: column; gap: var(--s-3); }
+.hero-cta-row .btn { width: 100%; justify-content: center; }
+.hero-flag {
+  margin-top: var(--s-5);
+  border-left: 3px solid var(--em-orange);
+  padding-left: var(--s-4);
+}
+.hero-flag .flag-top { font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-300); }
+.hero-flag .flag-badge { margin-top: var(--s-2); display: flex; gap: var(--s-3); flex-wrap: wrap; }
+
+/* Hero desktop — hidden on mobile */
+.hero-desktop { display: none; }
+
+/* ---- PROBLEMA ---- */
+#problema { background: var(--ink-900); }
+.problema-inner { display: grid; grid-template-columns: 1fr; gap: var(--s-8); }
+.belief-list { display: flex; flex-direction: column; gap: var(--s-4); }
+.belief-item {
+  display: flex; gap: var(--s-4); align-items: flex-start;
+  padding-bottom: var(--s-4); border-bottom: 1px solid var(--ink-800);
+}
+.belief-item:last-child { border-bottom: none; padding-bottom: 0; }
+.belief-x { font-family: var(--font-display); font-size: 1.6rem; color: var(--danger); flex: none; line-height: 1; margin-top: -2px; }
+.belief-text { font-size: 1.05rem; color: var(--ink-300); line-height: 1.55; }
+.belief-text strong { color: var(--white); }
+.problema-closer {
+  background: var(--ink-800); border-radius: var(--r-xl);
+  padding: var(--s-8); border-left: 4px solid var(--em-orange);
+}
+.problema-closer p { font-size: 1rem; color: var(--ink-200); line-height: 1.65; }
+.problema-closer p + p { margin-top: var(--s-4); }
+.problema-closer strong { color: var(--white); }
+
+/* ---- NINGUEM EXPLICA ---- */
+#ninguem-explica { background: var(--ink-1000); }
+.ninguem-grid { display: grid; grid-template-columns: 1fr; gap: var(--s-4); }
+.strategy-compare {
+  display: grid; grid-template-columns: 1fr;
+  border: 1px solid var(--ink-800); border-radius: var(--r-xl);
+  overflow: hidden; margin-top: var(--s-8);
+}
+.strategy-compare .col { padding: var(--s-6); }
+.strategy-compare .col.bad {
+  background: rgba(199,56,56,.06);
+  border-bottom: 1px solid var(--ink-800);
+}
+.strategy-compare .col.good { background: rgba(31,138,91,.06); }
+.strategy-compare .col-head {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em;
+  text-transform: uppercase; margin-bottom: var(--s-4); font-weight: 500;
+}
+.strategy-compare .col.bad .col-head { color: var(--danger); }
+.strategy-compare .col.good .col-head { color: var(--success); }
+.strategy-compare ul { display: flex; flex-direction: column; gap: var(--s-3); }
+.strategy-compare li { display: flex; gap: var(--s-3); font-size: 14px; color: var(--ink-300); line-height: 1.5; align-items: flex-start; }
+.strategy-compare .col.bad li::before { content: "✗"; color: var(--danger); font-weight: 700; flex: none; }
+.strategy-compare .col.good li::before { content: "✓"; color: var(--success); font-weight: 700; flex: none; }
+.strategy-closer {
+  margin-top: var(--s-6);
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: var(--ink-300);
+  text-transform: uppercase;
+  line-height: 1.2;
+  padding: var(--s-6) 0;
+  border-top: 1px solid var(--ink-800);
+}
+.strategy-closer span { color: var(--white); }
+
+/* ---- DORES ---- */
+#dores { background: var(--ink-900); }
+.pain-list { display: flex; flex-direction: column; }
+.pain-item {
+  padding: var(--s-5) 0; border-bottom: 1px solid var(--ink-800);
+  display: flex; align-items: baseline; gap: var(--s-3);
+}
+.pain-item:last-child { border-bottom: none; }
+.pain-num { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; color: var(--ink-500); flex: none; width: 1.6rem; }
+.pain-text { font-family: var(--font-display); font-size: clamp(1.2rem, 4.5vw, 2rem); color: var(--white); line-height: 1.1; text-transform: uppercase; }
+.dores-closer {
+  margin-top: var(--s-10);
+  background: var(--ink-1000); border-radius: var(--r-xl);
+  padding: var(--s-8); text-align: center;
+}
+.dores-closer p { font-family: var(--font-display); font-size: clamp(1.4rem, 4vw, 2.2rem); color: var(--ink-300); text-transform: uppercase; line-height: 1.2; }
+.dores-closer p .hl { font-size: inherit; }
+
+/* ---- TRANSFORMAÇÃO ---- */
+#transformacao { background: var(--paper); color: var(--ink-900); }
+.transformacao-inner { display: grid; grid-template-columns: 1fr; gap: var(--s-8); }
+.transformacao-intro .h2 { color: var(--ink-900); }
+.transformacao-intro .lead { color: var(--ink-700); margin-top: var(--s-4); }
+.transf-steps { display: flex; flex-direction: column; gap: 0; }
+.transf-step {
+  display: grid; grid-template-columns: 64px 1fr; gap: var(--s-5);
+  padding: var(--s-5) 0; border-top: 1px solid var(--ink-200);
+}
+.transf-step:last-child { border-bottom: 1px solid var(--ink-200); }
+.transf-num { font-family: var(--font-display); font-size: 3rem; color: var(--em-orange); line-height: .9; }
+.transf-title { font-size: 1.15rem; font-weight: 700; color: var(--ink-900); margin-bottom: var(--s-1); }
+.transf-desc { font-size: 14px; color: var(--ink-600); line-height: 1.6; }
+.transf-note {
+  margin-top: var(--s-8);
+  border-left: 3px solid var(--em-orange);
+  padding: var(--s-4) var(--s-5);
+  background: var(--em-orange-50);
+  font-size: 15px; color: var(--ink-800);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+}
+.transf-note strong { color: var(--ink-900); }
+
+/* ---- MAPA ---- */
+#metodo-mapa { background: var(--ink-1000); }
+.mapa-eyebrow-row { display: flex; align-items: center; gap: var(--s-4); margin-bottom: var(--s-3); flex-wrap: wrap; }
+.mapa-grid { display: grid; grid-template-columns: 1fr; gap: var(--s-4); }
+.mapa-card {
+  background: var(--ink-900); border: 1px solid var(--ink-800);
+  border-radius: var(--r-xl); padding: var(--s-6);
+  display: flex; flex-direction: column; gap: var(--s-4);
+  position: relative; overflow: hidden;
+  transition: transform var(--t-base), border-color var(--t-base);
+  min-height: 180px;
+}
+.mapa-card:hover { transform: translateY(-3px); border-color: rgba(248,152,56,.4); }
+.mapa-card .letter {
+  position: absolute; bottom: -12px; right: 8px;
+  font-family: var(--font-display); font-size: 7rem; line-height: 1;
+  color: var(--em-orange); opacity: .07; pointer-events: none;
+}
+.mapa-card .step-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; color: var(--ink-500); text-transform: uppercase; }
+.mapa-card .mapa-title { font-family: var(--font-body); font-weight: 800; font-size: 1.05rem; color: var(--white); text-transform: none; line-height: 1.3; }
+.mapa-card p { font-size: 14px; color: var(--ink-300); line-height: 1.6; }
+.mapa-closer { margin-top: var(--s-10); padding-top: var(--s-8); border-top: 1px solid var(--ink-800); }
+.mapa-closer p { color: var(--ink-300); font-size: 15px; line-height: 1.65; }
+
+/* ---- DEPOIMENTOS ---- */
+#depoimentos { background: var(--ink-1000); }
+.testimonial-grid { display: grid; grid-template-columns: 1fr; gap: var(--s-4); }
+.companies-bar {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: var(--s-3) var(--s-6); padding-top: var(--s-8);
+  border-top: 1px solid var(--ink-800); margin-top: var(--s-10);
+}
+.company-name { font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-500); }
+.dep-cta { margin-top: var(--s-10); text-align: center; }
+
+/* ---- DIFERENCIAIS ---- */
+#diferenciais { background: var(--paper); color: var(--ink-900); }
+#diferenciais .lp-sh .h2 { color: var(--ink-900); }
+#diferenciais .lp-sh .lead { color: var(--ink-700); }
+.diferenciais-grid { display: grid; grid-template-columns: 1fr; gap: var(--s-4); }
+
+/* ---- SOBRE ---- */
+#sobre { background: var(--ink-1000); }
+.sobre-inner { display: grid; grid-template-columns: 1fr; gap: var(--s-8); }
+.sobre-photo { width: 100%; border-radius: var(--r-xl); display: block; }
+.sobre-stats { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: var(--s-5); border-top: 1px solid var(--ink-800); }
+.sobre-stat { padding: var(--s-5) var(--s-3); }
+.sobre-stat + .sobre-stat { border-left: 1px solid var(--ink-800); }
+.sobre-stat .num { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); color: var(--em-orange); line-height: .9; }
+.sobre-stat .label { font-size: 12px; color: var(--ink-400); margin-top: var(--s-1); line-height: 1.4; }
+.sobre-selos { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-bottom: var(--s-4); }
+.credential-badges { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: var(--s-4) 0; }
+.sobre-bullets { display: flex; flex-direction: column; gap: var(--s-3); margin-top: var(--s-4); }
+.sobre-bullets li { display: flex; gap: var(--s-3); font-size: 15px; color: var(--ink-300); align-items: flex-start; line-height: 1.5; }
+.sobre-bullets li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--em-orange); flex: none; margin-top: 7px; }
+
+/* ---- PARA QUEM ---- */
+#para-quem { background: var(--ink-50); color: var(--ink-900); }
+#para-quem .lp-sh .h2 { color: var(--ink-900); }
+#para-quem .lp-sh .lead { color: var(--ink-700); }
+.qual-grid { display: grid; grid-template-columns: 1fr; gap: var(--s-6); }
+.for-grid { display: grid; grid-template-columns: 1fr; gap: var(--s-4); }
+.not-for-card {
+  background: var(--ink-900); border: 1px solid var(--ink-800);
+  border-radius: var(--r-xl); padding: var(--s-6);
+}
+.not-for-card h5 { font-family: var(--font-body); font-weight: 800; font-size: 1.05rem; color: var(--white); text-transform: none; margin-bottom: var(--s-4); }
+.not-for-list { display: flex; flex-direction: column; gap: var(--s-3); }
+.not-for-list li { display: flex; gap: var(--s-3); font-size: 14px; color: var(--ink-400); align-items: flex-start; }
+.not-for-list li::before { content: "✗"; color: var(--ink-600); font-weight: 700; flex: none; }
+
+/* ---- OBJEÇÕES ---- */
+#objecoes { background: var(--ink-1000); }
+.objections-grid { display: grid; grid-template-columns: 1fr; gap: var(--s-4); }
+.objection-card {
+  background: var(--ink-900); border: 1px solid var(--ink-800);
+  border-radius: var(--r-xl); padding: var(--s-6);
+  display: flex; flex-direction: column; gap: var(--s-4);
+}
+.obj-q { font-family: var(--font-display); font-size: clamp(1.15rem, 2.5vw, 1.5rem); color: var(--ink-200); text-transform: uppercase; line-height: 1.15; }
+.obj-divider { height: 1px; background: var(--ink-800); }
+.obj-answer-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--em-orange); }
+.obj-answer { font-size: 14px; color: var(--ink-400); line-height: 1.65; }
+
+/* ---- CTA FINAL ---- */
+#cta-final { background: var(--ink-1000); position: relative; overflow: hidden; }
+#cta-final::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(700px 400px at 90% 20%, rgba(248,152,56,.1), transparent 60%),
+    radial-gradient(800px 500px at 0% 80%, rgba(48,72,200,.1), transparent 60%);
+  pointer-events: none;
+}
+.cta-inner { display: grid; grid-template-columns: 1fr; gap: var(--s-8); position: relative; }
+.cta-copy .h2 { color: var(--white); margin: var(--s-3) 0 var(--s-5); line-height: 1.22; }
+.cta-copy .lead { color: var(--ink-300); margin-bottom: var(--s-6); }
+.cta-trust { display: flex; flex-direction: column; gap: var(--s-3); margin-bottom: var(--s-6); }
+.cta-trust li { display: flex; gap: var(--s-3); font-size: 15px; color: var(--ink-200); align-items: flex-start; }
+.cta-trust li::before { content: "✓"; color: var(--success); font-weight: 700; flex: none; }
+.cta-seal {
+  display: flex; align-items: center; gap: var(--s-3);
+  padding: var(--s-4); background: var(--ink-900);
+  border: 1px solid var(--ink-800); border-radius: var(--r-lg);
+  border-left: 3px solid var(--em-orange);
+}
+.cta-seal .seal-text { font-size: 13px; color: var(--ink-300); line-height: 1.5; }
+.cta-seal .seal-text strong { color: var(--white); }
+.form-card {
+  background: var(--ink-900); border: 1px solid var(--ink-800);
+  border-radius: var(--r-xl); padding: var(--s-6);
+  display: flex; flex-direction: column; gap: var(--s-4);
+}
+.form-card .form-title { font-family: var(--font-body); font-weight: 800; font-size: 1.1rem; color: var(--white); text-transform: none; margin-bottom: var(--s-2); }
+.form-card .field label { color: var(--ink-300); }
+.form-card .input,
+.form-card .select,
+.form-card .textarea {
+  background: var(--ink-800); border-color: var(--ink-700); color: var(--white);
+  padding: 16px; font-size: 16px;
+}
+.form-card .input::placeholder { color: var(--ink-500); }
+.form-card .input:focus, .form-card .select:focus {
+  border-color: var(--em-orange);
+  box-shadow: 0 0 0 3px rgba(248,152,56,.15);
+  outline: none;
+}
+.form-card .select {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%23C2C2CB' stroke-width='1.8' fill='none' stroke-linecap='round'/></svg>");
+  color: var(--white);
+}
+.form-card .select option { background: var(--ink-800); color: var(--white); }
+.form-card .checkbox-row label { color: var(--ink-400); font-weight: 400; font-size: 13px; line-height: 1.5; }
+.btn-submit { width: 100%; justify-content: center; min-height: 56px; font-size: 17px; padding: 18px; }
+.form-disclaimer { font-size: 12px; color: var(--ink-600); text-align: center; font-family: var(--font-mono); letter-spacing: .04em; line-height: 1.6; }
+
+/* ---- ANIMATIONS ---- */
+[data-anim] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .55s var(--ease), transform .55s var(--ease);
+}
+[data-anim].in-view { opacity: 1; transform: none; }
+[data-anim][data-delay="1"] { transition-delay: .1s; }
+[data-anim][data-delay="2"] { transition-delay: .2s; }
+[data-anim][data-delay="3"] { transition-delay: .3s; }
+[data-anim][data-delay="4"] { transition-delay: .4s; }
+
+/* ================================================================
+   RESPONSIVE — TABLET (min-width: 640px)
+   ================================================================ */
+@media (min-width: 640px) {
+  .lp-container { padding: 0 var(--s-6); }
+  .lp-s { padding: var(--s-16) 0; }
+  .hero-cta-row { flex-direction: row; flex-wrap: wrap; }
+  .hero-cta-row .btn { width: auto; }
+  .ninguem-grid { grid-template-columns: 1fr 1fr; }
+  .strategy-compare { grid-template-columns: 1fr 1fr; }
+  .strategy-compare .col.bad { border-bottom: none; border-right: 1px solid var(--ink-800); }
+  .mapa-grid { grid-template-columns: 1fr 1fr; }
+  .testimonial-grid { grid-template-columns: 1fr 1fr; }
+  .diferenciais-grid { grid-template-columns: 1fr 1fr; }
+  .for-grid { grid-template-columns: 1fr 1fr; }
+  .objections-grid { grid-template-columns: 1fr 1fr; }
+  .lp-footer .top { grid-template-columns: 1fr 1fr; }
+  .lp-footer .bottom { flex-direction: row; justify-content: space-between; }
+}
+
+/* ================================================================
+   RESPONSIVE — DESKTOP (min-width: 980px)
+   ================================================================ */
+@media (min-width: 980px) {
+  body { padding-top: 72px; }
+  .lp-container { padding: 0 var(--s-8); }
+  .lp-s { padding: var(--s-24) 0; }
+  .lp-sh { margin-bottom: var(--s-12); }
+
+  /* Nav */
+  .nav-inner { height: 72px; padding: 0 var(--s-6); max-width: var(--container); margin: 0 auto; }
+  .mobile-cta-bar { display: none; }
+
+  /* Hero — switch to split layout */
+  .hero-photo-mobile { display: none; }
+  .hero-copy { padding: 0; }
+  .hero-desktop {
+    display: grid; grid-template-columns: 1.2fr 1fr;
+    min-height: calc(100dvh - 72px); position: relative; overflow: hidden;
+  }
+  .hero-desktop::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(800px 400px at 90% 10%, rgba(248,152,56,.18), transparent 60%),
+      radial-gradient(900px 500px at 0% 100%, rgba(48,72,200,.18), transparent 60%);
+    pointer-events: none;
+  }
+  .hero-desktop .hero-col-copy {
+    padding: var(--s-16) var(--s-10) var(--s-16) var(--s-10);
+    display: flex; flex-direction: column; justify-content: center; gap: var(--s-5);
+    position: relative; z-index: 1;
+  }
+  .hero-desktop .hero-col-photo {
+    background: url("assets/edenilson-3.png") center 15% / cover no-repeat var(--ink-800);
+    position: relative;
+  }
+  .hero-desktop .hero-col-photo::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(10,10,12,1) 0%, transparent 35%);
+    pointer-events: none;
+  }
+
+  /* Other grids */
+  .ninguem-grid { grid-template-columns: repeat(3, 1fr); }
+  .mapa-grid { grid-template-columns: repeat(4, 1fr); }
+  .testimonial-grid { grid-template-columns: repeat(3, 1fr); }
+  .testimonial-grid .featured { grid-column: span 2; }
+  .diferenciais-grid { grid-template-columns: repeat(4, 1fr); }
+  .problema-inner { grid-template-columns: 1.1fr 1fr; gap: var(--s-12); }
+  .transformacao-inner { grid-template-columns: 1fr 1.4fr; gap: var(--s-16); align-items: start; }
+  .transformacao-sticky { position: sticky; top: 96px; }
+  .sobre-inner { grid-template-columns: 1fr 1.5fr; gap: var(--s-16); align-items: start; }
+  .qual-grid { grid-template-columns: 1.3fr 1fr; gap: var(--s-8); align-items: start; }
+  .for-grid { grid-template-columns: 1fr 1fr; }
+  .cta-inner { grid-template-columns: 1fr 1fr; gap: var(--s-16); align-items: start; }
+  .form-card { padding: var(--s-8); }
+  .mapa-card { padding: var(--s-8); }
+  .lp-footer .top { grid-template-columns: 2fr 1fr 1fr 1fr; }
+  .lp-footer { padding: var(--s-12) var(--s-8); border-radius: var(--r-xl); margin: 0 var(--s-8) var(--s-8); }
+}
+</style>
+</head>
+<body>
+
+<!-- ================================================================
+     NAV
+     ================================================================ -->
+<header id="site-nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <img src="assets/logo-laranja-branco.png" alt="Edenilson Mendes" />
+      <span class="nav-logo-name">Edenilson Mendes</span>
+    </a>
+    <button class="btn btn-primary btn-sm nav-cta" data-scroll-to="cta-final">
+      Diagnóstico gratuito
+    </button>
+  </div>
+</header>
+
+<!-- Mobile CTA bar -->
+<div class="mobile-cta-bar">
+  <button class="btn btn-primary" data-scroll-to="cta-final">
+    Diagnóstico gratuito
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+  </button>
+</div>
+
+<!-- ================================================================
+     HERO
+     ================================================================ -->
+<section id="hero">
+
+  <!-- MOBILE layout -->
+  <div class="hero-photo-mobile"></div>
+  <div class="hero-copy lp-container">
+    <span class="eyebrow on-dark" data-anim>Credenciamento Estratégico · B2B Saúde</span>
+    <h1 class="h1" data-anim data-delay="1">
+      Destrave e aumente o faturamento da sua clínica com planos de saúde,
+      sem depender de <span class="hl">tentativa e erro</span>.
+    </h1>
+    <p class="lead" data-anim data-delay="2">
+      Existe uma lógica por trás das aprovações, negociações e contratos que a maioria das clínicas ignora — e é isso que trava resultados. Edenilson Mendes mostra como aplicar essa lógica na prática para transformar planos de saúde em crescimento previsível.
+    </p>
+    <ul class="hero-bullets" data-anim data-delay="2">
+      <li>Entenda por que seu credenciamento não avança</li>
+      <li>Descubra como negociar melhores valores com operadoras</li>
+      <li>Estruture sua clínica para crescer com previsibilidade</li>
+    </ul>
+    <div class="hero-cta-row" data-anim data-delay="3">
+      <button class="btn btn-primary btn-lg" data-scroll-to="cta-final">
+        Quero entender como aplicar isso na minha clínica
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+    <div class="hero-flag" data-anim data-delay="4">
+      <div class="flag-top">Diagnóstico inicial gratuito</div>
+      <div class="flag-badge">
+        <span class="badge dark"><span class="dot"></span> Atendimentos limitados</span>
+        <span class="badge dark">11+ anos de mercado</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- DESKTOP layout (hidden on mobile via CSS) -->
+  <div class="hero-desktop">
+    <div class="hero-col-copy lp-container" style="max-width: none; padding-left: clamp(2rem, 5vw, 5rem);">
+      <span class="eyebrow on-dark">Credenciamento Estratégico · B2B Saúde</span>
+      <h1 class="h1" style="color:var(--white); margin: var(--s-4) 0; line-height: 1.22;">
+        Destrave e aumente o faturamento da sua clínica com planos de saúde,
+        sem depender de <span class="hl">tentativa e erro</span>.
+      </h1>
+      <p class="lead" style="color:var(--ink-300); max-width: 520px;">
+        Existe uma lógica por trás das aprovações, negociações e contratos que a maioria das clínicas ignora — e é isso que trava resultados. Edenilson Mendes mostra como aplicar essa lógica na prática.
+      </p>
+      <ul class="hero-bullets">
+        <li>Entenda por que seu credenciamento não avança</li>
+        <li>Descubra como negociar melhores valores com operadoras</li>
+        <li>Estruture sua clínica para crescer com previsibilidade</li>
+      </ul>
+      <div class="hero-cta-row">
+        <button class="btn btn-primary btn-lg" data-scroll-to="cta-final" style="width:auto;">
+          Quero entender como aplicar isso
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+        <button class="btn btn-outline-light btn-lg" data-scroll-to="depoimentos" style="width:auto;">Ver resultados</button>
+      </div>
+      <div class="hero-flag" style="margin-top: var(--s-6);">
+        <div class="flag-top">Diagnóstico inicial gratuito</div>
+        <div class="flag-badge" style="margin-top: var(--s-2);">
+          <span class="badge dark"><span class="dot"></span> Atendimentos limitados</span>
+          <span class="badge dark">11+ anos de mercado</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-col-photo"></div>
+  </div>
+
+</section>
+
+<!-- ================================================================
+     PROBLEMA
+     ================================================================ -->
+<section id="problema" class="lp-s">
+  <div class="lp-container">
+    <div class="lp-sh" data-anim>
+      <span class="eyebrow on-dark">01 · O Problema</span>
+      <h2 class="h2" style="color:var(--white); margin-top:var(--s-2);">
+        O problema não é o plano de saúde.<br/>
+        É como você <span class="hl">entra no jogo</span>.
+      </h2>
+    </div>
+    <div class="problema-inner">
+      <div data-anim data-delay="1">
+        <p style="color:var(--ink-400); font-size:14px; margin-bottom:var(--s-5); font-family:var(--font-mono); letter-spacing:.1em; text-transform:uppercase;">A maioria das clínicas acredita que:</p>
+        <ul class="belief-list">
+          <li class="belief-item">
+            <span class="belief-x">✕</span>
+            <span class="belief-text"><strong>Os planos pagam mal</strong> — e não vale a pena estruturar o negócio em torno deles.</span>
+          </li>
+          <li class="belief-item">
+            <span class="belief-x">✕</span>
+            <span class="belief-text"><strong>O credenciamento é burocrático demais</strong> — e o tempo gasto nunca compensa o retorno.</span>
+          </li>
+          <li class="belief-item">
+            <span class="belief-x">✕</span>
+            <span class="belief-text"><strong>Não vale a pena atender convênios</strong> — a margem é pequena e a operadora sempre leva vantagem.</span>
+          </li>
+        </ul>
+      </div>
+      <div class="problema-closer" data-anim data-delay="2">
+        <p>Mas isso não explica por que seus concorrentes diretos estão <strong>crescendo com esse tipo de estratégia</strong>.</p>
+        <p>A diferença não está no mercado. Está em entender como o sistema funciona por trás — e usar isso a seu favor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     O QUE NINGUÉM TE EXPLICA
+     ================================================================ -->
+<section id="ninguem-explica" class="lp-s">
+  <div class="lp-container">
+    <div class="lp-sh" data-anim>
+      <span class="eyebrow on-dark">02 · O que muda</span>
+      <h2 class="h2" style="color:var(--white); margin-top:var(--s-2);">
+        O que ninguém te explica<br/>sobre <span class="hl">credenciamento</span>
+      </h2>
+    </div>
+    <div class="ninguem-grid">
+      <div class="card dark feature" data-anim data-delay="1">
+        <div class="icon dark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:var(--ink-500);text-transform:uppercase;margin-bottom:var(--s-2);">01 · Perfil avaliado antes do papel</div>
+          <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;color:var(--white);text-transform:none;line-height:1.3;margin-bottom:var(--s-3);">A operadora decide antes de você enviar um documento</h5>
+          <p style="font-size:14px;color:var(--ink-300);line-height:1.6;">Operadoras avaliam o perfil da clínica antes mesmo da análise formal. Posicionamento, especialidades e localização contam mais do que a documentação em si.</p>
+        </div>
+      </div>
+      <div class="card dark feature" data-anim data-delay="2">
+        <div class="icon dark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20M5 9l7-7 7 7"/></svg>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:var(--ink-500);text-transform:uppercase;margin-bottom:var(--s-2);">02 · Posicionamento muda a aprovação</div>
+          <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;color:var(--white);text-transform:none;line-height:1.3;margin-bottom:var(--s-3);">Como você se apresenta muda tudo</h5>
+          <p style="font-size:14px;color:var(--ink-300);line-height:1.6;">A forma como você se posiciona — especialidades, volume de atendimento, proposta de valor — impacta diretamente na decisão de aprovação e nos valores negociados.</p>
+        </div>
+      </div>
+      <div class="card dark feature" data-anim data-delay="3">
+        <div class="icon dark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:var(--ink-500);text-transform:uppercase;margin-bottom:var(--s-2);">03 · Erros pequenos travam meses</div>
+          <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;color:var(--white);text-transform:none;line-height:1.3;margin-bottom:var(--s-3);">Detalhes que parecem irrelevantes param o processo</h5>
+          <p style="font-size:14px;color:var(--ink-300);line-height:1.6;">Detalhes estruturais aparentemente inofensivos podem travar o processo por meses. Erros na ordem da documentação ou no enquadramento da clínica são os mais comuns.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="strategy-compare" data-anim>
+      <div class="col bad">
+        <div class="col-head">Sem direcionamento</div>
+        <ul>
+          <li>8 meses ou mais para ser aprovada</li>
+          <li>Aprovação em condições piores que o mercado</li>
+          <li>Retrabalho constante de documentação</li>
+          <li>Desgaste com a equipe da operadora</li>
+        </ul>
+      </div>
+      <div class="col good">
+        <div class="col-head">Com estratégia</div>
+        <ul>
+          <li>Poucas semanas até a aprovação</li>
+          <li>Contratos mais vantajosos desde o início</li>
+          <li>Processo limpo, sem retrabalho</li>
+          <li>Relacionamento sólido com a operadora</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="strategy-closer" data-anim>
+      Isso não está escrito em lugar nenhum. Mas define<br/>
+      <span>quem entra rápido… e quem fica travado.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     DORES
+     ================================================================ -->
+<section id="dores" class="lp-s">
+  <div class="lp-container">
+    <div class="lp-sh lp-sh--center" data-anim style="text-align:center; margin-left:auto; margin-right:auto; max-width:640px;">
+      <span class="eyebrow on-dark">03 · O prejuízo silencioso</span>
+      <h2 class="h2" style="color:var(--white); margin-top:var(--s-2);">Enquanto isso, o prejuízo é silencioso</h2>
+      <p class="lead" style="color:var(--ink-400); margin-top:var(--s-4); font-size:1rem;">
+        Você pode estar vivendo isso agora — e a sensação de que o problema está no mercado, quando na verdade está na estratégia.
+      </p>
+    </div>
+    <ul class="pain-list" data-anim>
+      <li class="pain-item">
+        <span class="pain-num">01</span>
+        <span class="pain-text">Credenciamento parado há meses</span>
+      </li>
+      <li class="pain-item">
+        <span class="pain-num">02</span>
+        <span class="pain-text">Clínica cheia, mas com baixo lucro</span>
+      </li>
+      <li class="pain-item">
+        <span class="pain-num">03</span>
+        <span class="pain-text">Contratos antigos com valores defasados</span>
+      </li>
+      <li class="pain-item">
+        <span class="pain-num">04</span>
+        <span class="pain-text">Dependência de atendimentos pouco rentáveis</span>
+      </li>
+    </ul>
+    <div class="dores-closer" data-anim>
+      <p>Enquanto você adia a resolução, seu concorrente está <span class="hl">melhorando contratos</span> e lucrando.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     TRANSFORMAÇÃO
+     ================================================================ -->
+<section id="transformacao" class="lp-s">
+  <div class="lp-container">
+    <div class="transformacao-inner">
+      <div class="transformacao-intro transformacao-sticky" data-anim>
+        <span class="eyebrow" style="color:var(--ink-500);">04 · A virada</span>
+        <h2 class="h2" style="color:var(--ink-900); margin-top:var(--s-2);">
+          Quando você entende o cenário, o <span style="color:var(--em-orange);">jogo muda</span>
+        </h2>
+        <p class="lead" style="margin-top:var(--s-4);">
+          Com o método certo, é possível reduzir dramaticamente o tempo, o custo e o risco de cada etapa do credenciamento.
+        </p>
+        <div class="transf-note" style="margin-top:var(--s-6);">
+          <strong>Não é sobre entrar nos planos.</strong> É sobre entrar com estratégia — e construir uma estrutura que cresce com você.
+        </div>
+      </div>
+      <div class="transf-steps" data-anim data-delay="1">
+        <div class="transf-step">
+          <span class="transf-num">01</span>
+          <div>
+            <div class="transf-title">Reduzir drasticamente o tempo no credenciamento</div>
+            <p class="transf-desc">Saber exatamente o que cada operadora prioriza permite acelerar o processo sem retrabalho.</p>
+          </div>
+        </div>
+        <div class="transf-step">
+          <span class="transf-num">02</span>
+          <div>
+            <div class="transf-title">Evitar erros que travam processos</div>
+            <p class="transf-desc">Os erros mais comuns são invisíveis para quem não conhece o sistema por dentro.</p>
+          </div>
+        </div>
+        <div class="transf-step">
+          <span class="transf-num">03</span>
+          <div>
+            <div class="transf-title">Escolher operadoras com maior retorno</div>
+            <p class="transf-desc">Nem toda operadora vale o esforço. Priorizar as certas é o que define rentabilidade no longo prazo.</p>
+          </div>
+        </div>
+        <div class="transf-step">
+          <span class="transf-num">04</span>
+          <div>
+            <div class="transf-title">Negociar contratos mais vantajosos</div>
+            <p class="transf-desc">Aprovação é só o começo. Clínicas que negociam condições desde a entrada têm margens superiores.</p>
+          </div>
+        </div>
+        <div class="transf-step">
+          <span class="transf-num">05</span>
+          <div>
+            <div class="transf-title">Estruturar crescimento com previsibilidade</div>
+            <p class="transf-desc">Com processos documentados, a clínica cresce sem depender de improviso ou de consultores para cada novo passo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     MÉTODO M.A.P.A
+     ================================================================ -->
+<section id="metodo-mapa" class="lp-s">
+  <div class="lp-container">
+    <div class="lp-sh" data-anim>
+      <span class="eyebrow on-dark">05 · Método</span>
+      <div class="mapa-eyebrow-row" style="margin-top:var(--s-2);">
+        <h2 class="h2" style="color:var(--white);">O método aplicado na prática</h2>
+        <span class="badge orange">M.A.P.A do Credenciamento</span>
+      </div>
+      <p class="lead" style="color:var(--ink-400); margin-top:var(--s-4); font-size:1rem;">
+        Um roteiro estruturado para sair do improviso e atravessar cada etapa com clareza — do diagnóstico à assinatura do contrato.
+      </p>
+    </div>
+    <div class="mapa-grid">
+      <div class="mapa-card" data-anim data-delay="1">
+        <span class="letter">M</span>
+        <span class="step-label">01 · M</span>
+        <div class="mapa-title">Mapeamento</div>
+        <p>Diagnóstico do cenário atual da clínica: contratos vigentes, operadoras atendidas, volume e lacunas de faturamento. Em uma reunião, você sabe onde está perdendo dinheiro.</p>
+      </div>
+      <div class="mapa-card" data-anim data-delay="2">
+        <span class="letter">A</span>
+        <span class="step-label">02 · A</span>
+        <div class="mapa-title">Análise</div>
+        <p>Identificação das operadoras ideais para o perfil do seu negócio. Nem toda operadora vale o esforço — a análise define quais priorizar e em que ordem.</p>
+      </div>
+      <div class="mapa-card" data-anim data-delay="3">
+        <span class="letter">P</span>
+        <span class="step-label">03 · P</span>
+        <div class="mapa-title">Preparação</div>
+        <p>Posicionamento estratégico da clínica para aprovação. Estruturação da documentação, enquadramento correto e apresentação que favorece a decisão da operadora.</p>
+      </div>
+      <div class="mapa-card" data-anim data-delay="4">
+        <span class="letter">A</span>
+        <span class="step-label">04 · A</span>
+        <div class="mapa-title">Ajustes & Acordo</div>
+        <p>Condução da negociação até a assinatura. Tratamento de objeções da operadora, ajustes contratuais e estratégia de reajuste para maximizar a rentabilidade.</p>
+      </div>
+    </div>
+    <div class="mapa-closer" data-anim>
+      <p>Esse roteiro permite sair do improviso e atravessar com clareza cada etapa — do diagnóstico à assinatura do contrato.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     DEPOIMENTOS
+     ================================================================ -->
+<section id="depoimentos" class="lp-s">
+  <div class="lp-container">
+    <div class="lp-sh" data-anim>
+      <span class="eyebrow on-dark">06 · Provas</span>
+      <h2 class="h2" style="color:var(--white); margin-top:var(--s-2);">Depoimentos de quem trabalhou direto com <span class="hl">Edenilson</span></h2>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial featured" data-anim data-delay="1">
+        <p class="quote">"Edenilson trouxe uma proposta nova com resultados positivos. Buscou conhecer a unidade, os contratos, as negociações e as necessidades. Vem fazendo um trabalho diferenciado, diferente dos profissionais que atuam na mesma área."</p>
+        <div class="who">
+          <div class="avatar">LH</div>
+          <div>
+            <div class="name">Luiza Helena</div>
+            <div class="role">Diretora · Hospital Sermege</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial" data-anim data-delay="2">
+        <p class="quote">"Edenilson demonstra forte motivação, espírito de liderança e excepcional capacidade de aprendizado. Atua de forma ágil e consciente nos momentos de pressão — é um líder nato."</p>
+        <div class="who">
+          <div class="avatar">GT</div>
+          <div>
+            <div class="name">Geanny Taveira</div>
+            <div class="role">Gestora Administrativa · Itaimagem</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial" data-anim data-delay="3">
+        <p class="quote">"Dedicado e resiliente, abraça a causa como se fosse sua. Destaca-se pela capacidade de resolver problemas inesperados e de gerir conflitos. Recomendo sem hesitar."</p>
+        <div class="who">
+          <div class="avatar">NC</div>
+          <div>
+            <div class="name">Nailton Carmo</div>
+            <div class="role">CEO · Centro Médico Cuidar</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial" data-anim data-delay="1">
+        <p class="quote">"Não é só um profissional de excelência, é uma pessoa que coopera e constrói relacionamentos. Sou grata em ter encontrado Edenilson em minha jornada profissional."</p>
+        <div class="who">
+          <div class="avatar">NF</div>
+          <div>
+            <div class="name">Nara Fernandes</div>
+            <div class="role">Fatura Ideal</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial" data-anim data-delay="2">
+        <p class="quote">"Falar de Edenilson é falar de superação e perseverança. Excelente profissional — recomendo de olhos fechados pela competência e eficiência em tudo que faz."</p>
+        <div class="who">
+          <div class="avatar">JS</div>
+          <div>
+            <div class="name">Jamily Santana</div>
+            <div class="role">Gestora de RH</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial" data-anim data-delay="3">
+        <p class="quote">"Muita desenvoltura e networking. Domínio da área comercial, persuasão e relacionamento sólido com médicos e operadoras. Um dos profissionais mais versáteis que conheço."</p>
+        <div class="who">
+          <div class="avatar">EC</div>
+          <div>
+            <div class="name">Eugênio Colonzezzi</div>
+            <div class="role">Clínica do Coração</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial" data-anim data-delay="1">
+        <p class="quote">"Cuidava do relacionamento com convênios com grande desenvoltura e habilidade de negociação. Sempre comprometido, organizado e focado em resultado."</p>
+        <div class="who">
+          <div class="avatar">MS</div>
+          <div>
+            <div class="name">Marcelo Sodré</div>
+            <div class="role">Presidente · Grupo São Jorge</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="companies-bar" data-anim>
+      <span class="company-name">Itaimagem</span>
+      <span class="company-name">Hospital da Chapada</span>
+      <span class="company-name">Bioclínica</span>
+      <span class="company-name">Análise Lab. Clínico</span>
+      <span class="company-name">Centro Médico Cuidar</span>
+      <span class="company-name">Clínica do Coração</span>
+      <span class="company-name">Hospital Sermege</span>
+      <span class="company-name">Endo Center</span>
+      <span class="company-name">Clínica Coité</span>
+      <span class="company-name">+ Saúde</span>
+      <span class="company-name">Grupo São Jorge</span>
+    </div>
+
+    <div class="dep-cta" data-anim>
+      <button class="btn btn-primary btn-lg" data-scroll-to="cta-final">
+        Quero credenciar agora
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     DIFERENCIAIS
+     ================================================================ -->
+<section id="diferenciais" class="lp-s">
+  <div class="lp-container">
+    <div class="lp-sh" data-anim>
+      <span class="eyebrow" style="color:var(--ink-500);">07 · Diferenciais</span>
+      <h2 class="h2" style="color:var(--ink-900); margin-top:var(--s-2);">Por que a maioria não consegue esse resultado</h2>
+      <p class="lead" style="color:var(--ink-600); margin-top:var(--s-4);">
+        Porque trata o credenciamento como burocracia. Aqui ele é tratado como estratégia de negócio.
+      </p>
+    </div>
+    <div class="diferenciais-grid">
+      <div class="card feature" data-anim data-delay="1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;text-transform:none;line-height:1.3;">Atuação prática com operadoras</h5>
+        <p style="color:var(--ink-600);font-size:14px;line-height:1.6;">Não apenas teoria. Relacionamento real com operadoras nacionais e regionais, construído ao longo de mais de 11 anos de atuação direta.</p>
+      </div>
+      <div class="card feature" data-anim data-delay="2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;text-transform:none;line-height:1.3;">Foco em negociação e rentabilidade</h5>
+        <p style="color:var(--ink-600);font-size:14px;line-height:1.6;">Aprovação é o começo. O objetivo é lucro. Cada contrato é analisado com foco em margem, não apenas em volume de atendimento.</p>
+      </div>
+      <div class="card feature" data-anim data-delay="3">
+        <div class="icon blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+        </div>
+        <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;text-transform:none;line-height:1.3;">Direcionamento por casos reais</h5>
+        <p style="color:var(--ink-600);font-size:14px;line-height:1.6;">Decisões orientadas por dados e histórico — não por achismo. O método foi validado em dezenas de casos reais, de clínicas individuais a hospitais.</p>
+      </div>
+      <div class="card feature" data-anim data-delay="4">
+        <div class="icon blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;text-transform:none;line-height:1.3;">Visão de crescimento</h5>
+        <p style="color:var(--ink-600);font-size:14px;line-height:1.6;">Estruturar a clínica para escalar com previsibilidade — não apenas resolver o problema imediato e continuar dependente de improviso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SOBRE EDENILSON
+     ================================================================ -->
+<section id="sobre" class="lp-s">
+  <div class="lp-container">
+    <div class="sobre-inner">
+      <div data-anim>
+        <img src="assets/edenilson-2.png" alt="Edenilson Mendes" class="sobre-photo" loading="lazy" />
+        <div class="sobre-stats">
+          <div class="sobre-stat">
+            <div class="num">120+</div>
+            <div class="label">Clínicas atendidas</div>
+          </div>
+          <div class="sobre-stat">
+            <div class="num">+38%</div>
+            <div class="label">Faturamento médio</div>
+          </div>
+          <div class="sobre-stat">
+            <div class="num">45d</div>
+            <div class="label">Tempo médio de resultado</div>
+          </div>
+        </div>
+      </div>
+      <div data-anim data-delay="1">
+        <div class="sobre-selos">
+          <span class="badge dark">11+ Anos de Experiência</span>
+          <span class="badge dark">Gestão</span>
+          <span class="badge dark">Credenciamento</span>
+          <span class="badge dark">Negociação</span>
+        </div>
+        <span class="eyebrow on-dark" style="display:block; margin-bottom:var(--s-2);">08 · Sobre o mentor</span>
+        <h2 class="h2" style="color:var(--white); margin-bottom:var(--s-5);">
+          Quem vai te guiar<br/>nesse <span class="hl">processo</span>
+        </h2>
+        <p style="color:var(--ink-300); font-size:1rem; line-height:1.7; margin-bottom:var(--s-4);">
+          Edenilson Mendes atua há mais de <strong style="color:var(--white);">11 anos</strong> com gestão, credenciamento e negociação na área da saúde. Já participou de dezenas de processos reais, lidando diretamente com operadoras e prestadores em todo o Brasil.
+        </p>
+        <p style="color:var(--ink-400); font-size:15px; line-height:1.7; margin-bottom:var(--s-6);">
+          Hoje, ajuda clínicas, hospitais e consultórios a aumentar o faturamento com planos de saúde de forma estruturada — com foco em resultado prático, não em teoria.
+        </p>
+        <ul class="sobre-bullets">
+          <li>Sair do zero no credenciamento com o processo correto desde o início</li>
+          <li>Destravar processos parados por meses ou anos</li>
+          <li>Melhorar contratos aumentando a lucratividade por atendimento</li>
+          <li>Estruturar crescimento com planos de saúde de forma previsível</li>
+          <li>Expandir serviços de forma estruturada com novas operadoras</li>
+          <li>Ajustar contratos para novas modalidades de atendimento</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     PARA QUEM
+     ================================================================ -->
+<section id="para-quem" class="lp-s">
+  <div class="lp-container">
+    <div class="lp-sh" data-anim>
+      <span class="eyebrow" style="color:var(--ink-500);">09 · Qualificação</span>
+      <h2 class="h2" style="color:var(--ink-900); margin-top:var(--s-2);">Para quem isso faz sentido</h2>
+    </div>
+    <div class="qual-grid">
+      <div class="for-grid">
+        <div class="card feature" data-anim data-delay="1">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          </div>
+          <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;text-transform:none;line-height:1.3;">Clínicas querendo começar</h5>
+          <p style="color:var(--ink-600);font-size:14px;">Que querem iniciar atendimento por planos de saúde sem perder tempo com erros evitáveis.</p>
+        </div>
+        <div class="card feature" data-anim data-delay="2">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;text-transform:none;line-height:1.3;">Credenciamento travado</h5>
+          <p style="color:var(--ink-600);font-size:14px;">Gestores com processos parados há meses que precisam de direcionamento para destravar.</p>
+        </div>
+        <div class="card feature" data-anim data-delay="3">
+          <div class="icon blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+          </div>
+          <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;text-transform:none;line-height:1.3;">Baixo retorno em convênios</h5>
+          <p style="color:var(--ink-600);font-size:14px;">Negócios que atendem planos mas com margens insatisfatórias e contratos nunca renegociados.</p>
+        </div>
+        <div class="card feature" data-anim data-delay="4">
+          <div class="icon blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20M5 9l7-7 7 7"/></svg>
+          </div>
+          <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;text-transform:none;line-height:1.3;">Crescimento com previsibilidade</h5>
+          <p style="color:var(--ink-600);font-size:14px;">Você sente que sua clínica poderia faturar mais e quer construir isso de forma estruturada.</p>
+        </div>
+      </div>
+      <div class="not-for-card" data-anim data-delay="2">
+        <h5>Este método não é para você se:</h5>
+        <ul class="not-for-list">
+          <li>Você busca resultados do dia para a noite sem processo</li>
+          <li>Não tem intenção de implementar o que for indicado</li>
+          <li>Quer apenas validar uma decisão já tomada</li>
+          <li>Prefere continuar no improviso a ter um método</li>
+        </ul>
+        <div style="margin-top:var(--s-5); padding-top:var(--s-4); border-top:1px solid var(--ink-800);">
+          <p style="font-size:13px; color:var(--ink-500); line-height:1.6;">Se você chegou até aqui, provavelmente está no grupo certo. O próximo passo é simples.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     OBJEÇÕES
+     ================================================================ -->
+<section id="objecoes" class="lp-s">
+  <div class="lp-container">
+    <div class="lp-sh" data-anim>
+      <span class="eyebrow on-dark">10 · Objeções</span>
+      <h2 class="h2" style="color:var(--white); margin-top:var(--s-2);">O que você precisa entender</h2>
+    </div>
+    <div class="objections-grid">
+      <div class="objection-card" data-anim data-delay="1">
+        <span class="badge dark" style="align-self:flex-start;">Objeção</span>
+        <div class="obj-q">"Os planos pagam pouco"</div>
+        <div class="obj-divider"></div>
+        <div class="obj-answer-label">A resposta</div>
+        <p class="obj-answer">Nem sempre. O problema está em como o contrato é estruturado. Clínicas com contratos bem negociados têm margens muito superiores à média do setor.</p>
+      </div>
+      <div class="objection-card" data-anim data-delay="2">
+        <span class="badge dark" style="align-self:flex-start;">Objeção</span>
+        <div class="obj-q">"Todo mundo recebe o mesmo valor"</div>
+        <div class="obj-divider"></div>
+        <div class="obj-answer-label">A resposta</div>
+        <p class="obj-answer">Não recebe. Negociação faz diferença — e a maioria das clínicas nunca pediu um reajuste sequer, mesmo com anos de contrato.</p>
+      </div>
+      <div class="objection-card" data-anim data-delay="3">
+        <span class="badge dark" style="align-self:flex-start;">Objeção</span>
+        <div class="obj-q">"Não vale a pena atender convênios"</div>
+        <div class="obj-divider"></div>
+        <div class="obj-answer-label">A resposta</div>
+        <p class="obj-answer">Então por que grandes grupos hospitalares não param de crescer com esse modelo? A questão não é o convênio — é a estratégia de entrada e gestão contratual.</p>
+      </div>
+      <div class="objection-card" data-anim data-delay="4">
+        <span class="badge dark" style="align-self:flex-start;">Objeção</span>
+        <div class="obj-q">"Dá para fazer sozinho"</div>
+        <div class="obj-divider"></div>
+        <div class="obj-answer-label">A resposta</div>
+        <p class="obj-answer">Até dá. Mas erros nessa área custam meses de processo parado e anos de contratos defasados. O custo do improviso é muito maior do que parece no início.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     CTA FINAL + FORMULÁRIO
+     ================================================================ -->
+<section id="cta-final" class="lp-s">
+  <div class="lp-container">
+    <div class="cta-inner">
+      <div class="cta-copy" data-anim>
+        <span class="eyebrow on-dark">11 · Próximo passo</span>
+        <h2 class="h2" style="color:var(--white);">
+          Agora é simples.
+        </h2>
+        <p class="lead" style="color:var(--ink-300);">
+          Preencha o formulário ao lado, fale diretamente com Edenilson ou sua equipe e receba um direcionamento inicial para o seu caso.
+        </p>
+        <ul class="cta-trust">
+          <li>Se faz sentido para sua clínica</li>
+          <li>O que está travando hoje</li>
+          <li>Quais os próximos passos para avançar</li>
+        </ul>
+        <div class="cta-seal">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--em-orange)" stroke-width="1.6" style="flex:none;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <div class="seal-text">
+            <strong>Atendimentos limitados</strong><br/>
+            Para garantir acompanhamento próximo e qualidade em cada caso.
+          </div>
+        </div>
+      </div>
+      <div class="form-card" data-anim data-delay="1">
+        <div class="form-title">Diagnóstico inicial gratuito</div>
+        <div class="field">
+          <label for="f-nome">Nome completo</label>
+          <input class="input" id="f-nome" type="text" placeholder="Seu nome completo" autocomplete="name" />
+        </div>
+        <div class="field">
+          <label for="f-tel">Telefone / WhatsApp</label>
+          <input class="input" id="f-tel" type="tel" inputmode="tel" placeholder="(00) 00000-0000" autocomplete="tel" />
+        </div>
+        <div class="field">
+          <label for="f-email">E-mail</label>
+          <input class="input" id="f-email" type="email" placeholder="voce@clinica.com.br" autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="f-cidade">Cidade</label>
+          <input class="input" id="f-cidade" type="text" placeholder="Cidade / UF" autocomplete="address-level2" />
+        </div>
+        <div class="field">
+          <label for="f-clinica">Clínica / Empresa</label>
+          <input class="input" id="f-clinica" type="text" placeholder="Nome do seu negócio" autocomplete="organization" />
+        </div>
+        <div class="field">
+          <label for="f-fat">Faturamento mensal aproximado</label>
+          <select class="select" id="f-fat">
+            <option value="" disabled selected>Selecione uma faixa</option>
+            <option>Até R$ 30 mil/mês</option>
+            <option>R$ 30 mil a R$ 80 mil</option>
+            <option>R$ 80 mil a R$ 200 mil</option>
+            <option>R$ 200 mil a R$ 500 mil</option>
+            <option>Acima de R$ 500 mil</option>
+          </select>
+        </div>
+        <div class="checkbox-row">
+          <input type="checkbox" id="f-consent" checked />
+          <label for="f-consent">Aceito receber contato via WhatsApp para o diagnóstico.</label>
+        </div>
+        <button class="btn btn-primary btn-submit" type="button">
+          Quero meu direcionamento
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+        <p class="form-disclaimer">Seus dados são tratados com confidencialidade.<br/>Atendimentos limitados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     FOOTER
+     ================================================================ -->
+<footer id="footer" style="background:var(--ink-1000); padding-top: var(--s-4);">
+  <div style="background:var(--ink-50); height:1px; margin: 0 var(--s-4);" class="footer-divider"></div>
+  <div class="lp-footer">
+    <div class="top">
+      <div class="brand-block">
+        <div style="display:flex; align-items:center; gap:var(--s-3); margin-bottom:var(--s-3);">
+          <img src="assets/logo-laranja-branco.png" alt="EM" style="height:40px; width:auto;" />
+          <div class="brand-name">Edenilson Mendes</div>
+        </div>
+        <p>Consultoria e mentoria em credenciamento, negociação e gestão de planos de saúde para clínicas e hospitais.</p>
+      </div>
+      <div>
+        <h6>Método</h6>
+        <ul>
+          <li><a href="#metodo-mapa">Diagnóstico</a></li>
+          <li><a href="#metodo-mapa">Mentoria</a></li>
+          <li><a href="#metodo-mapa">Consultoria</a></li>
+        </ul>
+      </div>
+      <div>
+        <h6>Conteúdo</h6>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#depoimentos">Casos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h6>Contato</h6>
+        <ul>
+          <li><a href="#">WhatsApp</a></li>
+          <li><a href="#">contato@edenilsonmendes.com</a></li>
+          <li><a href="#">Imprensa</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <div>© 2026 · Edenilson Mendes · Credenciamento estratégico para clínicas</div>
+      <div>CNPJ XX.XXX.XXX/0001-XX</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // 1. Nav scroll state
+  var nav = document.getElementById('site-nav');
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // 2. CTA scroll to target
+  document.querySelectorAll('[data-scroll-to]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var target = document.getElementById(btn.dataset.scrollTo);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // 5. Entrance animations
+  var animObs = new IntersectionObserver(function (entries, obs) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('[data-anim]').forEach(function (el) { animObs.observe(el); });
+
+  // 6. Mobile CTA bar — hide when form is visible
+  var mobileBar = document.querySelector('.mobile-cta-bar');
+  var ctaSection = document.getElementById('cta-final');
+  if (mobileBar && ctaSection) {
+    new IntersectionObserver(function (entries) {
+      mobileBar.style.display = entries[0].isIntersecting ? 'none' : '';
+    }, { threshold: 0.1 }).observe(ctaSection);
+  }
+})();
+</script>
+</body>
+</html>

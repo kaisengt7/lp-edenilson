@@ -1,0 +1,2480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Design System · Edenilson Mendes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* ========================================================== *
+ *  EM · DESIGN SYSTEM TOKENS                                  *
+ * ========================================================== */
+:root {
+  /* Brand — extraídos dos logos originais */
+  --em-blue:        #3048C8;
+  --em-blue-600:    #2638A8;
+  --em-blue-400:    #5A6FE0;
+  --em-blue-200:    #B8C2F0;
+  --em-blue-50:     #EEF1FD;
+
+  --em-orange:      #F89838;
+  --em-orange-600:  #E07820;
+  --em-orange-400:  #FFB46A;
+  --em-orange-200:  #FFD9B0;
+  --em-orange-50:   #FFF3E5;
+
+  /* Neutrals — pretos quentes para sensação editorial/premium */
+  --ink-1000: #0A0A0C;     /* mais profundo (hero, áreas premium) */
+  --ink-900:  #141418;
+  --ink-800:  #1F1F25;
+  --ink-700:  #2A2A32;
+  --ink-600:  #44444F;
+  --ink-500:  #6B6B78;
+  --ink-400:  #94949F;
+  --ink-300:  #C2C2CB;
+  --ink-200:  #E1E1E7;
+  --ink-100:  #EFEFF2;
+  --ink-50:   #F7F7F9;
+  --paper:    #FAFAFA;
+  --white:    #FFFFFF;
+
+  /* Semânticas (estados de sistema) */
+  --success: #1F8A5B;
+  --warning: #D97706;
+  --danger:  #C73838;
+  --info:    var(--em-blue);
+
+  /* Type */
+  --font-display: "Bebas Neue", "Oswald", "Arial Narrow", sans-serif;
+  --font-body:    "Manrope", "Helvetica Neue", system-ui, -apple-system, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+
+  /* Type scale (base 16) */
+  --t-eyebrow: 0.75rem;   /* 12 — labels, mono */
+  --t-small:   0.875rem;  /* 14 */
+  --t-body:    1rem;      /* 16 */
+  --t-lead:    1.125rem;  /* 18 */
+  --t-h6:      1.25rem;   /* 20 */
+  --t-h5:      1.5rem;    /* 24 */
+  --t-h4:      2rem;      /* 32 */
+  --t-h3:      2.75rem;   /* 44 */
+  --t-h2:      3.75rem;   /* 60 */
+  --t-h1:      5.25rem;   /* 84 */
+  --t-display: 8rem;      /* 128 */
+
+  /* Spacing (escala 4) */
+  --s-0: 0;
+  --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem;
+  --s-4: 1rem;    --s-5: 1.25rem; --s-6: 1.5rem;
+  --s-8: 2rem;    --s-10: 2.5rem; --s-12: 3rem;
+  --s-16: 4rem;   --s-20: 5rem;   --s-24: 6rem;
+  --s-32: 8rem;   --s-40: 10rem;
+
+  /* Radii — design language conservadora (sutis) */
+  --r-none: 0;
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-xl: 20px;
+  --r-pill: 999px;
+
+  /* Shadows — pretos quentes */
+  --sh-1: 0 1px 2px rgba(20,20,24,.06), 0 1px 1px rgba(20,20,24,.04);
+  --sh-2: 0 4px 12px rgba(20,20,24,.08), 0 2px 4px rgba(20,20,24,.04);
+  --sh-3: 0 12px 32px rgba(20,20,24,.12), 0 4px 8px rgba(20,20,24,.06);
+  --sh-4: 0 24px 60px rgba(20,20,24,.18), 0 8px 16px rgba(20,20,24,.08);
+  --sh-glow-orange: 0 10px 32px rgba(248,152,56,.32);
+
+  /* Motion */
+  --ease: cubic-bezier(.2,.7,.2,1);
+  --t-fast: .15s;
+  --t-base: .25s;
+  --t-slow: .5s;
+
+  /* Layout */
+  --container: 1180px;
+  --gutter: 1.5rem;
+}
+
+/* ========================================================== *
+ *  RESET ENXUTO                                               *
+ * ========================================================== */
+*,*::before,*::after { box-sizing: border-box; }
+* { margin: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: 1.55;
+  color: var(--ink-900);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+::selection { background: var(--em-orange); color: var(--ink-1000); }
+
+/* ========================================================== *
+ *  TYPE UTILITIES                                             *
+ * ========================================================== */
+.display, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: .92;
+  letter-spacing: .005em;
+  text-transform: uppercase;
+}
+.display { font-size: clamp(4rem, 9vw, var(--t-display)); }
+.h1 { font-size: clamp(3rem, 7vw, var(--t-h1)); line-height: .94; }
+.h2 { font-size: clamp(2.5rem, 5.5vw, var(--t-h2)); line-height: .96; }
+.h3 { font-size: var(--t-h3); }
+.h4 { font-size: var(--t-h4); }
+.h5 { font-size: var(--t-h5); line-height: 1.1; }
+.h6 { font-size: var(--t-h6); line-height: 1.15; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--t-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--ink-500);
+}
+.eyebrow.on-dark { color: var(--ink-400); }
+.lead { font-size: var(--t-lead); line-height: 1.55; color: var(--ink-700); }
+.small { font-size: var(--t-small); }
+.mono { font-family: var(--font-mono); font-size: var(--t-small); }
+
+/* HIGHLIGHT — assinatura da marca (vide card de exemplo) */
+.hl, .hl-blue {
+  color: var(--white);
+  padding: 0 .2em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.hl {
+  /* Faixa colorida ocupa ~84% da line-box, deixando respiro vertical
+     para que destaques em linhas consecutivas não se conectem. */
+  background: linear-gradient(
+    transparent 8%,
+    var(--em-orange) 8%,
+    var(--em-orange) 92%,
+    transparent 92%
+  );
+}
+.hl-blue {
+  background: linear-gradient(
+    transparent 8%,
+    var(--em-blue) 8%,
+    var(--em-blue) 92%,
+    transparent 92%
+  );
+}
+
+/* ========================================================== *
+ *  LAYOUT — SIDEBAR + CONTEÚDO                                *
+ * ========================================================== */
+.shell {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+}
+.sidebar {
+  position: sticky; top: 0; align-self: start;
+  height: 100vh; overflow-y: auto;
+  background: var(--ink-1000);
+  color: var(--ink-200);
+  padding: var(--s-8) var(--s-6);
+  border-right: 1px solid var(--ink-800);
+}
+.sidebar .brand {
+  display: flex; align-items: center; gap: .6rem;
+  padding-bottom: var(--s-6);
+  border-bottom: 1px solid var(--ink-800);
+  margin-bottom: var(--s-6);
+}
+.sidebar .brand img { width: 44px; height: 44px; }
+.sidebar .brand .name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1;
+  letter-spacing: .02em;
+  color: var(--white);
+}
+.sidebar .brand .sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+  margin-top: 4px;
+}
+.nav-group { margin-bottom: var(--s-6); }
+.nav-group .label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--ink-500);
+  margin-bottom: var(--s-2);
+}
+.nav-link {
+  display: block;
+  padding: 6px 10px;
+  margin: 0 -10px;
+  color: var(--ink-300);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--r-sm);
+  transition: background var(--t-fast), color var(--t-fast);
+}
+.nav-link:hover { background: var(--ink-800); color: var(--white); }
+.nav-link.active { color: var(--em-orange); }
+
+.content { min-width: 0; }
+
+/* ========================================================== *
+ *  SECTION SHELL                                              *
+ * ========================================================== */
+.section {
+  padding: var(--s-24) var(--s-12);
+  border-bottom: 1px solid var(--ink-200);
+}
+.section.dark {
+  background: var(--ink-1000);
+  color: var(--ink-100);
+  border-color: var(--ink-800);
+}
+.section.dark .eyebrow { color: var(--ink-400); }
+.section.dark .lead { color: var(--ink-300); }
+.section-head {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-3);
+  margin-bottom: var(--s-12);
+  max-width: 800px;
+}
+.section-head .h2 { margin-top: var(--s-2); }
+.container { max-width: var(--container); margin: 0 auto; }
+
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-6); }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-6); }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-4); }
+.grid-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--s-3); }
+.grid-12 { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--s-3); }
+
+/* ========================================================== *
+ *  HERO / CAPA                                                *
+ * ========================================================== */
+.hero {
+  background: var(--ink-1000);
+  color: var(--white);
+  padding: var(--s-24) var(--s-12) var(--s-20);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(800px 400px at 90% 10%, rgba(248,152,56,.18), transparent 60%),
+    radial-gradient(900px 500px at 0% 100%, rgba(48,72,200,.18), transparent 60%);
+  pointer-events: none;
+}
+.hero .container { position: relative; }
+.hero .display-stack {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 11vw, 11rem);
+  line-height: .88;
+  letter-spacing: .005em;
+  text-transform: uppercase;
+}
+.hero .display-stack .accent { color: var(--em-orange); }
+.hero .meta-row {
+  display: flex; gap: var(--s-12); flex-wrap: wrap;
+  margin-top: var(--s-12);
+  padding-top: var(--s-8);
+  border-top: 1px solid var(--ink-800);
+}
+.hero .meta-row > div { min-width: 140px; }
+.hero .meta-row .k {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+  margin-bottom: 4px;
+}
+.hero .meta-row .v {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--white);
+  letter-spacing: .02em;
+}
+
+/* ========================================================== *
+ *  COLOR SWATCHES                                             *
+ * ========================================================== */
+.swatch {
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: var(--sh-1);
+  background: var(--white);
+}
+.swatch .chip {
+  aspect-ratio: 4/3;
+  display: flex; align-items: flex-end; justify-content: flex-start;
+  padding: var(--s-4);
+}
+.swatch .info {
+  padding: var(--s-3) var(--s-4);
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-top: 1px solid var(--ink-100);
+}
+.swatch .name {
+  font-weight: 700;
+  font-size: 14px;
+}
+.swatch .hex {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-500);
+}
+.swatch .role {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.85);
+  padding: 4px 8px;
+  background: rgba(0,0,0,.3);
+  border-radius: var(--r-sm);
+}
+.swatch .role.dark-text { color: rgba(0,0,0,.6); background: rgba(255,255,255,.6); }
+
+.scale-row {
+  display: grid;
+  grid-template-columns: 180px repeat(8, 1fr);
+  border: 1px solid var(--ink-200);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: var(--white);
+}
+.scale-row + .scale-row { margin-top: var(--s-3); }
+.scale-row .label {
+  padding: var(--s-4);
+  display: flex; flex-direction: column; justify-content: center;
+  border-right: 1px solid var(--ink-200);
+}
+.scale-row .label .name { font-weight: 700; font-size: 14px; }
+.scale-row .label .desc { font-size: 12px; color: var(--ink-500); }
+.scale-row .step {
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--s-3);
+  min-height: 90px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+}
+.scale-row .step .num {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+
+/* ========================================================== *
+ *  TYPE SPECIMEN                                              *
+ * ========================================================== */
+.type-row {
+  display: grid;
+  grid-template-columns: 200px 1fr 240px;
+  align-items: end;
+  gap: var(--s-6);
+  padding: var(--s-6) 0;
+  border-top: 1px solid var(--ink-200);
+}
+.type-row:last-child { border-bottom: 1px solid var(--ink-200); }
+.type-row .role { color: var(--ink-500); }
+.type-row .spec {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-500);
+  text-align: right;
+  line-height: 1.6;
+}
+.type-row .sample.bebas {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  line-height: .9;
+}
+.type-row .sample.manrope { font-family: var(--font-body); }
+
+/* ========================================================== *
+ *  SPACE / RADII / SHADOW                                     *
+ * ========================================================== */
+.space-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: var(--s-3); }
+.space-cell {
+  background: var(--white);
+  border: 1px solid var(--ink-200);
+  border-radius: var(--r-md);
+  padding: var(--s-4);
+  display: flex; flex-direction: column; gap: var(--s-3);
+}
+.space-cell .bar {
+  height: 24px;
+  background: var(--em-orange-50);
+  border-left: 3px solid var(--em-orange);
+}
+.space-cell .name {
+  font-family: var(--font-mono); font-size: 11px; color: var(--ink-500);
+}
+.space-cell .px { font-weight: 700; font-size: 14px; }
+
+.radii-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--s-4); }
+.radii-cell {
+  text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--s-3);
+}
+.radii-cell .shape {
+  width: 100%; aspect-ratio: 1;
+  background: var(--em-blue);
+}
+
+.shadow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-6); }
+.shadow-cell {
+  background: var(--white);
+  border-radius: var(--r-md);
+  padding: var(--s-6);
+  display: flex; flex-direction: column; align-items: center; gap: var(--s-3);
+}
+.shadow-cell .demo {
+  width: 100%; height: 80px;
+  background: var(--white);
+  border-radius: var(--r-md);
+}
+
+/* ========================================================== *
+ *  BUTTONS                                                    *
+ * ========================================================== */
+.btn {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  padding: 14px 22px;
+  border: 0; border-radius: var(--r-md);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: .01em;
+  transition: transform var(--t-fast), background var(--t-fast), color var(--t-fast), box-shadow var(--t-fast);
+  text-transform: none;
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn-primary {
+  background: var(--em-orange);
+  color: var(--white);
+  box-shadow: var(--sh-glow-orange);
+}
+.btn-primary:hover { background: var(--em-orange-600); }
+.btn-secondary {
+  background: var(--em-blue);
+  color: var(--white);
+}
+.btn-secondary:hover { background: var(--em-blue-600); }
+.btn-dark {
+  background: var(--ink-1000);
+  color: var(--white);
+}
+.btn-dark:hover { background: var(--ink-800); }
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--ink-900);
+  color: var(--ink-900);
+}
+.btn-outline:hover { background: var(--ink-900); color: var(--white); }
+.btn-outline-light {
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,.3);
+  color: var(--white);
+}
+.btn-outline-light:hover { background: var(--white); color: var(--ink-1000); border-color: var(--white); }
+.btn-ghost {
+  background: transparent;
+  color: var(--ink-900);
+  padding: 14px 16px;
+}
+.btn-ghost:hover { background: var(--ink-100); }
+.btn-sm { padding: 10px 16px; font-size: 13px; }
+.btn-lg { padding: 18px 28px; font-size: 17px; }
+.btn-xl { padding: 22px 36px; font-size: 19px; }
+.btn[disabled] { opacity: .4; cursor: not-allowed; transform: none; }
+.btn svg { width: 1.1em; height: 1.1em; }
+
+/* ========================================================== *
+ *  FORMS                                                      *
+ * ========================================================== */
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label {
+  font-size: 13px; font-weight: 600;
+}
+.field .hint { font-size: 12px; color: var(--ink-500); }
+.field .error { font-size: 12px; color: var(--danger); font-weight: 600; }
+.input, .select, .textarea {
+  font: inherit;
+  width: 100%;
+  padding: 14px 16px;
+  background: var(--white);
+  border: 1.5px solid var(--ink-200);
+  border-radius: var(--r-md);
+  color: var(--ink-900);
+  transition: border-color var(--t-fast), box-shadow var(--t-fast);
+}
+.input::placeholder, .textarea::placeholder { color: var(--ink-400); }
+.input:focus, .select:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--em-blue);
+  box-shadow: 0 0 0 4px var(--em-blue-50);
+}
+.input.error, .textarea.error { border-color: var(--danger); }
+.textarea { min-height: 120px; resize: vertical; }
+.select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%2344444F' stroke-width='1.8' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+.checkbox-row, .radio-row {
+  display: flex; align-items: flex-start; gap: var(--s-3);
+  padding: var(--s-3) 0;
+}
+.checkbox-row input, .radio-row input {
+  width: 18px; height: 18px;
+  accent-color: var(--em-blue);
+  margin-top: 2px;
+}
+
+/* ========================================================== *
+ *  CARDS                                                      *
+ * ========================================================== */
+.card {
+  background: var(--white);
+  border: 1px solid var(--ink-200);
+  border-radius: var(--r-lg);
+  padding: var(--s-6);
+  display: flex; flex-direction: column; gap: var(--s-4);
+  transition: transform var(--t-base), box-shadow var(--t-base);
+}
+.card:hover { transform: translateY(-2px); box-shadow: var(--sh-3); }
+.card.flat { box-shadow: none; }
+.card.dark {
+  background: var(--ink-900);
+  border-color: var(--ink-800);
+  color: var(--ink-100);
+}
+.card.dark .lead { color: var(--ink-300); }
+.card.feature {
+  padding: var(--s-8);
+  border-radius: var(--r-xl);
+}
+.card .icon {
+  width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--em-orange-50);
+  color: var(--em-orange-600);
+  border-radius: var(--r-md);
+  margin-bottom: var(--s-2);
+}
+.card .icon.blue {
+  background: var(--em-blue-50);
+  color: var(--em-blue);
+}
+.card .icon.dark {
+  background: var(--ink-1000);
+  color: var(--em-orange);
+}
+.card .icon svg { width: 24px; height: 24px; stroke-width: 1.8; }
+
+/* ========================================================== *
+ *  BADGES & PILLS                                             *
+ * ========================================================== */
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-radius: var(--r-pill);
+  border: 1px solid;
+}
+.badge.orange { background: var(--em-orange-50); color: var(--em-orange-600); border-color: var(--em-orange-200); }
+.badge.blue   { background: var(--em-blue-50); color: var(--em-blue); border-color: var(--em-blue-200); }
+.badge.dark   { background: var(--ink-1000); color: var(--em-orange); border-color: var(--ink-800); }
+.badge.outline{ background: transparent; color: var(--ink-700); border-color: var(--ink-300); }
+.badge.success{ background: #E5F4ED; color: var(--success); border-color: #B8DECC; }
+.badge .dot { width: 6px; height: 6px; border-radius: 999px; background: currentColor; }
+
+/* Tag chip (não-mono, mais sutil) */
+.tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: var(--r-pill);
+  background: var(--ink-100);
+  color: var(--ink-700);
+}
+
+/* ========================================================== *
+ *  NAV (header pattern)                                       *
+ * ========================================================== */
+.lp-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--s-4) var(--s-6);
+  background: var(--white);
+  border: 1px solid var(--ink-200);
+  border-radius: var(--r-lg);
+}
+.lp-nav.dark {
+  background: var(--ink-1000);
+  border-color: var(--ink-800);
+  color: var(--white);
+}
+.lp-nav .logo { display: flex; align-items: center; gap: 10px; }
+.lp-nav .logo img { width: 36px; height: 36px; }
+.lp-nav .logo .name {
+  font-family: var(--font-display);
+  font-size: 1.4rem; line-height: 1;
+  letter-spacing: .02em;
+}
+.lp-nav nav { display: flex; gap: var(--s-6); }
+.lp-nav nav a {
+  font-size: 14px; font-weight: 600;
+  color: inherit;
+  position: relative;
+  padding: 4px 0;
+}
+.lp-nav nav a:hover { color: var(--em-orange); }
+
+/* ========================================================== *
+ *  PATTERN: HERO LP                                           *
+ * ========================================================== */
+.lp-hero {
+  background: var(--ink-1000);
+  color: var(--white);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: stretch;
+  min-height: 580px;
+  position: relative;
+}
+.lp-hero .copy {
+  padding: var(--s-12) var(--s-10);
+  display: flex; flex-direction: column;
+  gap: var(--s-6);
+  justify-content: center;
+}
+.lp-hero .copy .h1 { line-height: 1.22; }
+.lp-hero .copy .lead { color: var(--ink-300); max-width: 460px; }
+.lp-hero .cta-row {
+  display: flex; gap: var(--s-3); flex-wrap: wrap;
+  margin-top: var(--s-4);
+}
+.lp-hero .photo {
+  background-image: url("assets/edenilson-3.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-color: var(--ink-900);
+  position: relative;
+}
+.lp-hero .photo::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(10,10,12,1) 0%, transparent 30%);
+  pointer-events: none;
+}
+.cta-flag {
+  border-left: 3px solid var(--em-orange);
+  padding-left: var(--s-4);
+  display: flex; flex-direction: column; gap: 2px;
+}
+.cta-flag .top {
+  font-family: var(--font-display); font-size: 1.1rem;
+  letter-spacing: .04em; color: var(--white);
+}
+.cta-flag .bot {
+  font-size: 13px; color: var(--ink-300);
+}
+
+/* ========================================================== *
+ *  PATTERN: PAIN POINTS / STATS                              *
+ * ========================================================== */
+.stat-block {
+  padding: var(--s-8) var(--s-6);
+  border-top: 1px solid var(--ink-200);
+  display: flex; flex-direction: column; gap: var(--s-2);
+}
+.stat-block.dark { border-color: var(--ink-800); }
+.stat-block .num {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: .9;
+  color: var(--em-orange);
+}
+.stat-block .label { font-size: 14px; font-weight: 600; }
+.stat-block .desc { font-size: 14px; color: var(--ink-500); }
+.stat-block.dark .desc { color: var(--ink-400); }
+
+/* ========================================================== *
+ *  PATTERN: STEPS                                             *
+ * ========================================================== */
+.step {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: var(--s-6);
+  padding: var(--s-6) 0;
+  border-top: 1px solid var(--ink-200);
+}
+.step:last-child { border-bottom: 1px solid var(--ink-200); }
+.step .num {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  line-height: .9;
+  color: var(--em-orange);
+}
+.step .title { font-size: 1.5rem; font-weight: 700; margin-bottom: 4px; }
+.step .desc { color: var(--ink-600); max-width: 600px; }
+
+/* ========================================================== *
+ *  PATTERN: TESTIMONIAL                                       *
+ * ========================================================== */
+.testimonial {
+  background: var(--ink-1000);
+  color: var(--white);
+  border-radius: var(--r-xl);
+  padding: var(--s-12) var(--s-10);
+  position: relative;
+  overflow: hidden;
+}
+.testimonial::before {
+  content: "“";
+  position: absolute;
+  top: -30px; left: 30px;
+  font-family: Georgia, serif;
+  font-size: 16rem;
+  color: rgba(248,152,56,.16);
+  line-height: 1;
+}
+.testimonial .quote {
+  font-family: var(--font-body);
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  line-height: 1.4;
+  font-weight: 500;
+  max-width: 760px;
+  margin-bottom: var(--s-8);
+  position: relative;
+}
+.testimonial .who {
+  display: flex; align-items: center; gap: var(--s-4);
+  border-top: 1px solid var(--ink-800);
+  padding-top: var(--s-6);
+}
+.testimonial .who .avatar {
+  width: 56px; height: 56px;
+  border-radius: 999px;
+  background: var(--ink-800);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 1.5rem;
+  color: var(--em-orange);
+}
+.testimonial .who .name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: .02em;
+}
+.testimonial .who .role { font-size: 13px; color: var(--ink-400); }
+
+/* ========================================================== *
+ *  PATTERN: PRICING                                           *
+ * ========================================================== */
+.tier {
+  background: var(--white);
+  border: 1px solid var(--ink-200);
+  border-radius: var(--r-xl);
+  padding: var(--s-8);
+  display: flex; flex-direction: column; gap: var(--s-5);
+  position: relative;
+}
+.tier.featured {
+  background: var(--ink-1000);
+  color: var(--white);
+  border-color: var(--ink-1000);
+}
+.tier .name {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: .02em;
+}
+.tier .price {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  line-height: 1;
+}
+.tier .price small { font-size: 1rem; color: var(--ink-500); font-family: var(--font-body); }
+.tier.featured .price small { color: var(--ink-400); }
+.tier ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--s-2); }
+.tier ul li {
+  font-size: 14px;
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.tier ul li::before {
+  content: "";
+  width: 6px; height: 6px; border-radius: 999px;
+  background: var(--em-orange);
+  margin-top: 8px; flex: none;
+}
+.tier .ribbon {
+  position: absolute; top: var(--s-6); right: var(--s-6);
+}
+
+/* ========================================================== *
+ *  PATTERN: FAQ                                               *
+ * ========================================================== */
+.faq-item {
+  border-bottom: 1px solid var(--ink-200);
+  padding: var(--s-5) 0;
+}
+.faq-item summary {
+  list-style: none;
+  display: flex; justify-content: space-between; align-items: center;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+";
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--em-orange);
+  line-height: 1;
+  transition: transform var(--t-base);
+}
+.faq-item[open] summary::after { content: "−"; }
+.faq-item .answer {
+  padding-top: var(--s-3);
+  color: var(--ink-600);
+  font-size: 15px;
+}
+
+/* ========================================================== *
+ *  PATTERN: SOCIAL CARD (feed-style — referência do exemplo)  *
+ * ========================================================== */
+.feed-card {
+  aspect-ratio: 4/5;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  position: relative;
+  background-image: url("assets/edenilson-1.png");
+  background-size: cover;
+  background-position: center;
+  background-color: var(--ink-800);
+  isolation: isolate;
+}
+.feed-card::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(10,10,12,.95) 0%, rgba(10,10,12,.6) 45%, rgba(10,10,12,0) 75%);
+  z-index: 1;
+}
+.feed-card .feed-copy {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: var(--s-6) var(--s-6) var(--s-8);
+  display: flex; flex-direction: column; justify-content: center;
+  color: var(--white);
+}
+.feed-card .feed-title {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  max-width: 75%;
+}
+.feed-card .feed-sub {
+  font-size: 13px;
+  margin-top: var(--s-3);
+  max-width: 70%;
+  font-weight: 500;
+}
+.feed-card .feed-cta {
+  position: absolute; bottom: var(--s-6); left: var(--s-6);
+  z-index: 2;
+  border-left: 3px solid var(--em-orange);
+  padding-left: 10px;
+}
+.feed-card .feed-cta .top {
+  font-family: var(--font-display);
+  font-size: .95rem;
+  letter-spacing: .04em;
+  color: var(--white);
+}
+.feed-card .feed-cta .bot { font-size: 11px; color: var(--ink-300); }
+
+/* ========================================================== *
+ *  FOOTER                                                     *
+ * ========================================================== */
+.lp-footer {
+  background: var(--ink-1000);
+  color: var(--ink-300);
+  border-radius: var(--r-xl);
+  padding: var(--s-12) var(--s-10);
+}
+.lp-footer .top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--s-8);
+  padding-bottom: var(--s-8);
+  border-bottom: 1px solid var(--ink-800);
+}
+.lp-footer .brand-block .h3 {
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1;
+  letter-spacing: .02em;
+}
+.lp-footer h6 {
+  color: var(--white);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: var(--s-3);
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+.lp-footer ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px; }
+.lp-footer .bottom {
+  padding-top: var(--s-6);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px;
+  font-family: var(--font-mono);
+  color: var(--ink-500);
+}
+
+/* ========================================================== *
+ *  CODE BLOCKS                                                *
+ * ========================================================== */
+.code {
+  background: var(--ink-1000);
+  color: var(--ink-200);
+  padding: var(--s-4);
+  border-radius: var(--r-md);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.7;
+  overflow-x: auto;
+}
+.code .k { color: var(--em-orange); }
+.code .c { color: var(--ink-500); }
+
+/* ========================================================== *
+ *  MISC                                                       *
+ * ========================================================== */
+.divider {
+  height: 1px;
+  background: var(--ink-200);
+  margin: var(--s-12) 0;
+}
+.section.dark .divider { background: var(--ink-800); }
+
+.example-frame {
+  background: var(--ink-50);
+  border: 1px dashed var(--ink-200);
+  border-radius: var(--r-md);
+  padding: var(--s-6);
+  display: flex; flex-wrap: wrap; gap: var(--s-4);
+  align-items: center;
+}
+.example-frame.dark {
+  background: var(--ink-900);
+  border-color: var(--ink-700);
+}
+
+.note {
+  border-left: 3px solid var(--em-orange);
+  padding: var(--s-3) var(--s-5);
+  background: var(--em-orange-50);
+  font-size: 14px;
+  color: var(--ink-800);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+}
+.note.blue { background: var(--em-blue-50); border-color: var(--em-blue); }
+
+.do-dont {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4);
+}
+.do-dont > div {
+  border-radius: var(--r-md);
+  padding: var(--s-5);
+  border: 1px solid;
+}
+.do-dont .do   { background: #F0F9F2; border-color: #C3E4CB; }
+.do-dont .dont { background: #FDF1F0; border-color: #F2C4C1; }
+.do-dont h6 {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: var(--s-2);
+}
+.do-dont .do h6 { color: var(--success); }
+.do-dont .dont h6 { color: var(--danger); }
+
+/* Responsive */
+@media (max-width: 980px) {
+  .shell { grid-template-columns: 1fr; }
+  .sidebar { position: static; height: auto; }
+  .section { padding: var(--s-16) var(--s-6); }
+  .hero { padding: var(--s-16) var(--s-6); }
+  .lp-hero { grid-template-columns: 1fr; }
+  .lp-hero .photo { min-height: 340px; }
+  .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .scale-row { grid-template-columns: 120px repeat(8, 1fr); font-size: 9px; }
+  .scale-row .label .desc { display: none; }
+  .lp-footer .top { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ============================================ -->
+  <!-- SIDEBAR NAV                                  -->
+  <!-- ============================================ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="assets/logo-laranja-branco.png" alt="EM" />
+      <div>
+        <div class="name">Edenilson Mendes</div>
+        <div class="sub">Design System · v1.0</div>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <div class="label">Foundations</div>
+      <a class="nav-link" href="#intro">Manifesto</a>
+      <a class="nav-link" href="#logo">Logo &amp; uso</a>
+      <a class="nav-link" href="#colors">Cores</a>
+      <a class="nav-link" href="#type">Tipografia</a>
+      <a class="nav-link" href="#space">Espaçamento</a>
+      <a class="nav-link" href="#radii">Raios</a>
+      <a class="nav-link" href="#shadow">Sombras</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="label">Componentes</div>
+      <a class="nav-link" href="#buttons">Botões</a>
+      <a class="nav-link" href="#forms">Forms &amp; inputs</a>
+      <a class="nav-link" href="#cards">Cards</a>
+      <a class="nav-link" href="#badges">Badges &amp; highlight</a>
+      <a class="nav-link" href="#nav">Navegação</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="label">Patterns de LP</div>
+      <a class="nav-link" href="#p-hero">Hero</a>
+      <a class="nav-link" href="#p-pain">Dores / Stats</a>
+      <a class="nav-link" href="#p-steps">Como funciona</a>
+      <a class="nav-link" href="#p-testimonial">Depoimento</a>
+      <a class="nav-link" href="#p-pricing">Oferta</a>
+      <a class="nav-link" href="#p-faq">FAQ</a>
+      <a class="nav-link" href="#p-cta">CTA final</a>
+      <a class="nav-link" href="#p-footer">Footer</a>
+      <a class="nav-link" href="#p-feed">Card de feed</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="label">Guia</div>
+      <a class="nav-link" href="#guide">Aplicação visual</a>
+    </div>
+  </aside>
+
+  <!-- ============================================ -->
+  <!-- CONTENT                                      -->
+  <!-- ============================================ -->
+  <main class="content">
+
+    <!-- ========== HERO / MANIFESTO ========== -->
+    <section id="intro" class="hero">
+      <div class="container">
+        <span class="eyebrow on-dark">Design System · v1.0 · Maio 2026</span>
+        <h1 class="display-stack" style="margin-top: 1.5rem;">
+          AUTORIDADE<br/>
+          QUE SE <span class="accent">VÊ</span>.<br/>
+          ESTRATÉGIA<br/>
+          QUE SE <span class="accent">SENTE</span>.
+        </h1>
+        <p class="lead" style="margin-top: var(--s-8); max-width: 620px; color: var(--ink-300);">
+          Sistema visual para a marca <strong style="color:var(--white)">Edenilson Mendes</strong> —
+          consultoria e mentoria em credenciamento, negociação e gestão de planos de saúde.
+          Pensado para transmitir autoridade técnica, clareza estratégica e proximidade consultiva,
+          com elegância editorial e impacto premium.
+        </p>
+
+        <div class="meta-row">
+          <div>
+            <div class="k">Cliente</div>
+            <div class="v">Edenilson Mendes</div>
+          </div>
+          <div>
+            <div class="k">Segmento</div>
+            <div class="v">Saúde · B2B</div>
+          </div>
+          <div>
+            <div class="k">Aplicação</div>
+            <div class="v">Landing Page</div>
+          </div>
+          <div>
+            <div class="k">Versão</div>
+            <div class="v">1.0</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== LOGO ========== -->
+    <section id="logo" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">01 · Identidade</span>
+          <h2 class="h2">Logo &amp; uso</h2>
+          <p class="lead">
+            O monograma <strong>EM</strong> combina rigor geométrico (linhas paralelas) com um vetor de
+            crescimento (a diagonal do V). Use o logo laranja sobre fundos escuros (preferido para
+            posicionamento premium) e o azul sobre fundos claros institucionais.
+          </p>
+        </div>
+
+        <h6 class="mono" style="margin-bottom: var(--s-3);">4 VARIAÇÕES · USE A CORRETA PARA CADA FUNDO</h6>
+        <div class="grid-4" style="gap: var(--s-4);">
+
+          <div style="background: var(--ink-1000); border-radius: var(--r-lg); padding: var(--s-8); display:flex; flex-direction: column; gap: var(--s-4); align-items: center; min-height: 280px;">
+            <div style="flex: 1; display: flex; align-items: center; justify-content: center; width: 100%;">
+              <img src="assets/logo-laranja-branco.png" alt="Logo laranja + branco" style="max-width: 140px; max-height: 130px;" />
+            </div>
+            <div style="text-align: center;">
+              <div class="mono" style="color: var(--em-orange); font-size: 10px; letter-spacing: .14em; margin-bottom: 4px;">PREFERENCIAL</div>
+              <div style="color: var(--white); font-weight: 700; font-size: 13px;">Laranja + Branco</div>
+              <div style="color: var(--ink-400); font-size: 11px; margin-top: 2px;">Fundo escuro</div>
+            </div>
+          </div>
+
+          <div style="background: var(--ink-1000); border-radius: var(--r-lg); padding: var(--s-8); display:flex; flex-direction: column; gap: var(--s-4); align-items: center; min-height: 280px;">
+            <div style="flex: 1; display: flex; align-items: center; justify-content: center; width: 100%;">
+              <img src="assets/logo-azul-branco.png" alt="Logo azul + branco" style="max-width: 140px; max-height: 130px;" />
+            </div>
+            <div style="text-align: center;">
+              <div class="mono" style="color: var(--em-blue-400); font-size: 10px; letter-spacing: .14em; margin-bottom: 4px;">INSTITUCIONAL</div>
+              <div style="color: var(--white); font-weight: 700; font-size: 13px;">Azul + Branco</div>
+              <div style="color: var(--ink-400); font-size: 11px; margin-top: 2px;">Fundo escuro</div>
+            </div>
+          </div>
+
+          <div style="background: var(--white); border: 1px solid var(--ink-200); border-radius: var(--r-lg); padding: var(--s-8); display:flex; flex-direction: column; gap: var(--s-4); align-items: center; min-height: 280px;">
+            <div style="flex: 1; display: flex; align-items: center; justify-content: center; width: 100%;">
+              <img src="assets/logo-laranja-preto.png" alt="Logo laranja + preto" style="max-width: 140px; max-height: 130px;" />
+            </div>
+            <div style="text-align: center;">
+              <div class="mono" style="color: var(--em-orange-600); font-size: 10px; letter-spacing: .14em; margin-bottom: 4px;">ACENTO</div>
+              <div style="font-weight: 700; font-size: 13px;">Laranja + Preto</div>
+              <div style="color: var(--ink-500); font-size: 11px; margin-top: 2px;">Fundo claro</div>
+            </div>
+          </div>
+
+          <div style="background: var(--white); border: 1px solid var(--ink-200); border-radius: var(--r-lg); padding: var(--s-8); display:flex; flex-direction: column; gap: var(--s-4); align-items: center; min-height: 280px;">
+            <div style="flex: 1; display: flex; align-items: center; justify-content: center; width: 100%;">
+              <img src="assets/logo-azul-preto.png" alt="Logo azul + preto" style="max-width: 140px; max-height: 130px;" />
+            </div>
+            <div style="text-align: center;">
+              <div class="mono" style="color: var(--em-blue); font-size: 10px; letter-spacing: .14em; margin-bottom: 4px;">FORMAL</div>
+              <div style="font-weight: 700; font-size: 13px;">Azul + Preto</div>
+              <div style="color: var(--ink-500); font-size: 11px; margin-top: 2px;">Fundo claro</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="grid-2" style="gap: var(--s-10);">
+          <div>
+            <h5 class="h5" style="font-family: var(--font-body); text-transform: none; font-weight: 800; margin-bottom: var(--s-3);">Regra de fundo</h5>
+            <p style="color: var(--ink-600); margin-bottom: var(--s-4);">
+              Variantes com <strong>parte branca</strong> (laranja+branco, azul+branco) são sempre usadas em
+              <strong>fundo escuro</strong>. Variantes com <strong>parte preta</strong> (laranja+preto, azul+preto) são
+              sempre usadas em <strong>fundo claro</strong>. Nunca o inverso — senão a parte cinza/preta vira invisível.
+            </p>
+          </div>
+          <div>
+            <h5 class="h5" style="font-family: var(--font-body); text-transform: none; font-weight: 800; margin-bottom: var(--s-3);">Quando usar laranja vs azul</h5>
+            <p style="color: var(--ink-600); margin-bottom: var(--s-4);">
+              <strong>Laranja</strong> em qualquer aplicação de impacto, conteúdo de marketing, redes sociais,
+              hero da LP. <strong>Azul</strong> em contextos institucionais e formais: contratos, propostas
+              comerciais, assinatura de e-mail e documentos técnicos.
+            </p>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="do-dont">
+          <div class="do">
+            <h6>Faça</h6>
+            <ul style="margin: 0; padding-left: 1.1rem; font-size: 14px; color: var(--ink-800);">
+              <li>Manter área de respiro de no mínimo <strong>1× a altura do "E"</strong> ao redor do monograma.</li>
+              <li>Reduzir a partir de <strong>32px</strong> apenas com versão monocromática.</li>
+              <li>Garantir contraste mínimo AA (texto não passa a frente do logo).</li>
+            </ul>
+          </div>
+          <div class="dont">
+            <h6>Não faça</h6>
+            <ul style="margin: 0; padding-left: 1.1rem; font-size: 14px; color: var(--ink-800);">
+              <li>Não inclinar, esticar, distorcer ou aplicar sombras decorativas.</li>
+              <li>Não recolorir partes individualmente do monograma.</li>
+              <li>Não usar laranja sobre azul ou azul sobre laranja (vibra demais).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== COLORS ========== -->
+    <section id="colors" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">02 · Foundations</span>
+          <h2 class="h2">Cores</h2>
+          <p class="lead">
+            Duas cores de marca extraídas dos logos originais — <strong>Azul Cobalto</strong> (autoridade,
+            confiança técnica) e <strong>Laranja Sinal</strong> (atenção, ação, energia). Os neutros
+            usam pretos quentes (não cinza-azulado) para preservar a sensação editorial e premium
+            dos fundos escuros.
+          </p>
+        </div>
+
+        <h6 class="h6" style="font-family: var(--font-body); text-transform: none; font-weight: 800; margin-bottom: var(--s-4);">Cores primárias</h6>
+        <div class="grid-2">
+          <div class="swatch">
+            <div class="chip" style="background: var(--em-blue);">
+              <span class="role">PRIMARY · MARCA</span>
+            </div>
+            <div class="info">
+              <span class="name">EM Blue</span>
+              <span class="hex">#3048C8</span>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: var(--em-orange);">
+              <span class="role">ACTION · CTA</span>
+            </div>
+            <div class="info">
+              <span class="name">EM Orange</span>
+              <span class="hex">#F89838</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h6 class="h6" style="font-family: var(--font-body); text-transform: none; font-weight: 800; margin-bottom: var(--s-4);">Escalas</h6>
+
+        <div class="scale-row">
+          <div class="label">
+            <span class="name">Blue</span>
+            <span class="desc">Autoridade · confiança</span>
+          </div>
+          <div class="step" style="background: var(--em-blue-50); color: var(--ink-700);"><span>50</span><span class="num">#EEF1FD</span></div>
+          <div class="step" style="background: var(--em-blue-200); color: var(--ink-700);"><span>200</span><span class="num">#B8C2F0</span></div>
+          <div class="step" style="background: var(--em-blue-400); color: var(--white);"><span>400</span><span class="num">#5A6FE0</span></div>
+          <div class="step" style="background: var(--em-blue); color: var(--white);"><span>500</span><span class="num">#3048C8</span></div>
+          <div class="step" style="background: var(--em-blue-600); color: var(--white);"><span>600</span><span class="num">#2638A8</span></div>
+          <div class="step" style="background: #1B2A80; color: var(--white);"><span>700</span><span class="num">#1B2A80</span></div>
+          <div class="step" style="background: #121E5A; color: var(--white);"><span>800</span><span class="num">#121E5A</span></div>
+          <div class="step" style="background: #0B1440; color: var(--white);"><span>900</span><span class="num">#0B1440</span></div>
+        </div>
+
+        <div class="scale-row">
+          <div class="label">
+            <span class="name">Orange</span>
+            <span class="desc">Sinal · ação · highlight</span>
+          </div>
+          <div class="step" style="background: var(--em-orange-50); color: var(--ink-700);"><span>50</span><span class="num">#FFF3E5</span></div>
+          <div class="step" style="background: var(--em-orange-200); color: var(--ink-700);"><span>200</span><span class="num">#FFD9B0</span></div>
+          <div class="step" style="background: var(--em-orange-400); color: var(--ink-900);"><span>400</span><span class="num">#FFB46A</span></div>
+          <div class="step" style="background: var(--em-orange); color: var(--white);"><span>500</span><span class="num">#F89838</span></div>
+          <div class="step" style="background: var(--em-orange-600); color: var(--white);"><span>600</span><span class="num">#E07820</span></div>
+          <div class="step" style="background: #B85E14; color: var(--white);"><span>700</span><span class="num">#B85E14</span></div>
+          <div class="step" style="background: #8C4810; color: var(--white);"><span>800</span><span class="num">#8C4810</span></div>
+          <div class="step" style="background: #5C300A; color: var(--white);"><span>900</span><span class="num">#5C300A</span></div>
+        </div>
+
+        <div class="scale-row">
+          <div class="label">
+            <span class="name">Ink (Neutros)</span>
+            <span class="desc">Pretos quentes editoriais</span>
+          </div>
+          <div class="step" style="background: var(--ink-50); color: var(--ink-700);"><span>50</span><span class="num">#F7F7F9</span></div>
+          <div class="step" style="background: var(--ink-100); color: var(--ink-700);"><span>100</span><span class="num">#EFEFF2</span></div>
+          <div class="step" style="background: var(--ink-300); color: var(--ink-900);"><span>300</span><span class="num">#C2C2CB</span></div>
+          <div class="step" style="background: var(--ink-500); color: var(--white);"><span>500</span><span class="num">#6B6B78</span></div>
+          <div class="step" style="background: var(--ink-700); color: var(--white);"><span>700</span><span class="num">#2A2A32</span></div>
+          <div class="step" style="background: var(--ink-800); color: var(--white);"><span>800</span><span class="num">#1F1F25</span></div>
+          <div class="step" style="background: var(--ink-900); color: var(--white);"><span>900</span><span class="num">#141418</span></div>
+          <div class="step" style="background: var(--ink-1000); color: var(--white);"><span>1000</span><span class="num">#0A0A0C</span></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h6 class="h6" style="font-family: var(--font-body); text-transform: none; font-weight: 800; margin-bottom: var(--s-4);">Estados de sistema</h6>
+        <div class="grid-4">
+          <div class="swatch">
+            <div class="chip" style="background: var(--success);"><span class="role">SUCCESS</span></div>
+            <div class="info"><span class="name">Success</span><span class="hex">#1F8A5B</span></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: var(--warning);"><span class="role">WARNING</span></div>
+            <div class="info"><span class="name">Warning</span><span class="hex">#D97706</span></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: var(--danger);"><span class="role">DANGER</span></div>
+            <div class="info"><span class="name">Danger</span><span class="hex">#C73838</span></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: var(--info);"><span class="role">INFO</span></div>
+            <div class="info"><span class="name">Info</span><span class="hex">#3048C8</span></div>
+          </div>
+        </div>
+
+        <div class="note" style="margin-top: var(--s-8);">
+          <strong>Proporção de uso recomendada</strong> · 60% Ink (neutros escuros) · 30% White/Paper ·
+          7% Blue · 3% Orange. O laranja deve ser raro e estratégico — é o sinalizador de ação e
+          ênfase, não cor de fundo.
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TYPE ========== -->
+    <section id="type" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">03 · Foundations</span>
+          <h2 class="h2">Tipografia</h2>
+          <p class="lead">
+            <strong>Bebas Neue</strong> (display, caixa alta, condensada) para headlines, números
+            e elementos de impacto — herdada da identidade atual e validada nos criativos.
+            <strong>Manrope</strong> (sans humanista) para corpo, formulários e qualquer texto
+            longo: tem boa altura-x, lê confortavelmente em telas e ancora a tipografia display
+            sem competir.
+          </p>
+        </div>
+
+        <div class="grid-2" style="margin-bottom: var(--s-12);">
+          <div style="background: var(--ink-1000); color: var(--white); border-radius: var(--r-lg); padding: var(--s-10);">
+            <span class="eyebrow on-dark">Fonte display</span>
+            <div style="font-family: var(--font-display); font-size: clamp(4rem, 9vw, 7rem); line-height: .9; margin-top: var(--s-3);">
+              Bebas Neue
+            </div>
+            <div style="font-family: var(--font-display); font-size: 1.4rem; letter-spacing: .06em; color: var(--em-orange); margin-top: var(--s-4);">
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789
+            </div>
+            <p style="color: var(--ink-300); font-size: 14px; margin-top: var(--s-4);">
+              Use sempre em <strong>CAIXA ALTA</strong>. Letter-spacing leve (.005–.02em).
+              Line-height curto (.88–.96) para títulos compactos. Único peso (Regular).
+            </p>
+          </div>
+          <div style="background: var(--white); border: 1px solid var(--ink-200); border-radius: var(--r-lg); padding: var(--s-10);">
+            <span class="eyebrow">Fonte body</span>
+            <div style="font-family: var(--font-body); font-weight: 800; font-size: clamp(3.5rem, 8vw, 6rem); line-height: 1; margin-top: var(--s-3);">
+              Manrope
+            </div>
+            <div style="font-family: var(--font-body); font-size: .95rem; color: var(--ink-700); margin-top: var(--s-4);">
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>abcdefghijklmnopqrstuvwxyz 0123456789
+            </div>
+            <p style="color: var(--ink-600); font-size: 14px; margin-top: var(--s-4);">
+              Pesos disponíveis: 300, 400, 500, 600, 700, 800. Sentence case em texto longo.
+              Line-height 1.5–1.6 para parágrafos.
+            </p>
+          </div>
+        </div>
+
+        <h6 class="h6" style="font-family: var(--font-body); text-transform: none; font-weight: 800; margin-bottom: var(--s-4);">Escala (display)</h6>
+
+        <div class="type-row">
+          <span class="role mono">Display</span>
+          <div class="sample bebas" style="font-size: 6rem;">FECHANDO CONTRATOS</div>
+          <div class="spec">Bebas Neue · 128/115 · uppercase<br/>letter-spacing .005em</div>
+        </div>
+        <div class="type-row">
+          <span class="role mono">H1</span>
+          <div class="sample bebas" style="font-size: 4.5rem;">ENQUANTO VOCÊ ADIA</div>
+          <div class="spec">Bebas Neue · 84/82 · uppercase</div>
+        </div>
+        <div class="type-row">
+          <span class="role mono">H2</span>
+          <div class="sample bebas" style="font-size: 3.5rem;">CREDENCIAMENTO ESTRATÉGICO</div>
+          <div class="spec">Bebas Neue · 60/58 · uppercase</div>
+        </div>
+        <div class="type-row">
+          <span class="role mono">H3</span>
+          <div class="sample bebas" style="font-size: 2.5rem;">Negociar com operadoras</div>
+          <div class="spec">Bebas Neue · 44/42 · uppercase</div>
+        </div>
+        <div class="type-row">
+          <span class="role mono">H4</span>
+          <div class="sample bebas" style="font-size: 2rem;">Como Funciona a Mentoria</div>
+          <div class="spec">Bebas Neue · 32/32</div>
+        </div>
+
+        <h6 class="h6" style="font-family: var(--font-body); text-transform: none; font-weight: 800; margin: var(--s-12) 0 var(--s-4);">Escala (body)</h6>
+
+        <div class="type-row">
+          <span class="role mono">Lead</span>
+          <div class="sample manrope" style="font-size: 1.25rem; line-height: 1.5;">
+            Ajudamos clínicas e hospitais a se credenciar, negociar e crescer com planos de saúde com clareza estratégica.
+          </div>
+          <div class="spec">Manrope · 18–20/30 · 400</div>
+        </div>
+        <div class="type-row">
+          <span class="role mono">Body</span>
+          <div class="sample manrope" style="font-size: 1rem; line-height: 1.6;">
+            Atendimento por planos pode ser a maior fonte de receita da sua clínica — desde que os contratos certos sejam negociados na hora certa, com base em dados e estratégia.
+          </div>
+          <div class="spec">Manrope · 16/26 · 400</div>
+        </div>
+        <div class="type-row">
+          <span class="role mono">Small</span>
+          <div class="sample manrope" style="font-size: 14px; color: var(--ink-500);">
+            * Os resultados mencionados se referem a clínicas atendidas entre 2023 e 2025. Cada caso é único.
+          </div>
+          <div class="spec">Manrope · 14/22 · 400</div>
+        </div>
+        <div class="type-row">
+          <span class="role mono">Eyebrow</span>
+          <div class="sample mono">SOBRE EDENILSON · ESPECIALISTA</div>
+          <div class="spec">JetBrains Mono · 12/14 · uppercase<br/>letter-spacing .14em</div>
+        </div>
+
+        <div class="note" style="margin-top: var(--s-8);">
+          <strong>Regra de ouro:</strong> Bebas é para impacto, Manrope é para informação. Nunca use
+          Bebas em parágrafos longos (passa de 8–10 palavras, troque para Manrope 700).
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SPACING ========== -->
+    <section id="space" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">04 · Foundations</span>
+          <h2 class="h2">Espaçamento</h2>
+          <p class="lead">
+            Escala em múltiplos de <strong>4px</strong>. Use as variáveis CSS para manter o ritmo
+            visual consistente.
+          </p>
+        </div>
+
+        <div class="space-grid">
+          <div class="space-cell">
+            <div class="bar" style="width: 4px;"></div>
+            <div>
+              <div class="name">--s-1</div>
+              <div class="px">4px</div>
+            </div>
+          </div>
+          <div class="space-cell">
+            <div class="bar" style="width: 8px;"></div>
+            <div>
+              <div class="name">--s-2</div>
+              <div class="px">8px</div>
+            </div>
+          </div>
+          <div class="space-cell">
+            <div class="bar" style="width: 16px;"></div>
+            <div>
+              <div class="name">--s-4</div>
+              <div class="px">16px</div>
+            </div>
+          </div>
+          <div class="space-cell">
+            <div class="bar" style="width: 24px;"></div>
+            <div>
+              <div class="name">--s-6</div>
+              <div class="px">24px</div>
+            </div>
+          </div>
+          <div class="space-cell">
+            <div class="bar" style="width: 32px;"></div>
+            <div>
+              <div class="name">--s-8</div>
+              <div class="px">32px</div>
+            </div>
+          </div>
+          <div class="space-cell">
+            <div class="bar" style="width: 64px;"></div>
+            <div>
+              <div class="name">--s-16</div>
+              <div class="px">64px</div>
+            </div>
+          </div>
+          <div class="space-cell">
+            <div class="bar" style="width: 96px;"></div>
+            <div>
+              <div class="name">--s-24</div>
+              <div class="px">96px</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== RADII ========== -->
+    <section id="radii" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">05 · Foundations</span>
+          <h2 class="h2">Raios</h2>
+          <p class="lead">
+            Cantos discretos. Componentes pequenos usam 4–8px. Cards e containers grandes
+            descem para 12–20px. <strong>Pílulas (999px)</strong> reservadas para badges e tags.
+          </p>
+        </div>
+
+        <div class="radii-grid">
+          <div class="radii-cell">
+            <div class="shape" style="border-radius: 0;"></div>
+            <div><strong>--r-none</strong></div>
+            <span class="mono">0px</span>
+          </div>
+          <div class="radii-cell">
+            <div class="shape" style="border-radius: 4px;"></div>
+            <div><strong>--r-sm</strong></div>
+            <span class="mono">4px</span>
+          </div>
+          <div class="radii-cell">
+            <div class="shape" style="border-radius: 8px;"></div>
+            <div><strong>--r-md</strong></div>
+            <span class="mono">8px</span>
+          </div>
+          <div class="radii-cell">
+            <div class="shape" style="border-radius: 12px;"></div>
+            <div><strong>--r-lg</strong></div>
+            <span class="mono">12px</span>
+          </div>
+          <div class="radii-cell">
+            <div class="shape" style="border-radius: 20px;"></div>
+            <div><strong>--r-xl</strong></div>
+            <span class="mono">20px</span>
+          </div>
+          <div class="radii-cell">
+            <div class="shape" style="border-radius: 999px;"></div>
+            <div><strong>--r-pill</strong></div>
+            <span class="mono">999px</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SHADOW ========== -->
+    <section id="shadow" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">06 · Foundations</span>
+          <h2 class="h2">Sombras</h2>
+          <p class="lead">
+            Sombras em preto quente (não cinza-azulado) para preservar o tom premium. A sombra
+            <strong>glow-orange</strong> é reservada ao CTA primário.
+          </p>
+        </div>
+
+        <div class="shadow-grid">
+          <div class="shadow-cell">
+            <div class="demo" style="box-shadow: var(--sh-1);"></div>
+            <div><strong>--sh-1</strong></div>
+            <span class="mono">subtle</span>
+          </div>
+          <div class="shadow-cell">
+            <div class="demo" style="box-shadow: var(--sh-2);"></div>
+            <div><strong>--sh-2</strong></div>
+            <span class="mono">card</span>
+          </div>
+          <div class="shadow-cell">
+            <div class="demo" style="box-shadow: var(--sh-3);"></div>
+            <div><strong>--sh-3</strong></div>
+            <span class="mono">elevated</span>
+          </div>
+          <div class="shadow-cell">
+            <div class="demo" style="box-shadow: var(--sh-4);"></div>
+            <div><strong>--sh-4</strong></div>
+            <span class="mono">overlay</span>
+          </div>
+          <div class="shadow-cell">
+            <div class="demo" style="box-shadow: var(--sh-glow-orange); background: var(--em-orange);"></div>
+            <div><strong>--sh-glow-orange</strong></div>
+            <span class="mono">CTA</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== BUTTONS ========== -->
+    <section id="buttons" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">07 · Componentes</span>
+          <h2 class="h2">Botões</h2>
+          <p class="lead">
+            Botão <strong>laranja</strong> é o CTA principal — uso reservado a 1 por seção.
+            Azul é secundário institucional. Preto é alternativa neutra premium.
+          </p>
+        </div>
+
+        <h6 class="mono" style="margin-bottom: var(--s-3);">VARIANTES</h6>
+        <div class="example-frame">
+          <button class="btn btn-primary">
+            Quero o diagnóstico
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </button>
+          <button class="btn btn-secondary">Falar com Edenilson</button>
+          <button class="btn btn-dark">Acessar mentoria</button>
+          <button class="btn btn-outline">Saber mais</button>
+          <button class="btn btn-ghost">Cancelar</button>
+        </div>
+
+        <h6 class="mono" style="margin: var(--s-8) 0 var(--s-3);">SOBRE FUNDO ESCURO</h6>
+        <div class="example-frame dark">
+          <button class="btn btn-primary">Quero o diagnóstico</button>
+          <button class="btn btn-outline-light">Ver portfólio</button>
+        </div>
+
+        <h6 class="mono" style="margin: var(--s-8) 0 var(--s-3);">TAMANHOS</h6>
+        <div class="example-frame">
+          <button class="btn btn-primary btn-sm">Small</button>
+          <button class="btn btn-primary">Default</button>
+          <button class="btn btn-primary btn-lg">Large</button>
+          <button class="btn btn-primary btn-xl">Hero · 19px</button>
+        </div>
+
+        <h6 class="mono" style="margin: var(--s-8) 0 var(--s-3);">ESTADOS</h6>
+        <div class="example-frame">
+          <button class="btn btn-primary">Normal</button>
+          <button class="btn btn-primary" style="background: var(--em-orange-600);">Hover</button>
+          <button class="btn btn-primary" disabled>Desabilitado</button>
+        </div>
+
+        <div class="note" style="margin-top: var(--s-8);">
+          <strong>Convenção de copy nos CTAs:</strong> sempre na 1ª pessoa do desejo do lead
+          ("Quero", "Vou", "Estou pronto") + ação concreta — não verbos abstratos como
+          "saiba mais", "clique aqui".
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FORMS ========== -->
+    <section id="forms" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">08 · Componentes</span>
+          <h2 class="h2">Forms &amp; inputs</h2>
+          <p class="lead">
+            Formulários precisam ser <strong>curtos</strong>. Para LP, máximo 4 campos no formulário
+            de diagnóstico (nome, telefone, cargo, tamanho da clínica).
+          </p>
+        </div>
+
+        <div class="grid-2" style="gap: var(--s-10); align-items: start;">
+          <div style="display: flex; flex-direction: column; gap: var(--s-5);">
+            <div class="field">
+              <label for="i1">Nome completo</label>
+              <input class="input" id="i1" placeholder="Como você gostaria de ser chamado?" />
+            </div>
+            <div class="field">
+              <label for="i2">WhatsApp</label>
+              <input class="input" id="i2" placeholder="(11) 99999-9999" />
+              <span class="hint">Usaremos apenas para responder ao seu diagnóstico.</span>
+            </div>
+            <div class="field">
+              <label for="i3">Faturamento mensal aproximado</label>
+              <select class="select" id="i3">
+                <option>Até R$ 50 mil</option>
+                <option>R$ 50–150 mil</option>
+                <option>R$ 150–300 mil</option>
+                <option>Acima de R$ 300 mil</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="i4">Conte rapidamente seu cenário</label>
+              <textarea class="textarea" id="i4" placeholder="Quais planos atende hoje? Qual o principal travão?"></textarea>
+            </div>
+            <div class="checkbox-row">
+              <input type="checkbox" id="c1" checked />
+              <label for="c1" style="font-weight: 400; font-size: 14px;">Aceito receber contato via WhatsApp para o diagnóstico.</label>
+            </div>
+            <button class="btn btn-primary btn-lg" style="margin-top: var(--s-2); align-self: flex-start;">
+              Quero o diagnóstico gratuito
+            </button>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: var(--s-5);">
+            <div class="field">
+              <label for="e1">Estado de erro</label>
+              <input class="input error" id="e1" value="11 999" />
+              <span class="error">Telefone incompleto — inclua DDD + 9 dígitos.</span>
+            </div>
+            <div class="field">
+              <label for="e2">Estado focado</label>
+              <input class="input" id="e2" value="Dr. Ricardo" style="border-color: var(--em-blue); box-shadow: 0 0 0 4px var(--em-blue-50);" />
+            </div>
+            <div class="field">
+              <label>Tipo de atuação</label>
+              <div class="radio-row">
+                <input type="radio" name="t" id="r1" checked />
+                <label for="r1" style="font-weight: 400;">
+                  <strong>Dono(a) de clínica</strong><br/>
+                  <span style="color: var(--ink-500); font-size: 13px;">Tomo decisões sobre credenciamento e contratos.</span>
+                </label>
+              </div>
+              <div class="radio-row">
+                <input type="radio" name="t" id="r2" />
+                <label for="r2" style="font-weight: 400;">
+                  <strong>Gestor(a) de clínica</strong><br/>
+                  <span style="color: var(--ink-500); font-size: 13px;">Cuido da operação e da relação com operadoras.</span>
+                </label>
+              </div>
+              <div class="radio-row">
+                <input type="radio" name="t" id="r3" />
+                <label for="r3" style="font-weight: 400;">
+                  <strong>Diretor(a) de hospital</strong><br/>
+                  <span style="color: var(--ink-500); font-size: 13px;">Gestão de múltiplos contratos e operadoras.</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CARDS ========== -->
+    <section id="cards" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">09 · Componentes</span>
+          <h2 class="h2">Cards</h2>
+          <p class="lead">
+            Três variações: <strong>Feature</strong> (claro, para listas de benefícios),
+            <strong>Dark</strong> (premium, para destaques), e <strong>Stat</strong> (números).
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card feature">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+            </div>
+            <h5 class="h6" style="font-family: var(--font-body); text-transform: none; font-weight: 800;">Credenciamento estruturado</h5>
+            <p style="color: var(--ink-600); font-size: 14px;">
+              Passo a passo claro para entrar em planos de saúde sem cair em armadilhas
+              comuns no envio de documentação.
+            </p>
+          </div>
+
+          <div class="card feature">
+            <div class="icon blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20M5 9l7-7 7 7"/></svg>
+            </div>
+            <h5 class="h6" style="font-family: var(--font-body); text-transform: none; font-weight: 800;">Negociação de reajustes</h5>
+            <p style="color: var(--ink-600); font-size: 14px;">
+              Análise de contratos atuais e estratégia de negociação para destravar valores
+              defasados com operadoras.
+            </p>
+          </div>
+
+          <div class="card feature dark">
+            <div class="icon dark">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </div>
+            <h5 class="h6" style="font-family: var(--font-body); text-transform: none; font-weight: 800; color: var(--white);">Acompanhamento estratégico</h5>
+            <p style="color: var(--ink-300); font-size: 14px;">
+              Reuniões periódicas para acompanhar evolução, identificar oportunidades e
+              ajustar a rota financeira da clínica.
+            </p>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h6 class="mono" style="margin-bottom: var(--s-3);">CARD STAT (NÚMERO)</h6>
+        <div class="grid-3">
+          <div class="card flat" style="background: var(--ink-50); border: 0;">
+            <span class="mono" style="color: var(--ink-500);">CLÍNICAS ATENDIDAS</span>
+            <div style="font-family: var(--font-display); font-size: 5rem; line-height: .9; color: var(--ink-900);">120+</div>
+            <p style="font-size: 14px; color: var(--ink-600);">Negociações concluídas com operadoras nacionais e regionais.</p>
+          </div>
+          <div class="card flat" style="background: var(--ink-1000); border: 0; color: var(--white);">
+            <span class="mono" style="color: var(--ink-500);">FATURAMENTO RECUPERADO</span>
+            <div style="font-family: var(--font-display); font-size: 5rem; line-height: .9; color: var(--em-orange);">+38%</div>
+            <p style="font-size: 14px; color: var(--ink-300);">Média de aumento em faturamento via planos no primeiro semestre.</p>
+          </div>
+          <div class="card flat" style="background: var(--em-blue); border: 0; color: var(--white);">
+            <span class="mono" style="color: rgba(255,255,255,.7);">TEMPO MÉDIO</span>
+            <div style="font-family: var(--font-display); font-size: 5rem; line-height: .9;">45d</div>
+            <p style="font-size: 14px; color: rgba(255,255,255,.85);">Da análise inicial até o primeiro contrato renegociado.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== BADGES & HIGHLIGHT ========== -->
+    <section id="badges" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">10 · Componentes</span>
+          <h2 class="h2">Badges &amp; highlight</h2>
+          <p class="lead">
+            O <strong>highlight de palavra-chave</strong> (bloco laranja atrás de uma expressão) é
+            assinatura da marca — herdado dos criativos do feed. Use 1–2 por título, sempre nas
+            palavras de maior valor emocional/financeiro.
+          </p>
+        </div>
+
+        <h6 class="mono" style="margin-bottom: var(--s-3);">HIGHLIGHT (ASSINATURA)</h6>
+        <div class="example-frame" style="background: var(--ink-1000); padding: var(--s-10);">
+          <div style="font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.28; color: var(--white); text-transform: uppercase;">
+            Enquanto você adia,<br/>
+            seu concorrente está<br/>
+            <span class="hl">fechando contratos</span><br/>
+            <span class="hl">e lucrando</span><br/>
+            com os mesmos planos.
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top: var(--s-6); gap: var(--s-6);">
+          <div class="example-frame" style="background: var(--white);">
+            <p style="font-family: var(--font-display); font-size: 2rem; line-height: 1; text-transform: uppercase; color: var(--ink-1000);">
+              Sua clínica <span class="hl">perde dinheiro</span> todo mês.
+            </p>
+          </div>
+          <div class="example-frame" style="background: var(--white);">
+            <p style="font-family: var(--font-display); font-size: 2rem; line-height: 1; text-transform: uppercase; color: var(--ink-1000);">
+              Aprenda a <span class="hl-blue">negociar</span> e a <span class="hl">crescer</span>.
+            </p>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h6 class="mono" style="margin-bottom: var(--s-3);">BADGES</h6>
+        <div class="example-frame">
+          <span class="badge orange"><span class="dot"></span> AO VIVO</span>
+          <span class="badge blue">EXCLUSIVO</span>
+          <span class="badge dark">PREMIUM</span>
+          <span class="badge outline">14 DIAS</span>
+          <span class="badge success"><span class="dot"></span> VAGAS ABERTAS</span>
+        </div>
+
+        <h6 class="mono" style="margin: var(--s-8) 0 var(--s-3);">TAGS DE CONTEÚDO</h6>
+        <div class="example-frame">
+          <span class="tag">Credenciamento</span>
+          <span class="tag">Reajustes</span>
+          <span class="tag">Negociação</span>
+          <span class="tag">Faturamento</span>
+          <span class="tag">B2B Saúde</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== NAVIGATION ========== -->
+    <section id="nav" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">11 · Componentes</span>
+          <h2 class="h2">Navegação</h2>
+          <p class="lead">
+            Header simples, com logo + 4 links + CTA. Versão clara para sites institucionais,
+            versão escura para a LP de conversão (manter atenção no hero).
+          </p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: var(--s-4);">
+          <div class="lp-nav">
+            <div class="logo">
+              <img src="assets/logo-azul-preto.png" alt="EM" />
+              <div class="name">Edenilson Mendes</div>
+            </div>
+            <nav>
+              <a href="#">Método</a>
+              <a href="#">Resultados</a>
+              <a href="#">Mentoria</a>
+              <a href="#">Contato</a>
+            </nav>
+            <button class="btn btn-primary btn-sm">Quero o diagnóstico</button>
+          </div>
+
+          <div class="lp-nav dark">
+            <div class="logo">
+              <img src="assets/logo-laranja-branco.png" alt="EM" />
+              <div class="name">Edenilson Mendes</div>
+            </div>
+            <nav>
+              <a href="#">Método</a>
+              <a href="#">Resultados</a>
+              <a href="#">Mentoria</a>
+              <a href="#">Contato</a>
+            </nav>
+            <button class="btn btn-primary btn-sm">Quero o diagnóstico</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PATTERN HERO ========== -->
+    <section id="p-hero" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">12 · Pattern de LP</span>
+          <h2 class="h2">Hero</h2>
+          <p class="lead">
+            O hero é o teste de 4 segundos. Combina foto editorial do Edenilson + título com
+            highlight + sub explicativo + CTA + bandeira de chamada (réplica direta do card de feed).
+          </p>
+        </div>
+
+        <div class="lp-hero">
+          <div class="copy">
+            <span class="eyebrow on-dark">Mentoria B2B · Credenciamento &amp; Negociação</span>
+            <h1 class="h1" style="color: var(--white);">
+              Enquanto você adia,<br/>
+              seu concorrente está<br/>
+              <span class="hl">fechando contratos</span><br/>
+              <span class="hl">e lucrando</span><br/>
+              com os mesmos planos.
+            </h1>
+            <p class="lead">
+              Aprenda a credenciar, negociar reajustes e organizar o faturamento da sua clínica
+              com planos de saúde — sem improviso e sem pagar para descobrir o que não funciona.
+            </p>
+            <div class="cta-row">
+              <button class="btn btn-primary btn-lg">
+                Quero o diagnóstico gratuito
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </button>
+              <button class="btn btn-outline-light btn-lg">Ver resultados</button>
+            </div>
+            <div class="cta-flag" style="margin-top: var(--s-4);">
+              <span class="top">CLIQUE NO BOTÃO</span>
+              <span class="bot">E PARTICIPE DA NOSSA MENTORIA</span>
+            </div>
+          </div>
+          <div class="photo"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PATTERN PAIN / STATS ========== -->
+    <section id="p-pain" class="section dark">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow on-dark">13 · Pattern de LP</span>
+          <h2 class="h2" style="color: var(--white);">Dores &amp; Stats</h2>
+          <p class="lead">
+            Mostre o tamanho do problema com números reais do mercado e da operação do cliente
+            ideal — antes de oferecer a solução.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="stat-block dark">
+            <div class="num">37%</div>
+            <div class="label" style="color: var(--white);">do faturamento perdido</div>
+            <div class="desc">É a média do que clínicas deixam na mesa por contratos defasados com planos.</div>
+          </div>
+          <div class="stat-block dark">
+            <div class="num">14m</div>
+            <div class="label" style="color: var(--white);">parados em credenciamento</div>
+            <div class="desc">Tempo médio para começar a faturar em uma operadora sem orientação especializada.</div>
+          </div>
+          <div class="stat-block dark">
+            <div class="num">3 em 4</div>
+            <div class="label" style="color: var(--white);">contratos nunca foram renegociados</div>
+            <div class="desc">A maioria dos donos de clínica nunca pediu reajuste — mesmo com 3+ anos de contrato.</div>
+          </div>
+        </div>
+
+        <div class="note blue" style="background: rgba(48,72,200,.18); color: var(--ink-200); border-color: var(--em-blue-400); margin-top: var(--s-12);">
+          <strong style="color: var(--white);">Fonte:</strong> dados de mercado citados na estruturação
+          estratégica. Substituir por números próprios do Edenilson quando disponíveis.
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PATTERN STEPS ========== -->
+    <section id="p-steps" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">14 · Pattern de LP</span>
+          <h2 class="h2">Como Funciona</h2>
+          <p class="lead">
+            Tradução do método em 3–4 passos. Linguagem direta, sem prometer milagre. Cada passo
+            tem 1 verbo de ação + frase curta de descrição.
+          </p>
+        </div>
+
+        <div>
+          <div class="step">
+            <div class="num">01</div>
+            <div>
+              <h4 class="title">Diagnóstico do cenário atual</h4>
+              <p class="desc">
+                Análise dos contratos vigentes, planos atendidos, volume de atendimento e gaps de
+                faturamento. Em 1 reunião você sai sabendo onde está perdendo dinheiro.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">02</div>
+            <div>
+              <h4 class="title">Plano de credenciamento &amp; negociação</h4>
+              <p class="desc">
+                Construímos juntos o roteiro de quais operadoras priorizar, quais contratos
+                renegociar primeiro e a documentação necessária — em ordem de impacto financeiro.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">03</div>
+            <div>
+              <h4 class="title">Execução acompanhada</h4>
+              <p class="desc">
+                Você (ou seu time) executa, com suporte semanal para resolver objeções da operadora,
+                ajustes contratuais e estratégia de reajuste.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">04</div>
+            <div>
+              <h4 class="title">Estrutura para crescer sem você</h4>
+              <p class="desc">
+                Documentamos o processo dentro da clínica para que o próximo credenciamento ou
+                renegociação não dependa mais de mim — você ganha autonomia.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PATTERN TESTIMONIAL ========== -->
+    <section id="p-testimonial" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">15 · Pattern de LP</span>
+          <h2 class="h2">Depoimento</h2>
+          <p class="lead">
+            Card de prova social com peso editorial. Use 1 depoimento por seção — múltiplos
+            depoimentos vão para um carrossel separado.
+          </p>
+        </div>
+
+        <div class="testimonial">
+          <p class="quote">
+            Edenilson, pra mim é uma grata surpresa. Diferente dos profissionais que atuam na mesma
+            área comercial que ele, trouxe uma nova proposta e com resultados positivos. Um cara
+            bastante comunicativo e com iniciativa — buscou conhecer a unidade, os contratos, as
+            negociações e as necessidades. Vem fazendo um trabalho diferenciado.
+          </p>
+          <div class="who">
+            <div class="avatar">LH</div>
+            <div>
+              <div class="name">Luiza Helena</div>
+              <div class="role">Diretora · Hospital Sermege</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PATTERN PRICING ========== -->
+    <section id="p-pricing" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">16 · Pattern de LP</span>
+          <h2 class="h2">Esteira de produtos</h2>
+          <p class="lead">
+            Três níveis: entrada (estudo de viabilidade), núcleo (mentoria) e premium
+            (consultoria executiva). O nível do meio é o mais destacado — é o produto âncora.
+          </p>
+        </div>
+
+        <div class="grid-3" style="align-items: stretch;">
+          <div class="tier">
+            <span class="badge outline" style="align-self: flex-start;">ENTRADA</span>
+            <h4 class="name">Diagnóstico</h4>
+            <div class="price">Grátis</div>
+            <p style="color: var(--ink-600); font-size: 14px;">
+              Análise de 30min do cenário atual da sua clínica e indicação dos 3 maiores gaps
+              de faturamento.
+            </p>
+            <ul>
+              <li>Análise de contratos vigentes</li>
+              <li>Identificação de gaps</li>
+              <li>Indicação de prioridades</li>
+            </ul>
+            <button class="btn btn-outline" style="margin-top: auto;">Quero o diagnóstico</button>
+          </div>
+
+          <div class="tier featured">
+            <span class="ribbon badge orange">RECOMENDADO</span>
+            <span class="badge dark" style="align-self: flex-start;">NÚCLEO</span>
+            <h4 class="name">Mentoria EM</h4>
+            <div class="price">R$ X.XXX<small> /mês</small></div>
+            <p style="color: var(--ink-300); font-size: 14px;">
+              3 meses de acompanhamento estruturado — você e seu time aprendendo a credenciar e
+              negociar com método.
+            </p>
+            <ul>
+              <li>Plano completo de credenciamento</li>
+              <li>Reuniões semanais</li>
+              <li>Templates de negociação</li>
+              <li>Suporte no WhatsApp</li>
+              <li>Acesso à comunidade</li>
+            </ul>
+            <button class="btn btn-primary" style="margin-top: auto;">Quero a mentoria</button>
+          </div>
+
+          <div class="tier">
+            <span class="badge blue" style="align-self: flex-start;">PREMIUM</span>
+            <h4 class="name">Consultoria</h4>
+            <div class="price">Sob consulta</div>
+            <p style="color: var(--ink-600); font-size: 14px;">
+              Execução direta com você. Indicada para clínicas com 5+ unidades ou hospitais.
+            </p>
+            <ul>
+              <li>Execução do credenciamento</li>
+              <li>Negociação direta com operadoras</li>
+              <li>Acompanhamento de 12 meses</li>
+              <li>Reporting executivo mensal</li>
+            </ul>
+            <button class="btn btn-secondary" style="margin-top: auto;">Falar com Edenilson</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PATTERN FAQ ========== -->
+    <section id="p-faq" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">17 · Pattern de LP</span>
+          <h2 class="h2">FAQ</h2>
+          <p class="lead">
+            Foque nas objeções reais do ICP (vide doc estratégico):
+            "Esse processo não demora?", "Já tentamos antes e não funcionou",
+            "Vale a pena trabalhar com planos?".
+          </p>
+        </div>
+
+        <details class="faq-item" open>
+          <summary>Quanto tempo leva para começar a ver resultado?</summary>
+          <div class="answer">
+            O diagnóstico é imediato — em 30 minutos você sabe onde está perdendo dinheiro.
+            Renegociações de contrato já existentes costumam fechar em 45–90 dias; novos
+            credenciamentos variam por operadora, mas o processo é todo acompanhado.
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Já tentei credenciar e não consegui — por que com vocês seria diferente?</summary>
+          <div class="answer">
+            Trabalhamos com base nos motivos reais de recusa das operadoras (documentação fora
+            do padrão, comprovação de demanda regional, posicionamento da clínica) e refazemos o
+            pedido com base em estratégia — não no formulário padrão.
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Atende clínicas pequenas?</summary>
+          <div class="answer">
+            Sim. O método se aplica a clínicas individuais até hospitais. A diferença está no
+            tamanho do plano de ação e em quantas operadoras priorizar.
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Funciona se eu estiver no interior?</summary>
+          <div class="answer">
+            Sim — boa parte dos casos atendidos é fora dos grandes centros. Todo o trabalho é
+            remoto, com reuniões periódicas por vídeo.
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Vocês prometem resultado garantido?</summary>
+          <div class="answer">
+            Não — e desconfie de quem prometer. Trabalhamos com base em método e experiência prática.
+            O que garantimos é clareza no que precisa ser feito e acompanhamento durante a execução.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========== PATTERN CTA FINAL ========== -->
+    <section id="p-cta" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">18 · Pattern de LP</span>
+          <h2 class="h2">CTA final</h2>
+          <p class="lead">
+            Última chance de conversão. Use highlight + foto + CTA grande. Tom direto, sem
+            "última oportunidade" agressivo.
+          </p>
+        </div>
+
+        <div style="background: var(--ink-1000); color: var(--white); border-radius: var(--r-xl); padding: var(--s-16) var(--s-12); position: relative; overflow: hidden;">
+          <div style="position: relative; max-width: 720px;">
+            <span class="eyebrow on-dark">Pronto para começar?</span>
+            <h2 class="h2" style="color: var(--white); margin: var(--s-3) 0 var(--s-5);">
+              Pare de pagar para descobrir<br/>
+              o que <span class="hl">não funciona</span>.
+            </h2>
+            <p class="lead" style="color: var(--ink-300); margin-bottom: var(--s-6);">
+              Em 30 minutos você sabe se faz sentido continuar a conversa. Sem compromisso e sem
+              roteiro de vendas — só análise prática do seu cenário.
+            </p>
+            <button class="btn btn-primary btn-xl">
+              Quero o diagnóstico gratuito
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PATTERN FOOTER ========== -->
+    <section id="p-footer" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">19 · Pattern de LP</span>
+          <h2 class="h2">Footer</h2>
+          <p class="lead">Encerramento institucional com links, contato e fine print legal.</p>
+        </div>
+
+        <footer class="lp-footer">
+          <div class="top">
+            <div class="brand-block">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: var(--s-3);">
+                <img src="assets/logo-laranja-branco.png" alt="EM" style="width: 44px; height: 44px;" />
+                <div class="h3">Edenilson Mendes</div>
+              </div>
+              <p style="font-size: 14px; max-width: 320px; color: var(--ink-400);">
+                Consultoria e mentoria em credenciamento, negociação e gestão de planos de saúde
+                para clínicas e hospitais.
+              </p>
+            </div>
+            <div>
+              <h6>Método</h6>
+              <ul>
+                <li><a href="#">Diagnóstico</a></li>
+                <li><a href="#">Mentoria</a></li>
+                <li><a href="#">Consultoria</a></li>
+              </ul>
+            </div>
+            <div>
+              <h6>Conteúdo</h6>
+              <ul>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">YouTube</a></li>
+                <li><a href="#">Casos</a></li>
+              </ul>
+            </div>
+            <div>
+              <h6>Contato</h6>
+              <ul>
+                <li><a href="#">WhatsApp</a></li>
+                <li><a href="#">contato@edenilsonmendes.com</a></li>
+                <li><a href="#">Imprensa</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="bottom">
+            <div>© 2026 · Edenilson Mendes · Todos os direitos reservados</div>
+            <div>CNPJ XX.XXX.XXX/0001-XX</div>
+          </div>
+        </footer>
+      </div>
+    </section>
+
+    <!-- ========== PATTERN FEED CARD ========== -->
+    <section id="p-feed" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">20 · Pattern Bônus</span>
+          <h2 class="h2">Card de feed (Instagram)</h2>
+          <p class="lead">
+            O DNA visual da marca já está validado nos criativos. Esse card é a tradução
+            sistematizada do exemplo de feed enviado — pronto para reproduzir em séries
+            consistentes.
+          </p>
+        </div>
+
+        <div class="grid-3" style="gap: var(--s-4);">
+          <div class="feed-card">
+            <div class="feed-copy">
+              <div class="feed-title">
+                Sua clínica está <span class="hl">perdendo</span> <span class="hl">dinheiro</span> com planos.
+              </div>
+              <div class="feed-sub">E você nem está vendo. Aprenda os 3 sinais.</div>
+            </div>
+            <div class="feed-cta">
+              <div class="top">SAIBA QUAIS</div>
+              <div class="bot">Arraste o card para o lado</div>
+            </div>
+          </div>
+          <div class="feed-card" style="background-image: url('assets/edenilson-2.png');">
+            <div class="feed-copy">
+              <div class="feed-title">
+                <span class="hl">Reajuste</span> não cai do céu. Você precisa pedir.
+              </div>
+              <div class="feed-sub">Veja o roteiro que uso com as clínicas que atendo.</div>
+            </div>
+            <div class="feed-cta">
+              <div class="top">QUERO O ROTEIRO</div>
+              <div class="bot">Clique no link da bio</div>
+            </div>
+          </div>
+          <div class="feed-card" style="background-image: url('assets/edenilson-3.png');">
+            <div class="feed-copy">
+              <div class="feed-title">
+                Credenciar em <span class="hl">90 dias</span> é possível.
+              </div>
+              <div class="feed-sub">Se você fizer na ordem certa. Mostro como.</div>
+            </div>
+            <div class="feed-cta">
+              <div class="top">MENTORIA ABERTA</div>
+              <div class="bot">Vagas limitadas para maio</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== APPLICATION GUIDE ========== -->
+    <section id="guide" class="section dark">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow on-dark">21 · Guia</span>
+          <h2 class="h2" style="color: var(--white);">Aplicação visual</h2>
+          <p class="lead">
+            Princípios práticos para manter a marca consistente em qualquer canal.
+          </p>
+        </div>
+
+        <div class="grid-2" style="gap: var(--s-8);">
+          <div>
+            <h5 class="h5" style="color: var(--white); font-family: var(--font-body); text-transform: none; font-weight: 800; margin-bottom: var(--s-3);">
+              Quando usar fundo escuro
+            </h5>
+            <ul style="color: var(--ink-300); padding-left: 1.2rem; font-size: 15px; line-height: 1.7;">
+              <li>Hero da LP, CTA final, depoimentos premium</li>
+              <li>Capas de eventos e materiais comerciais</li>
+              <li>Sempre que o objetivo for autoridade + sofisticação</li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="h5" style="color: var(--white); font-family: var(--font-body); text-transform: none; font-weight: 800; margin-bottom: var(--s-3);">
+              Quando usar fundo claro
+            </h5>
+            <ul style="color: var(--ink-300); padding-left: 1.2rem; font-size: 15px; line-height: 1.7;">
+              <li>Seções de explicação, FAQ, pricing, formulários</li>
+              <li>Documentos comerciais e contratos</li>
+              <li>Quando o conteúdo precisar de respiro e leitura longa</li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="h5" style="color: var(--white); font-family: var(--font-body); text-transform: none; font-weight: 800; margin-bottom: var(--s-3);">
+              Foto: regras de uso
+            </h5>
+            <ul style="color: var(--ink-300); padding-left: 1.2rem; font-size: 15px; line-height: 1.7;">
+              <li>Sempre com gradiente preto à esquerda — espaço para o título</li>
+              <li>Edenilson olhando para a câmera ou em pose de ação consultiva</li>
+              <li>Nunca cortar acima do queixo; respiro generoso no topo</li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="h5" style="color: var(--white); font-family: var(--font-body); text-transform: none; font-weight: 800; margin-bottom: var(--s-3);">
+              Highlight: regras de uso
+            </h5>
+            <ul style="color: var(--ink-300); padding-left: 1.2rem; font-size: 15px; line-height: 1.7;">
+              <li>Máximo 2 highlights por título (não mais)</li>
+              <li>Sempre nas palavras de maior peso emocional/financeiro</li>
+              <li>Padrão: laranja sobre branco. Variante: azul para tom mais técnico</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h6 class="mono on-dark" style="color: var(--ink-400); margin-bottom: var(--s-4);">PROPORÇÃO DE COR — REGRA 60/30/7/3</h6>
+        <div style="display: grid; grid-template-columns: 60fr 30fr 7fr 3fr; gap: 4px; height: 60px; border-radius: var(--r-md); overflow: hidden;">
+          <div style="background: var(--ink-1000); display: flex; align-items: center; justify-content: center; color: var(--white); font-family: var(--font-display); font-size: 1.4rem; letter-spacing: .02em;">60% INK</div>
+          <div style="background: var(--white); display: flex; align-items: center; justify-content: center; color: var(--ink-900); font-family: var(--font-display); font-size: 1.4rem; letter-spacing: .02em;">30% PAPER</div>
+          <div style="background: var(--em-blue); display: flex; align-items: center; justify-content: center; color: var(--white); font-family: var(--font-display); font-size: .9rem; letter-spacing: .02em;">7%</div>
+          <div style="background: var(--em-orange); display: flex; align-items: center; justify-content: center; color: var(--white); font-family: var(--font-display); font-size: .9rem; letter-spacing: .02em;">3%</div>
+        </div>
+
+        <div class="note blue" style="background: rgba(48,72,200,.18); color: var(--ink-200); border-color: var(--em-blue-400); margin-top: var(--s-8);">
+          <strong style="color: var(--white);">Princípio editorial:</strong> respire mais do que enche.
+          Sempre que houver dúvida entre adicionar ou tirar, tire. A força do sistema está no
+          contraste — não na quantidade.
+        </div>
+
+        <div style="margin-top: var(--s-12); padding-top: var(--s-8); border-top: 1px solid var(--ink-800); text-align: center;">
+          <p class="mono on-dark" style="color: var(--ink-500);">Design System · v1.0 · Maio 2026</p>
+          <p style="font-family: var(--font-display); font-size: 2.5rem; color: var(--em-orange); margin-top: var(--s-3); letter-spacing: .02em;">FIM DO DOCUMENTO</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+// Sidebar active link on scroll
+const links = document.querySelectorAll('.nav-link');
+const sections = [...links].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+const linkMap = new Map();
+links.forEach(a => {
+  const t = document.querySelector(a.getAttribute('href'));
+  if (t) linkMap.set(t, a);
+});
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const link = linkMap.get(e.target);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+sections.forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>
