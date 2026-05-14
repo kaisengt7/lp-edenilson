@@ -471,26 +471,44 @@ ul, ol { list-style: none; padding: 0; }
 /* ---- MAPA ---- */
 #metodo-mapa { background: var(--ink-1000); }
 .mapa-eyebrow-row { display: flex; align-items: center; gap: var(--s-4); margin-bottom: var(--s-3); flex-wrap: wrap; }
-.mapa-grid { display: grid; grid-template-columns: 1fr; gap: var(--s-4); }
+.mapa-grid { display: grid; grid-template-columns: 1fr; gap: var(--s-4); position: relative; }
 .mapa-card {
   background: var(--ink-900); border: 1px solid var(--ink-800);
   border-radius: var(--r-xl); padding: var(--s-6);
-  display: flex; flex-direction: column; gap: var(--s-4);
+  display: flex; flex-direction: column; gap: var(--s-3);
   position: relative; overflow: hidden;
   transition: transform var(--t-base), border-color var(--t-base);
-  min-height: 180px;
 }
 .mapa-card:hover { transform: translateY(-3px); border-color: rgba(248,152,56,.4); }
-.mapa-card .letter {
-  position: absolute; bottom: -12px; right: 8px;
-  font-family: var(--font-display); font-size: 7rem; line-height: 1;
-  color: var(--em-orange); opacity: .07; pointer-events: none;
+.mapa-node {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--em-orange); flex: none;
+  box-shadow: 0 0 0 4px rgba(248,152,56,.15);
+  position: relative; z-index: 1;
+}
+.mapa-letter-big {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 6vw, 5rem);
+  color: var(--em-orange); line-height: 1;
+  display: block;
 }
 .mapa-card .step-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; color: var(--ink-500); text-transform: uppercase; }
 .mapa-card .mapa-title { font-family: var(--font-body); font-weight: 800; font-size: 1.05rem; color: var(--white); text-transform: none; line-height: 1.3; }
 .mapa-card p { font-size: 14px; color: var(--ink-300); line-height: 1.6; }
 .mapa-closer { margin-top: var(--s-10); padding-top: var(--s-8); border-top: 1px solid var(--ink-800); }
 .mapa-closer p { color: var(--ink-300); font-size: 15px; line-height: 1.65; }
+/* Conector vertical — mobile/tablet */
+@media (max-width: 979px) {
+  .mapa-grid::before {
+    content: ''; position: absolute;
+    top: calc(var(--s-6) + 7px); bottom: calc(var(--s-6) + 7px);
+    left: calc(var(--s-6) + 7px); width: 2px;
+    background: linear-gradient(to bottom, var(--em-orange), rgba(248,152,56,.2));
+    pointer-events: none;
+  }
+  .mapa-card { padding-left: calc(var(--s-6) + 30px); }
+  .mapa-node { position: absolute; left: var(--s-6); top: var(--s-6); }
+}
 
 /* ---- DEPOIMENTOS ---- */
 #depoimentos { background: var(--ink-1000); }
@@ -713,6 +731,17 @@ ul, ol { list-style: none; padding: 0; }
   /* Other grids */
   .ninguem-grid { grid-template-columns: repeat(3, 1fr); }
   .mapa-grid { grid-template-columns: repeat(4, 1fr); }
+  .mapa-grid::before {
+    content: ''; position: absolute;
+    top: 29px;
+    left: calc(12.5% + 7px); right: calc(12.5% + 7px);
+    height: 2px;
+    background: linear-gradient(to right, var(--em-orange), rgba(248,152,56,.35) 50%, var(--em-orange));
+    pointer-events: none;
+  }
+  .mapa-card { align-items: center; padding: var(--s-8); }
+  .mapa-card p { text-align: left; }
+  .mapa-letter-big { text-align: center; }
   .diferenciais-grid { grid-template-columns: repeat(4, 1fr); }
   .problema-inner { grid-template-columns: 1.1fr 1fr; gap: var(--s-12); }
   .transformacao-inner { grid-template-columns: 1fr 1.4fr; gap: var(--s-16); align-items: start; }
@@ -1003,8 +1032,7 @@ ul, ol { list-style: none; padding: 0; }
   <div class="lp-container">
     <div class="lp-sh" data-anim>
       <div class="mapa-eyebrow-row" style="margin-top:var(--s-2);">
-        <h2 class="h2" style="color:var(--white);">O método aplicado na prática</h2>
-        <span class="badge orange">M.A.P.A do Credenciamento</span>
+        <h2 class="h2" style="color:var(--white);">O <span class="hl">M.A.P.A</span> do Credenciamento</h2>
       </div>
       <p class="lead" style="color:var(--ink-400); margin-top:var(--s-4); font-size:1rem;">
         Um roteiro estruturado para sair do improviso e atravessar cada etapa com clareza, do diagnóstico à assinatura do contrato.
@@ -1012,28 +1040,32 @@ ul, ol { list-style: none; padding: 0; }
     </div>
     <div class="mapa-grid">
       <div class="mapa-card" data-anim data-delay="1">
-        <span class="letter">M</span>
-        <span class="step-label">01 · M</span>
+        <div class="mapa-node"></div>
+        <span class="mapa-letter-big">M</span>
+        <span class="step-label">01 · Mapeamento</span>
         <div class="mapa-title">Mapeamento</div>
         <p>Diagnóstico do cenário atual da clínica: contratos vigentes, operadoras atendidas, volume e lacunas de faturamento. Em uma reunião, você sabe onde está perdendo dinheiro.</p>
       </div>
       <div class="mapa-card" data-anim data-delay="2">
-        <span class="letter">A</span>
-        <span class="step-label">02 · A</span>
+        <div class="mapa-node"></div>
+        <span class="mapa-letter-big">A</span>
+        <span class="step-label">02 · Análise</span>
         <div class="mapa-title">Análise</div>
         <p>Identificação das operadoras ideais para o perfil do seu negócio. Nem toda operadora vale o esforço. A análise define quais priorizar e em que ordem.</p>
       </div>
       <div class="mapa-card" data-anim data-delay="3">
-        <span class="letter">P</span>
-        <span class="step-label">03 · P</span>
+        <div class="mapa-node"></div>
+        <span class="mapa-letter-big">P</span>
+        <span class="step-label">03 · Preparação</span>
         <div class="mapa-title">Preparação</div>
         <p>Posicionamento estratégico da clínica para aprovação. Estruturação da documentação, enquadramento correto e apresentação que favorece a decisão da operadora.</p>
       </div>
       <div class="mapa-card" data-anim data-delay="4">
-        <span class="letter">A</span>
-        <span class="step-label">04 · A</span>
+        <div class="mapa-node"></div>
+        <span class="mapa-letter-big">A</span>
+        <span class="step-label">04 · Ajustes & Acordo</span>
         <div class="mapa-title">Ajustes & Acordo</div>
-        <p>Condução da negociação até a assinatura. Tratamento de objeções da operadora, ajustes contratuais e estratégia de reajuste para maximizar a rentabilidade.</p>
+        <p>Condução da negociação até a assinatura. Ajustes contratuais e estratégia de reajuste para maximizar a rentabilidade.</p>
       </div>
     </div>
     <div class="mapa-closer" data-anim>
