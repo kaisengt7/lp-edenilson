@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Edenilson Mendes | Credenciamento Estratégico para Clínicas</title>
 <meta name="description" content="Destrave e aumente o faturamento da sua clínica com planos de saúde, sem depender de tentativa e erro. Mentoria B2B com Edenilson Mendes." />
+<link rel="icon" type="image/png" href="assets/logo-azul-branco.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -108,10 +109,10 @@ ul, ol { list-style: none; padding: 0; }
   text-transform: uppercase;
 }
 .display { font-size: clamp(4rem, 9vw, var(--t-display)); }
-.h1 { font-size: clamp(2.5rem, 5.5vw, 3.75rem); line-height: .94; }
-.h2 { font-size: clamp(2rem, 6vw, var(--t-h2)); line-height: .96; }
-.h3 { font-size: clamp(1.8rem, 4vw, var(--t-h3)); }
-.h4 { font-size: clamp(1.5rem, 3.5vw, var(--t-h4)); }
+.h1 { font-size: clamp(1.9rem, 5.5vw, 3.75rem); line-height: .94; }
+.h2 { font-size: clamp(1.65rem, 6vw, var(--t-h2)); line-height: .96; }
+.h3 { font-size: clamp(1.5rem, 4vw, var(--t-h3)); }
+.h4 { font-size: clamp(1.3rem, 3.5vw, var(--t-h4)); }
 .eyebrow {
   font-family: var(--font-mono);
   font-size: var(--t-eyebrow);
@@ -146,7 +147,7 @@ ul, ol { list-style: none; padding: 0; }
 /* BUTTONS */
 .btn {
   display: inline-flex; align-items: center; gap: var(--s-2);
-  padding: 14px 22px;
+  padding: 14px 22px; min-height: 44px;
   border: 0; border-radius: var(--r-md);
   font-family: var(--font-body);
   font-weight: 700;
@@ -350,7 +351,7 @@ ul, ol { list-style: none; padding: 0; }
   content: ""; position: absolute; inset: 0;
   background: linear-gradient(to top, var(--ink-1000) 0%, rgba(10,10,12,.3) 60%, transparent 100%);
 }
-.hero-copy { padding: var(--s-6) var(--s-4) var(--s-16); }
+.hero-copy { padding: var(--s-6) var(--s-4) var(--s-10); }
 .hero-copy .h1 { color: var(--white); margin: var(--s-4) 0; line-height: 1.22; }
 .hero-copy .lead { color: var(--ink-300); max-width: 520px; margin-bottom: var(--s-6); }
 .hero-bullets { display: flex; flex-direction: column; gap: var(--s-2); margin: var(--s-2) 0 var(--s-3); }
@@ -451,11 +452,11 @@ ul, ol { list-style: none; padding: 0; }
 .transformacao-intro .lead { color: var(--ink-700); margin-top: var(--s-4); }
 .transf-steps { display: flex; flex-direction: column; gap: 0; }
 .transf-step {
-  display: grid; grid-template-columns: 64px 1fr; gap: var(--s-5);
+  display: grid; grid-template-columns: 52px 1fr; gap: var(--s-4);
   padding: var(--s-5) 0; border-top: 1px solid var(--ink-200);
 }
 .transf-step:last-child { border-bottom: 1px solid var(--ink-200); }
-.transf-num { font-family: var(--font-display); font-size: 3rem; color: var(--em-orange); line-height: .9; }
+.transf-num { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); color: var(--em-orange); line-height: .9; }
 .transf-title { font-size: 1.15rem; font-weight: 700; color: var(--ink-900); margin-bottom: var(--s-1); }
 .transf-desc { font-size: 14px; color: var(--ink-600); line-height: 1.6; }
 .transf-note {
@@ -514,8 +515,14 @@ ul, ol { list-style: none; padding: 0; }
 #depoimentos { background: var(--ink-1000); }
 .tc-wrap {
   overflow: hidden;
-  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+@media (max-width: 640px) {
+  .tc-wrap {
+    mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+  }
 }
 @keyframes tc-scroll {
   from { transform: translateX(0); }
@@ -528,7 +535,7 @@ ul, ol { list-style: none; padding: 0; }
   user-select: none;
 }
 .tc-wrap:hover .tc-track { animation-play-state: paused; }
-.tc-track .testimonial { flex: none; width: 340px; }
+.tc-track .testimonial { flex: none; width: clamp(260px, 80vw, 340px); }
 .tc-controls { display: none; }
 .tc-btn {
   width: 44px; height: 44px; border-radius: 50%;
@@ -568,7 +575,7 @@ ul, ol { list-style: none; padding: 0; }
 .sobre-stats { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: var(--s-5); border-top: 1px solid var(--ink-800); }
 .sobre-stat { padding: var(--s-5) var(--s-3); text-align: center; }
 .sobre-stat + .sobre-stat { border-left: 1px solid var(--ink-800); }
-.sobre-stat .num { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); color: var(--em-orange); line-height: .9; }
+.sobre-stat .num { font-family: var(--font-display); font-size: clamp(1.6rem, 5vw, 3.5rem); color: var(--em-orange); line-height: .9; }
 .sobre-stat .label { font-size: 12px; color: var(--ink-400); margin-top: var(--s-1); line-height: 1.4; }
 .sobre-selos { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-bottom: var(--s-4); }
 .credential-badges { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: var(--s-4) 0; }
@@ -599,7 +606,7 @@ ul, ol { list-style: none; padding: 0; }
   border-radius: var(--r-xl); padding: var(--s-6);
   display: flex; flex-direction: column; gap: var(--s-4);
 }
-.obj-q { font-family: var(--font-display); font-size: clamp(1.15rem, 2.5vw, 1.5rem); color: var(--ink-200); text-transform: uppercase; line-height: 1.15; }
+.obj-q { font-family: var(--font-display); font-size: clamp(1.1rem, 3.5vw, 1.5rem); color: var(--ink-200); text-transform: uppercase; line-height: 1.15; }
 .obj-divider { height: 1px; background: var(--ink-800); }
 .obj-answer-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--em-orange); }
 .obj-answer { font-size: 14px; color: var(--ink-400); line-height: 1.65; }
@@ -755,6 +762,29 @@ ul, ol { list-style: none; padding: 0; }
   .lp-footer .top { grid-template-columns: 2fr 1fr 1fr 1fr; }
   .lp-footer { padding: var(--s-12) var(--s-8); border-radius: var(--r-xl); margin: 0 var(--s-8) var(--s-8); }
 }
+
+/* ---- COOKIE BANNER ---- */
+#cookie-banner {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+  background: var(--ink-900);
+  border-top: 1px solid var(--ink-700);
+  padding: var(--s-4) var(--s-5);
+  padding-bottom: calc(var(--s-4) + env(safe-area-inset-bottom, 0px));
+  flex-direction: column; gap: var(--s-3);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+@media (min-width: 680px) {
+  #cookie-banner { flex-direction: row; align-items: center; justify-content: space-between; }
+}
+#cookie-banner p { font-size: 13px; color: var(--ink-300); line-height: 1.5; margin: 0; }
+#cookie-banner p a { color: var(--em-orange); text-decoration: underline; }
+#cookie-banner p a:hover { color: var(--em-orange-400); }
+.cookie-actions { display: flex; gap: var(--s-2); flex: none; flex-wrap: wrap; }
+#cookie-accept { background: var(--em-orange); color: var(--white); border: none; border-radius: var(--r-md); padding: 10px 20px; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; min-height: 44px; }
+#cookie-accept:hover { background: var(--em-orange-600); }
+#cookie-reject { background: transparent; color: var(--ink-400); border: 1px solid var(--ink-700); border-radius: var(--r-md); padding: 10px 16px; font-size: 13px; cursor: pointer; white-space: nowrap; min-height: 44px; }
+#cookie-reject:hover { color: var(--ink-200); border-color: var(--ink-500); }
 </style>
 </head>
 <body>
@@ -816,7 +846,6 @@ ul, ol { list-style: none; padding: 0; }
           Quero entender como aplicar isso
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </button>
-        <button class="btn btn-outline-light btn-lg" data-scroll-to="depoimentos" style="width:auto;">Ver resultados</button>
       </div>
     </div>
     <div class="hero-col-photo"></div>
@@ -1428,14 +1457,14 @@ ul, ol { list-style: none; padding: 0; }
           </select>
         </div>
         <div class="checkbox-row">
-          <input type="checkbox" id="f-consent" checked />
-          <label for="f-consent">Aceito receber contato via WhatsApp para o diagnóstico.</label>
+          <input type="checkbox" id="f-consent" />
+          <label for="f-consent">Aceito que meus dados sejam usados para contato via WhatsApp conforme a <a href="politica-de-privacidade.html" target="_blank" style="color:var(--em-orange);">Política de Privacidade</a>.</label>
         </div>
         <button class="btn btn-primary btn-submit" type="button">
           Quero meu direcionamento
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </button>
-        <p class="form-disclaimer">Seus dados são tratados com confidencialidade.<br/>Atendimentos limitados.</p>
+        <p class="form-disclaimer">Seus dados são tratados conforme a LGPD (Lei 13.709/2018) e nunca serão compartilhados com terceiros.<br/>Atendimentos limitados.</p>
       </div>
     </div>
   </div>
@@ -1482,10 +1511,90 @@ ul, ol { list-style: none; padding: 0; }
     </div>
     <div class="bottom">
       <div>© 2026 · Edenilson Mendes · Credenciamento estratégico para clínicas</div>
-      <div>CNPJ XX.XXX.XXX/0001-XX</div>
+      <div style="display:flex; gap: var(--s-4); align-items:center; flex-wrap:wrap;">
+        <span>CNPJ XX.XXX.XXX/0001-XX</span>
+        <a href="politica-de-privacidade.html" style="color:var(--ink-400); font-size:13px; text-decoration:underline;">Política de Privacidade</a>
+        <a href="termos-de-uso.html" style="color:var(--ink-400); font-size:13px; text-decoration:underline;">Termos de Uso</a>
+      </div>
     </div>
   </div>
 </footer>
+
+<!-- ================================================================
+     COOKIE BANNER (LGPD)
+     ================================================================ -->
+<div id="cookie-banner" role="dialog" aria-label="Aviso de cookies">
+  <p>
+    Utilizamos cookies para melhorar sua experiência e mensurar resultados.
+    Ao continuar, você concorda com nossa <a href="politica-de-privacidade.html" target="_blank">Política de Privacidade</a>.
+  </p>
+  <div class="cookie-actions">
+    <button id="cookie-reject">Recusar</button>
+    <button id="cookie-accept">Aceitar cookies</button>
+  </div>
+</div>
+
+<!-- ================================================================
+     RASTREAMENTO — carregado somente após consentimento (LGPD)
+     ================================================================ -->
+<script>
+/* ── Substitua os IDs abaixo pelos seus ── */
+var TRACKING = {
+  metaPixelId:  'SEU_META_PIXEL_ID',   // Ex: 1234567890123456
+  gtmId:        'SEU_GTM_ID',          // Ex: GTM-XXXXXXX
+  clarityId:    'SEU_CLARITY_ID'       // Ex: abcde12345
+};
+
+var CONSENT_KEY = 'em_lgpd_consent';
+
+function loadMetaPixel(id) {
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', id);
+  fbq('track', 'PageView');
+}
+
+function loadGTM(id) {
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',id);
+}
+
+function loadClarity(id) {
+  (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+  t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script',id);
+}
+
+function loadAllTrackers() {
+  loadMetaPixel(TRACKING.metaPixelId);
+  loadGTM(TRACKING.gtmId);
+  loadClarity(TRACKING.clarityId);
+}
+
+function initConsent() {
+  var consent = localStorage.getItem(CONSENT_KEY);
+  if (consent === 'accepted') { loadAllTrackers(); return; }
+  if (consent === 'rejected') return;
+  document.getElementById('cookie-banner').style.display = 'flex';
+}
+
+document.getElementById('cookie-accept').addEventListener('click', function () {
+  localStorage.setItem(CONSENT_KEY, 'accepted');
+  document.getElementById('cookie-banner').style.display = 'none';
+  loadAllTrackers();
+});
+document.getElementById('cookie-reject').addEventListener('click', function () {
+  localStorage.setItem(CONSENT_KEY, 'rejected');
+  document.getElementById('cookie-banner').style.display = 'none';
+});
+
+initConsent();
+</script>
 
 <script>
 (function () {

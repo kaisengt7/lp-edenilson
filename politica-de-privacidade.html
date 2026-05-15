@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Política de Privacidade | Edenilson Mendes</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" type="image/png" href="assets/logo-azul-branco.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --em-orange: #F89838;
+    --ink-1000: #0A0A0C;
+    --ink-900:  #141418;
+    --ink-800:  #1F1F25;
+    --ink-600:  #44444F;
+    --ink-400:  #94949F;
+    --ink-300:  #C2C2CB;
+    --ink-200:  #E1E1E7;
+    --ink-50:   #F7F7F9;
+    --white:    #FFFFFF;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body:    'Manrope', sans-serif;
+    --font-mono:    'JetBrains Mono', monospace;
+    --r-md: 10px;
+    --r-xl: 16px;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-600);
+    background: var(--white);
+  }
+
+  /* NAV */
+  .doc-nav {
+    background: var(--ink-1000);
+    padding: 16px 24px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .doc-nav a {
+    color: var(--ink-300); text-decoration: none; font-size: 14px;
+    display: flex; align-items: center; gap: 8px;
+    transition: color .2s;
+  }
+  .doc-nav a:hover { color: var(--white); }
+  .doc-nav a svg { width: 16px; height: 16px; flex: none; }
+  .doc-nav .sep { color: var(--ink-600); }
+  .doc-nav .current { color: var(--white); font-weight: 600; font-size: 14px; }
+
+  /* HERO */
+  .doc-hero {
+    background: var(--ink-1000);
+    padding: 48px 24px 56px;
+    border-bottom: 1px solid var(--ink-800);
+  }
+  .doc-hero .eyebrow {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--em-orange); margin-bottom: 16px;
+  }
+  .doc-hero h1 {
+    font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.5rem);
+    color: var(--white); line-height: .95; margin-bottom: 20px;
+  }
+  .doc-hero p { color: var(--ink-400); font-size: 14px; }
+
+  /* BODY */
+  .doc-body {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 56px 24px 80px;
+  }
+
+  .doc-section { margin-bottom: 48px; }
+  .doc-section h2 {
+    font-family: var(--font-body); font-size: 1.2rem; font-weight: 800;
+    color: var(--ink-1000); margin-bottom: 16px;
+    padding-bottom: 12px; border-bottom: 2px solid var(--ink-200);
+  }
+  .doc-section h3 {
+    font-size: 1rem; font-weight: 700; color: var(--ink-1000);
+    margin: 24px 0 8px;
+  }
+  .doc-section p { margin-bottom: 12px; font-size: 15px; }
+  .doc-section ul, .doc-section ol {
+    padding-left: 20px; margin-bottom: 12px;
+  }
+  .doc-section li { font-size: 15px; margin-bottom: 6px; }
+  .doc-section strong { color: var(--ink-1000); font-weight: 700; }
+  .doc-section a { color: var(--em-orange); }
+  .doc-section a:hover { text-decoration: underline; }
+
+  .info-box {
+    background: var(--ink-50); border-radius: var(--r-md);
+    border-left: 3px solid var(--em-orange);
+    padding: 16px 20px; margin: 20px 0;
+  }
+  .info-box p { font-size: 14px; margin: 0; }
+
+  .rights-grid {
+    display: grid; grid-template-columns: 1fr;
+    gap: 12px; margin-top: 16px;
+  }
+  @media (min-width: 600px) { .rights-grid { grid-template-columns: 1fr 1fr; } }
+  .right-item {
+    background: var(--ink-50); border-radius: var(--r-md);
+    padding: 14px 16px;
+  }
+  .right-item strong { display: block; font-size: 14px; color: var(--ink-1000); margin-bottom: 4px; }
+  .right-item span { font-size: 13px; color: var(--ink-600); }
+
+  /* FOOTER */
+  .doc-footer {
+    background: var(--ink-1000); padding: 32px 24px;
+    text-align: center; color: var(--ink-500); font-size: 13px;
+  }
+  .doc-footer a { color: var(--em-orange); text-decoration: none; }
+  .doc-footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<nav class="doc-nav">
+  <a href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Voltar ao site
+  </a>
+  <span class="sep">·</span>
+  <span class="current">Política de Privacidade</span>
+</nav>
+
+<div class="doc-hero">
+  <div style="max-width: 780px; margin: 0 auto;">
+    <p class="eyebrow">Edenilson Mendes · Documentos Legais</p>
+    <h1>Política de Privacidade</h1>
+    <p>Última atualização: maio de 2026 &nbsp;·&nbsp; LGPD – Lei nº 13.709/2018</p>
+  </div>
+</div>
+
+<div class="doc-body">
+
+  <div class="doc-section">
+    <h2>1. Identificação do Controlador</h2>
+    <p>
+      Esta Política de Privacidade se aplica ao site e às atividades de
+      <strong>Impulsa Solutions Em Saúde</strong> (nome fantasia: Agilite Gestão Saúde), inscrita no CNPJ sob o nº <strong>62.584.820/0001-25</strong>,
+      doravante denominada <strong>"Edenilson Mendes"</strong>, responsável pelo tratamento
+      dos dados pessoais coletados neste site.
+    </p>
+    <p>
+      Para exercer seus direitos ou entrar em contato com nosso encarregado de dados (DPO),
+      utilize o e-mail: <a href="mailto:contato@edenilsonmendes.com.br">contato@edenilsonmendes.com.br</a>.
+    </p>
+  </div>
+
+  <div class="doc-section">
+    <h2>2. Dados Pessoais Coletados</h2>
+    <p>Coletamos os seguintes dados de acordo com a interação do usuário com nosso site:</p>
+
+    <h3>2.1 Dados fornecidos diretamente pelo usuário (formulário de contato)</h3>
+    <ul>
+      <li>Nome completo</li>
+      <li>Número de WhatsApp</li>
+      <li>Nome da clínica ou empresa</li>
+      <li>Faturamento mensal aproximado (faixa)</li>
+    </ul>
+
+    <h3>2.2 Dados coletados automaticamente</h3>
+    <ul>
+      <li>Endereço IP e dados de geolocalização aproximada</li>
+      <li>Tipo de dispositivo, sistema operacional e navegador</li>
+      <li>Páginas visitadas, tempo de permanência e origem do acesso</li>
+      <li>Dados de comportamento na página (cliques, rolagem, gravações de sessão)</li>
+      <li>Cookies de publicidade e análise (ver seção 7)</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <h2>3. Finalidade do Tratamento</h2>
+    <p>Os dados coletados são utilizados exclusivamente para as seguintes finalidades:</p>
+    <ul>
+      <li><strong>Contato comercial:</strong> entrar em contato via WhatsApp para apresentar serviços de consultoria e mentoria em credenciamento.</li>
+      <li><strong>Qualificação de leads:</strong> avaliar o perfil do potencial cliente e personalizar a abordagem comercial.</li>
+      <li><strong>Análise e melhoria do site:</strong> entender como os usuários interagem com o site para melhorar a experiência.</li>
+      <li><strong>Publicidade:</strong> veicular anúncios relevantes em plataformas como Facebook, Instagram e Google, com base em interesses e comportamentos.</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <h2>4. Base Legal para o Tratamento (Art. 7º da LGPD)</h2>
+    <ul>
+      <li><strong>Consentimento (art. 7º, I):</strong> para envio de comunicações comerciais via WhatsApp e para uso de cookies não essenciais.</li>
+      <li><strong>Legítimo interesse (art. 7º, IX):</strong> para análise de desempenho do site e segurança da informação.</li>
+      <li><strong>Execução de contrato (art. 7º, V):</strong> quando há relação contratual de prestação de serviços.</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <h2>5. Compartilhamento de Dados com Terceiros</h2>
+    <p>Os dados coletados podem ser compartilhados com os seguintes parceiros tecnológicos, exclusivamente para as finalidades descritas nesta política:</p>
+
+    <h3>Meta Platforms (Facebook / Instagram)</h3>
+    <p>Utilizamos o <strong>Meta Pixel</strong> para mensuração de conversões e veiculação de anúncios personalizados. Os dados são tratados conforme a <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Política de Privacidade da Meta</a>.</p>
+
+    <h3>Google LLC</h3>
+    <p>Utilizamos o <strong>Google Tag Manager</strong> e ferramentas associadas (Google Analytics) para análise de tráfego e desempenho. Os dados são tratados conforme a <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Privacidade do Google</a>.</p>
+
+    <h3>Microsoft (Clarity)</h3>
+    <p>Utilizamos o <strong>Microsoft Clarity</strong> para análise de comportamento de navegação, incluindo mapas de calor e gravação de sessões anônimas. Os dados são tratados conforme a <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener">Declaração de Privacidade da Microsoft</a>.</p>
+
+    <div class="info-box">
+      <p><strong>Importante:</strong> nenhum dado pessoal é vendido ou compartilhado com terceiros para fins comerciais próprios dessas empresas. O compartilhamento ocorre exclusivamente para prestação dos serviços acima descritos.</p>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2>6. Armazenamento, Segurança e Retenção</h2>
+    <p>Os dados coletados pelo formulário são armazenados em sistemas protegidos com acesso restrito. Adotamos medidas técnicas e organizacionais para proteger as informações contra acesso não autorizado, destruição, perda ou alteração.</p>
+    <p>Os dados são mantidos pelo tempo necessário para cumprir a finalidade para a qual foram coletados ou conforme exigido por lei, respeitando os seguintes prazos:</p>
+    <ul>
+      <li><strong>Dados de formulário (leads):</strong> mantidos por até 5 anos após o último contato ou enquanto houver relação comercial.</li>
+      <li><strong>Dados de cookies analíticos:</strong> retidos conforme a política de cada plataforma (ver seção 5).</li>
+      <li><strong>Dados de clientes contratantes:</strong> pelo prazo mínimo exigido pela legislação fiscal e trabalhista aplicável.</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <h2>7. Cookies e Tecnologias de Rastreamento</h2>
+    <p>Este site utiliza cookies e tecnologias similares. Você pode gerenciar suas preferências no banner de cookies exibido na primeira visita.</p>
+
+    <h3>Tipos de cookies utilizados</h3>
+    <ul>
+      <li><strong>Cookies essenciais:</strong> necessários para o funcionamento básico do site. Não podem ser desativados.</li>
+      <li><strong>Cookies analíticos:</strong> coletam informações sobre como os visitantes usam o site (Google Analytics, Microsoft Clarity). Ativados somente com consentimento.</li>
+      <li><strong>Cookies de publicidade:</strong> usados para veicular anúncios personalizados (Meta Pixel). Ativados somente com consentimento.</li>
+    </ul>
+    <p>Para revogar seu consentimento, limpe os cookies do seu navegador e recarregue a página. O banner de preferências será exibido novamente.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>8. Seus Direitos como Titular (Art. 18 da LGPD)</h2>
+    <p>Você tem os seguintes direitos em relação aos seus dados pessoais. Para exercê-los, entre em contato pelo e-mail <a href="mailto:contato@edenilsonmendes.com.br">contato@edenilsonmendes.com.br</a>:</p>
+
+    <div class="rights-grid">
+      <div class="right-item">
+        <strong>Confirmação e Acesso</strong>
+        <span>Saber se tratamos seus dados e obter uma cópia deles.</span>
+      </div>
+      <div class="right-item">
+        <strong>Correção</strong>
+        <span>Corrigir dados incompletos, inexatos ou desatualizados.</span>
+      </div>
+      <div class="right-item">
+        <strong>Anonimização ou Exclusão</strong>
+        <span>Solicitar a exclusão de dados desnecessários ou tratados em desconformidade.</span>
+      </div>
+      <div class="right-item">
+        <strong>Portabilidade</strong>
+        <span>Receber seus dados em formato estruturado e interoperável.</span>
+      </div>
+      <div class="right-item">
+        <strong>Revogação do Consentimento</strong>
+        <span>Retirar consentimento a qualquer momento, sem prejuízo ao tratamento anterior.</span>
+      </div>
+      <div class="right-item">
+        <strong>Oposição</strong>
+        <span>Opor-se a tratamentos realizados com base em legítimo interesse.</span>
+      </div>
+      <div class="right-item">
+        <strong>Informação sobre Compartilhamento</strong>
+        <span>Saber com quais entidades públicas e privadas seus dados são compartilhados.</span>
+      </div>
+      <div class="right-item">
+        <strong>Petição à ANPD</strong>
+        <span>Reclamar à Autoridade Nacional de Proteção de Dados.</span>
+      </div>
+    </div>
+
+    <p style="margin-top: 16px;">Responderemos às solicitações em até <strong>15 dias úteis</strong> a partir do recebimento.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>9. Transferência Internacional de Dados</h2>
+    <p>
+      Ao utilizar ferramentas como Meta Pixel, Google Tag Manager e Microsoft Clarity, dados podem ser transferidos para servidores localizados fora do Brasil.
+      Essas transferências ocorrem com base nas garantias previstas no art. 33 da LGPD, incluindo cláusulas contratuais padrão e certificações de adequação reconhecidas.
+    </p>
+  </div>
+
+  <div class="doc-section">
+    <h2>10. Menores de Idade</h2>
+    <p>
+      Este site é destinado a profissionais de saúde e gestores de clínicas. Não coletamos dados de pessoas menores de 18 anos de forma intencional.
+      Se identificarmos que recebemos dados de menores sem o consentimento adequado, excluiremos essas informações imediatamente.
+    </p>
+  </div>
+
+  <div class="doc-section">
+    <h2>11. Alterações nesta Política</h2>
+    <p>
+      Esta Política pode ser atualizada periodicamente para refletir mudanças nas práticas de privacidade ou exigências legais.
+      A data da última atualização sempre será indicada no topo do documento. Recomendamos revisá-la periodicamente.
+    </p>
+  </div>
+
+  <div class="doc-section">
+    <h2>12. Contato e Encarregado de Dados (DPO)</h2>
+    <p>Para dúvidas, solicitações ou exercício de direitos relacionados a esta Política de Privacidade:</p>
+    <ul>
+      <li><strong>E-mail:</strong> <a href="mailto:contato@edenilsonmendes.com.br">contato@edenilsonmendes.com.br</a></li>
+      <li><strong>Responsável:</strong> Edenilson Mendes</li>
+    </ul>
+    <div class="info-box">
+      <p>Esta política é regida pela <strong>Lei nº 13.709/2018 (LGPD)</strong> e demais normas aplicáveis de proteção de dados no Brasil.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer class="doc-footer">
+  <p>
+    © 2026 · Edenilson Mendes · 62.584.820/0001-25
+    &nbsp;·&nbsp;
+    <a href="index.html">Voltar ao site</a>
+    &nbsp;·&nbsp;
+    <a href="termos-de-uso.html">Termos de Uso</a>
+  </p>
+</footer>
+
+</body>
+</html>
