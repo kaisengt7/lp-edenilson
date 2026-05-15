@@ -361,7 +361,7 @@ ul, ol { list-style: none; padding: 0; }
 .hero-bullets li { display: flex; align-items: flex-start; gap: var(--s-3); font-size: 15px; color: var(--ink-200); line-height: 1.4; }
 .hero-bullets li::before { content: "✓"; color: var(--em-orange); font-weight: 700; flex: none; font-size: 14px; margin-top: 1px; }
 .hero-cta-row { display: flex; flex-direction: column; gap: var(--s-3); }
-.hero-cta-row .btn { width: 100%; justify-content: center; }
+.hero-cta-row .btn { width: 100%; justify-content: center; white-space: normal; text-align: center; }
 .hero-flag {
   margin-top: var(--s-5);
   border-left: 3px solid var(--em-orange);
@@ -691,7 +691,7 @@ ul, ol { list-style: none; padding: 0; }
   .lp-container { padding: 0 var(--s-6); }
   .lp-s { padding: var(--s-16) 0; }
   .hero-cta-row { flex-direction: row; flex-wrap: wrap; }
-  .hero-cta-row .btn { width: auto; }
+  .hero-cta-row .btn { width: auto; white-space: nowrap; }
   .ninguem-grid { grid-template-columns: 1fr 1fr; }
   .strategy-compare { grid-template-columns: 1fr 1fr; }
   .strategy-compare .col.bad { border-bottom: none; border-right: 1px solid var(--ink-800); }
