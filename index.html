@@ -8,7 +8,8 @@
 <link rel="icon" type="image/png" href="assets/logo-laranja-branco.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
 <style>
 /* ================================================================
    DESIGN SYSTEM TOKENS — Edenilson Mendes v1.0
@@ -348,7 +349,7 @@ ul, ol { list-style: none; padding: 0; }
 #hero { background: var(--ink-1000); overflow: hidden; }
 .hero-photo-mobile {
   width: 100%; aspect-ratio: 4/3; position: relative; overflow: hidden;
-  background: url("assets/edenilson-3.png") center 15% / cover no-repeat var(--ink-800);
+  background: url("assets/edenilson-3.webp") center 15% / cover no-repeat var(--ink-800);
 }
 .hero-photo-mobile::after {
   content: ""; position: absolute; inset: 0;
@@ -736,7 +737,7 @@ ul, ol { list-style: none; padding: 0; }
     position: relative; z-index: 1;
   }
   .hero-desktop .hero-col-photo {
-    background: url("assets/edenilson-3.png") center 15% / cover no-repeat var(--ink-800);
+    background: url("assets/edenilson-3.webp") center 15% / cover no-repeat var(--ink-800);
     position: relative;
   }
   .hero-desktop .hero-col-photo::after {
@@ -1279,7 +1280,7 @@ ul, ol { list-style: none; padding: 0; }
   <div class="lp-container">
     <div class="sobre-inner">
       <div data-anim>
-        <img src="assets/Imagem 2 Edenilson editada.png" alt="Edenilson Mendes" class="sobre-photo" loading="lazy" style="transform: scaleX(-1);" />
+        <img src="assets/Imagem 2 Edenilson editada.webp" alt="Edenilson Mendes" class="sobre-photo" loading="lazy" style="transform: scaleX(-1);" />
         <div class="sobre-stats">
           <div class="sobre-stat">
             <div class="num" data-count="11" data-prefix="+" data-suffix="">+11</div>
@@ -1489,7 +1490,7 @@ ul, ol { list-style: none; padding: 0; }
     <div class="top">
       <div class="brand-block">
         <div style="display:flex; align-items:center; gap:var(--s-3); margin-bottom:var(--s-3);">
-          <img src="assets/logo-laranja-branco.png" alt="EM" style="height:40px; width:auto;" />
+          <img src="assets/logo-laranja-branco.webp" alt="EM" style="height:40px; width:auto;" />
           <div class="brand-name">Edenilson Mendes</div>
         </div>
         <p>Consultoria e mentoria em credenciamento, negociação e gestão de planos de saúde para clínicas e hospitais.</p>
