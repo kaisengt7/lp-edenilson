@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Edenilson Mendes | Credenciamento Estratégico para Clínicas</title>
-<meta name="description" content="Destrave e aumente o faturamento da sua clínica com planos de saúde, sem depender de tentativa e erro. Mentoria B2B com Edenilson Mendes." />
+<meta name="description" content="Destrave e aumente a lucratividade da sua clínica com planos de saúde, sem depender de tentativa e erro. Mentoria B2B com Edenilson Mendes." />
 <link rel="icon" type="image/png" href="assets/logo-laranja-branco.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -575,7 +575,22 @@ ul, ol { list-style: none; padding: 0; }
 /* ---- SOBRE ---- */
 #sobre { background: var(--ink-1000); }
 .sobre-inner { display: grid; grid-template-columns: 1fr; gap: var(--s-8); }
-.sobre-photo { width: 100%; border-radius: var(--r-xl); display: block; }
+.sobre-photo-wrap {
+  position: relative;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+}
+.sobre-photo-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 65% 55% at 50% 28%, rgba(248,152,56,.16), transparent 65%),
+    linear-gradient(160deg, var(--ink-700), var(--ink-800) 55%, var(--ink-900));
+}
+.sobre-photo { position: relative; width: 100%; display: block; }
 .sobre-stats { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: var(--s-5); border-top: 1px solid var(--ink-800); }
 .sobre-stat { padding: var(--s-5) var(--s-3); text-align: center; }
 .sobre-stat + .sobre-stat { border-left: 1px solid var(--ink-800); }
@@ -818,7 +833,7 @@ ul, ol { list-style: none; padding: 0; }
   <div class="hero-photo-mobile"></div>
   <div class="hero-copy lp-container">
     <h1 class="h1" data-anim data-delay="1">
-      Destrave e aumente o faturamento da sua clínica com planos de saúde,
+      Destrave e aumente a lucratividade da sua clínica com planos de saúde,
       sem depender de <span class="hl">tentativa e erro</span>.
     </h1>
     <p class="lead" data-anim data-delay="2">
@@ -841,7 +856,7 @@ ul, ol { list-style: none; padding: 0; }
   <div class="hero-desktop">
     <div class="hero-col-copy lp-container" style="max-width: none; padding-left: clamp(2rem, 5vw, 5rem);">
       <h1 class="h1" style="color:var(--white); margin: var(--s-2) 0; line-height: 1.22;">
-        Destrave e aumente o faturamento da sua clínica com planos de saúde,
+        Destrave e aumente a lucratividade da sua clínica com planos de saúde,
         sem depender de <span class="hl">tentativa e erro</span>.
       </h1>
       <p class="lead" style="color:var(--ink-300); max-width: 520px;">
@@ -871,8 +886,8 @@ ul, ol { list-style: none; padding: 0; }
   <div class="lp-container">
     <div class="lp-sh" data-anim>
       <h2 class="h2" style="color:var(--white); margin-top:var(--s-2);">
-        O problema não é o plano de saúde.<br/>
-        É como você <span class="hl">entra no jogo</span>.
+        O problema não é a negativa<br/>
+        ou falta de <span class="hl">retorno do plano de saúde</span>.
       </h2>
     </div>
     <div class="problema-inner">
@@ -885,7 +900,7 @@ ul, ol { list-style: none; padding: 0; }
           </li>
           <li class="belief-item">
             <span class="belief-x">✕</span>
-            <span class="belief-text"><strong>O credenciamento é burocrático demais</strong>, e o tempo gasto nunca compensa o retorno.</span>
+            <span class="belief-text"><strong>O credenciamento é burocrático demais</strong>, a demora de meses a fio faz parecer que o tempo gasto nunca compensa o retorno.</span>
           </li>
           <li class="belief-item">
             <span class="belief-x">✕</span>
@@ -895,7 +910,7 @@ ul, ol { list-style: none; padding: 0; }
       </div>
       <div class="problema-closer" data-anim data-delay="2">
         <p>Mas isso não explica por que seus concorrentes diretos estão <strong>crescendo com esse tipo de estratégia</strong>.</p>
-        <p>A diferença não está no mercado. Está em entender como o sistema funciona por trás, e usar isso a seu favor.</p>
+        <p>A diferença não está no mercado. Grupos como o Hospital Albert Einstein atendem por convênio — se fosse ruim, por que eles fariam isso? Eles fazem o processo com especialistas que entendem do assunto, assim como o Edenilson vai te ajudar.</p>
       </div>
     </div>
   </div>
@@ -910,6 +925,9 @@ ul, ol { list-style: none; padding: 0; }
       <h2 class="h2" style="color:var(--white); margin-top:var(--s-2);">
         O que ninguém te explica<br/>sobre <span class="hl">credenciamento</span>
       </h2>
+      <p class="lead" style="color:var(--ink-400); margin-top:var(--s-4); font-size:1rem;">
+        Já se perguntou o que levaria uma operadora a te credenciar com tantas outras clínicas que já fazem o que você faz?
+      </p>
     </div>
     <div class="ninguem-grid">
       <div class="card dark feature" data-anim data-delay="1">
@@ -918,7 +936,7 @@ ul, ol { list-style: none; padding: 0; }
         </div>
         <div>
           <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:var(--ink-500);text-transform:uppercase;margin-bottom:var(--s-2);">01 · Perfil avaliado antes do papel</div>
-          <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;color:var(--white);text-transform:none;line-height:1.3;margin-bottom:var(--s-3);">A operadora decide antes de você enviar um documento</h5>
+          <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;color:var(--white);text-transform:none;line-height:1.3;margin-bottom:var(--s-3);">A operadora decide antes de você enviar um pedido</h5>
           <p style="font-size:14px;color:var(--ink-300);line-height:1.6;">Operadoras avaliam o perfil da clínica antes mesmo da análise formal. Posicionamento, especialidades e localização contam mais do que a documentação em si.</p>
         </div>
       </div>
@@ -929,7 +947,7 @@ ul, ol { list-style: none; padding: 0; }
         <div>
           <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:var(--ink-500);text-transform:uppercase;margin-bottom:var(--s-2);">02 · Posicionamento muda a aprovação</div>
           <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;color:var(--white);text-transform:none;line-height:1.3;margin-bottom:var(--s-3);">Como você se apresenta muda tudo</h5>
-          <p style="font-size:14px;color:var(--ink-300);line-height:1.6;">A forma como você se posiciona impacta diretamente na decisão de aprovação e nos valores negociados.</p>
+          <p style="font-size:14px;color:var(--ink-300);line-height:1.6;">A forma como você se posiciona impacta diretamente na decisão de aprovação e nos valores negociados. O mercado muda o tempo todo, e ter o timing certo nesse posicionamento separa quem avança rápido de quem fica travado.</p>
         </div>
       </div>
       <div class="card dark feature" data-anim data-delay="3">
@@ -948,19 +966,19 @@ ul, ol { list-style: none; padding: 0; }
       <div class="col bad">
         <div class="col-head">Sem direcionamento</div>
         <ul>
-          <li>8 meses ou mais para ser aprovada</li>
-          <li>Aprovação em condições piores que o mercado</li>
-          <li>Retrabalho constante de documentação</li>
-          <li>Desgaste com a equipe da operadora</li>
+          <li>Mais de um ano para ser aprovada</li>
+          <li>Condições próximas às da tabela do SUS</li>
+          <li>Travado pela falta de domínio dos documentos e critérios exigidos</li>
+          <li>Sem contato e sem retorno da operadora</li>
         </ul>
       </div>
       <div class="col good">
         <div class="col-head">Com estratégia</div>
         <ul>
-          <li>Poucas semanas até a aprovação</li>
-          <li>Contratos mais vantajosos desde o início</li>
-          <li>Processo limpo, sem retrabalho</li>
-          <li>Relacionamento sólido com a operadora</li>
+          <li>Processo direto e objetivo com quem conhece o caminho</li>
+          <li>Contratos lucrativos</li>
+          <li>Processo de poucos meses (em média, 6 meses), não anos</li>
+          <li>Contato direto com analistas da operadora</li>
         </ul>
       </div>
     </div>
@@ -978,9 +996,9 @@ ul, ol { list-style: none; padding: 0; }
 <section id="dores" class="lp-s">
   <div class="lp-container">
     <div class="lp-sh lp-sh--center" data-anim style="text-align:center; margin-left:auto; margin-right:auto; max-width:640px;">
-      <h2 class="h2" style="color:var(--white); margin-top:var(--s-2);">Enquanto isso, o prejuízo é silencioso</h2>
+      <h2 class="h2" style="color:var(--white); margin-top:var(--s-2);">Enquanto isso, oportunidades de mercado passam direto pela sua clínica</h2>
       <p class="lead" style="color:var(--ink-400); margin-top:var(--s-4); font-size:1rem;">
-        Você pode estar vivendo isso agora, e a sensação de que o problema está no mercado, quando na verdade está na estratégia.
+        Se aventurar num processo sem conhecimento tem um custo real: você não sabe onde está pisando, e isso sai caro.
       </p>
     </div>
     <ul class="pain-list" data-anim>
@@ -990,19 +1008,19 @@ ul, ol { list-style: none; padding: 0; }
       </li>
       <li class="pain-item">
         <span class="pain-num">02</span>
-        <span class="pain-text">Clínica cheia, mas com baixo lucro</span>
+        <span class="pain-text">Clínica vazia, com agenda disponível, e sem viabilizar a demanda</span>
       </li>
       <li class="pain-item">
         <span class="pain-num">03</span>
-        <span class="pain-text">Contratos antigos com valores defasados</span>
+        <span class="pain-text">Dependência exclusiva do atendimento particular</span>
       </li>
       <li class="pain-item">
         <span class="pain-num">04</span>
-        <span class="pain-text">Dependência de atendimentos pouco rentáveis</span>
+        <span class="pain-text">O beneficiário procura sua clínica querendo atendimento, e você não sabe o que fazer</span>
       </li>
     </ul>
     <div class="dores-closer" data-anim>
-      <p>Enquanto você adia a resolução, seu concorrente está <span class="hl">melhorando contratos</span> e lucrando.</p>
+      <p>Enquanto você adia a resolução, seu concorrente está <span class="hl">aproveitando essas oportunidades</span> e lucrando.</p>
     </div>
   </div>
 </section>
@@ -1018,10 +1036,10 @@ ul, ol { list-style: none; padding: 0; }
           Quando você entende o cenário, o <span style="color:var(--em-orange);">jogo muda</span>
         </h2>
         <p class="lead" style="margin-top:var(--s-4);">
-          Com o método certo, é possível reduzir dramaticamente o tempo, o custo e o risco de cada etapa do credenciamento.
+          Com o método certo, é possível reduzir o tempo, o custo e o risco de cada etapa do credenciamento.
         </p>
         <div class="transf-note" style="margin-top:var(--s-6);">
-          <strong>Não é sobre entrar nos planos.</strong> É sobre entrar com estratégia, construindo uma estrutura que cresce com você.
+          <strong>Não é sobre credenciar por credenciar planos de saúde.</strong> É sobre construir uma estrutura sólida, a curto e longo prazo.
         </div>
       </div>
       <div class="transf-steps" data-anim data-delay="1">
@@ -1036,14 +1054,14 @@ ul, ol { list-style: none; padding: 0; }
           <span class="transf-num">02</span>
           <div>
             <div class="transf-title">Evitar erros que travam processos</div>
-            <p class="transf-desc">Os erros mais comuns são invisíveis para quem não conhece o sistema por dentro.</p>
+            <p class="transf-desc">Os erros mais comuns são invisíveis para quem não conhece o sistema por dentro — corrigi-los evita atrasos e acelera a negociação.</p>
           </div>
         </div>
         <div class="transf-step">
           <span class="transf-num">03</span>
           <div>
-            <div class="transf-title">Escolher operadoras com maior retorno</div>
-            <p class="transf-desc">Nem toda operadora vale o esforço. Priorizar as certas é o que define rentabilidade no longo prazo.</p>
+            <div class="transf-title">Atender plano de saúde é tão lucrativo quanto particular</div>
+            <p class="transf-desc">Escolher as operadoras certas e negociar bem faz o convênio render tanto quanto — ou mais — que o atendimento particular.</p>
           </div>
         </div>
         <div class="transf-step">
@@ -1084,14 +1102,14 @@ ul, ol { list-style: none; padding: 0; }
         <span class="mapa-letter-big">M</span>
         <span class="step-label">01 · Mapeamento</span>
         <div class="mapa-title">Mapeamento</div>
-        <p>Diagnóstico do cenário atual da clínica: contratos vigentes, operadoras atendidas, volume e lacunas de faturamento. Em uma reunião, você sabe onde está perdendo dinheiro.</p>
+        <p>Diagnóstico do cenário atual da clínica: se já atende convênios, contratos vigentes e lacunas de faturamento; se está começando do zero, o ponto de partida e as oportunidades disponíveis. Em uma reunião, você sabe exatamente onde está e onde pode chegar.</p>
       </div>
       <div class="mapa-card" data-anim data-delay="2">
         <div class="mapa-node"></div>
         <span class="mapa-letter-big">A</span>
         <span class="step-label">02 · Análise</span>
         <div class="mapa-title">Análise</div>
-        <p>Identificação das operadoras ideais para o perfil do seu negócio. Nem toda operadora vale o esforço. A análise define quais priorizar e em que ordem.</p>
+        <p>Análise do perfil da sua clínica frente ao que as operadoras estão buscando e ao momento do mercado. Nem toda operadora vale o esforço — a análise define quais priorizar e em que ordem.</p>
       </div>
       <div class="mapa-card" data-anim data-delay="3">
         <div class="mapa-node"></div>
@@ -1109,7 +1127,7 @@ ul, ol { list-style: none; padding: 0; }
       </div>
     </div>
     <div class="mapa-closer" data-anim>
-      <p>Esse roteiro permite sair do improviso e atravessar com clareza cada etapa, do diagnóstico à assinatura do contrato.</p>
+      <p>Esse roteiro conta com modelos de documentos e de negociação prontos, para sair do improviso e atravessar com clareza cada etapa, do diagnóstico à assinatura do contrato.</p>
     </div>
   </div>
 </section>
@@ -1252,21 +1270,21 @@ ul, ol { list-style: none; padding: 0; }
         <div class="icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
         </div>
-        <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;text-transform:none;line-height:1.3;">Foco em negociação e rentabilidade</h5>
-        <p style="color:var(--ink-600);font-size:14px;line-height:1.6;">Aprovação é o começo. O objetivo é lucro. Cada contrato é analisado com foco em margem, não apenas em volume de atendimento.</p>
+        <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;text-transform:none;line-height:1.3;">Foco em negociação lucrativa</h5>
+        <p style="color:var(--ink-600);font-size:14px;line-height:1.6;">Cada contrato é analisado com foco em lucro, não apenas em assinatura.</p>
       </div>
       <div class="card feature" data-anim data-delay="3">
         <div class="icon blue">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
         </div>
-        <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;text-transform:none;line-height:1.3;">Direcionamento por casos reais</h5>
-        <p style="color:var(--ink-600);font-size:14px;line-height:1.6;">Decisões orientadas por dados e histórico, não por achismo. O método foi validado em dezenas de casos reais, de clínicas individuais a hospitais.</p>
+        <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;text-transform:none;line-height:1.3;">Direcionamento com base em casos de sucesso reais</h5>
+        <p style="color:var(--ink-600);font-size:14px;line-height:1.6;">Decisões orientadas por dados e experiência, não por jogar na sorte. O método foi validado em centenas de casos reais, de clínicas, hospitais e dos mais variados estabelecimentos de saúde privados.</p>
       </div>
       <div class="card feature" data-anim data-delay="4">
         <div class="icon blue">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
-        <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;text-transform:none;line-height:1.3;">Visão de crescimento</h5>
+        <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;text-transform:none;line-height:1.3;">Visão de escala</h5>
         <p style="color:var(--ink-600);font-size:14px;line-height:1.6;">Estruturar a clínica para escalar com previsibilidade, não apenas resolver o problema imediato e continuar dependente de improviso.</p>
       </div>
     </div>
@@ -1280,7 +1298,9 @@ ul, ol { list-style: none; padding: 0; }
   <div class="lp-container">
     <div class="sobre-inner">
       <div data-anim>
-        <img src="assets/Imagem 2 Edenilson editada.webp" alt="Edenilson Mendes" class="sobre-photo" loading="lazy" style="transform: scaleX(-1);" />
+        <div class="sobre-photo-wrap">
+          <img src="assets/Imagem 2 Edenilson editada.webp" alt="Edenilson Mendes" class="sobre-photo" loading="lazy" style="transform: scaleX(-1);" />
+        </div>
         <div class="sobre-stats">
           <div class="sobre-stat">
             <div class="num" data-count="11" data-prefix="+" data-suffix="">+11</div>
@@ -1298,7 +1318,7 @@ ul, ol { list-style: none; padding: 0; }
           Quem vai te guiar<br/>nesse <span class="hl">processo</span>
         </h2>
         <p style="color:var(--ink-300); font-size:1rem; line-height:1.7; margin-bottom:var(--s-4);">
-          Edenilson Mendes atua há mais de <strong style="color:var(--white);">11 anos</strong> com gestão, credenciamento e negociação na área da saúde. Já participou de dezenas de processos reais, lidando diretamente com operadoras e prestadores em todo o Brasil.
+          Edenilson Mendes atua há mais de <strong style="color:var(--white);">11 anos</strong> com credenciamento e negociação com operadoras de planos de saúde, participando diretamente de centenas de negociações reais com os mais diversos serviços de saúde do Brasil.
         </p>
         <p style="color:var(--ink-400); font-size:15px; line-height:1.7; margin-bottom:var(--s-6);">
           Hoje, ajuda clínicas, hospitais e consultórios a aumentar o faturamento com planos de saúde de forma estruturada, com foco em resultado prático, não em teoria.
@@ -1324,6 +1344,9 @@ ul, ol { list-style: none; padding: 0; }
     <div class="lp-sh" data-anim>
       <h2 class="h2" style="color:var(--ink-900); margin-top:var(--s-2);">Para quem isso faz sentido</h2>
     </div>
+    <div class="note" style="margin-bottom:var(--s-8);">
+      O plano de saúde não compete com o seu particular — ele complementa sua agenda. É uma nova fonte de receita.
+    </div>
     <div class="qual-grid">
       <div class="for-grid">
         <div class="card feature" data-anim data-delay="1">
@@ -1331,40 +1354,50 @@ ul, ol { list-style: none; padding: 0; }
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
           </div>
           <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;text-transform:none;line-height:1.3;">Clínicas querendo começar</h5>
-          <p style="color:var(--ink-600);font-size:14px;">Que querem iniciar atendimento por planos de saúde sem perder tempo com erros evitáveis.</p>
+          <p style="color:var(--ink-600);font-size:14px;">Que querem iniciar o processo com os planos de saúde sem perder tempo com erros evitáveis, mas não sabem por onde pedir, nem que documentos vão precisar.</p>
         </div>
         <div class="card feature" data-anim data-delay="2">
           <div class="icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
           </div>
           <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;text-transform:none;line-height:1.3;">Credenciamento travado</h5>
-          <p style="color:var(--ink-600);font-size:14px;">Gestores com processos parados há meses que precisam de direcionamento para destravar.</p>
+          <p style="color:var(--ink-600);font-size:14px;">Clínicas e serviços com processos parados há meses que precisam de direcionamento para destravar.</p>
         </div>
         <div class="card feature" data-anim data-delay="3">
           <div class="icon blue">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
           </div>
           <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;text-transform:none;line-height:1.3;">Baixo retorno em convênios</h5>
-          <p style="color:var(--ink-600);font-size:14px;">Negócios que atendem planos mas com margens insatisfatórias e contratos nunca renegociados.</p>
+          <p style="color:var(--ink-600);font-size:14px;">Negócios que atendem planos de saúde de forma amadora, com margens insatisfatórias e contratos nunca renegociados.</p>
         </div>
         <div class="card feature" data-anim data-delay="4">
           <div class="icon blue">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20M5 9l7-7 7 7"/></svg>
           </div>
           <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;text-transform:none;line-height:1.3;">Crescimento com previsibilidade</h5>
-          <p style="color:var(--ink-600);font-size:14px;">Você sente que sua clínica poderia faturar mais e quer construir isso de forma estruturada.</p>
+          <p style="color:var(--ink-600);font-size:14px;">Não é só sobre volume: sente que sua clínica poderia faturar mais, pois tem espaço na agenda, e quer construir isso de forma estruturada e rentável.</p>
+        </div>
+        <div class="card feature" data-anim data-delay="4">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3M8 21H5a2 2 0 0 1-2-2v-3m18 0v3a2 2 0 0 1-2 2h-3"/></svg>
+          </div>
+          <h5 style="font-family:var(--font-body);font-weight:800;font-size:1.05rem;text-transform:none;line-height:1.3;">Escala com credenciamentos</h5>
+          <p style="color:var(--ink-600);font-size:14px;">Já atende alguns planos de saúde, mas o credenciamento atual não contempla tudo que realiza — e por isso quer credenciar mais.</p>
         </div>
       </div>
       <div class="not-for-card" data-anim data-delay="2">
         <h5>Este método não é para você se:</h5>
         <ul class="not-for-list">
-          <li>Você busca resultados do dia para a noite sem processo</li>
+          <li>Busca resultados do dia para a noite sem uma estratégia clara</li>
           <li>Não tem intenção de implementar o que for indicado</li>
-          <li>Quer apenas validar uma decisão já tomada</li>
-          <li>Prefere continuar no improviso a ter um método</li>
+          <li>Prefere continuar no improviso a ter um método com um especialista no assunto</li>
+          <li>Acredita que sabe o suficiente e não precisa de ajuda</li>
+          <li>Gosta de arriscar na sorte e pretende seguir sozinho</li>
+          <li>Julga que atender planos de saúde não vale a pena financeiramente</li>
+          <li>A demanda atual já é satisfatória, não quer aumentar os ganhos e escalar</li>
         </ul>
-        <div style="margin-top:var(--s-5); padding-top:var(--s-4); border-top:1px solid var(--ink-800);">
-          <p style="font-size:13px; color:var(--ink-500); line-height:1.6;">Se você chegou até aqui, provavelmente está no grupo certo. O próximo passo é simples.</p>
+        <div style="margin-top:var(--s-6); padding:var(--s-4) var(--s-5); background:var(--em-orange-50); border-left:3px solid var(--em-orange); border-radius:0 var(--r-md) var(--r-md) 0;">
+          <p style="font-size:15px; font-weight:700; color:var(--ink-900); line-height:1.5;">Se você chegou até aqui, provavelmente está no grupo certo. O próximo passo é simples.</p>
         </div>
       </div>
     </div>
@@ -1378,13 +1411,16 @@ ul, ol { list-style: none; padding: 0; }
   <div class="lp-container">
     <div class="lp-sh" data-anim>
       <h2 class="h2" style="color:var(--white); margin-top:var(--s-2);">O que você precisa entender</h2>
+      <p class="lead" style="color:var(--ink-400); margin-top:var(--s-4); font-size:1rem;">
+        A maioria negocia sem saber exatamente o que está negociando — no escuro. Outros nem sabem por onde começar, e acreditam que a demora no retorno é normal.
+      </p>
     </div>
     <div class="objections-grid">
       <div class="objection-card" data-anim data-delay="1">
 <div class="obj-q">"Os planos pagam pouco"</div>
         <div class="obj-divider"></div>
         <div class="obj-answer-label">A resposta</div>
-        <p class="obj-answer">Nem sempre. O problema está em como o contrato é estruturado. Clínicas com contratos bem negociados têm margens muito superiores à média do setor.</p>
+        <p class="obj-answer">O problema está em como o contrato é estruturado. Clínicas com contratos bem negociados têm, em vários exames e procedimentos, margens muito superiores às do atendimento particular.</p>
       </div>
       <div class="objection-card" data-anim data-delay="2">
 <div class="obj-q">"Todo mundo recebe o mesmo valor"</div>
@@ -1396,13 +1432,25 @@ ul, ol { list-style: none; padding: 0; }
 <div class="obj-q">"Não vale a pena atender convênios"</div>
         <div class="obj-divider"></div>
         <div class="obj-answer-label">A resposta</div>
-        <p class="obj-answer">Então por que grandes grupos hospitalares não param de crescer com esse modelo? A questão não é o convênio. É a estratégia de entrada e gestão contratual.</p>
+        <p class="obj-answer">Então por que os grandes grupos hospitalares não param de crescer com esse modelo? A questão não é o convênio. É a estratégia de entrada e gestão contratual.</p>
       </div>
       <div class="objection-card" data-anim data-delay="4">
 <div class="obj-q">"Dá para fazer sozinho"</div>
         <div class="obj-divider"></div>
         <div class="obj-answer-label">A resposta</div>
-        <p class="obj-answer">Até dá. Mas erros nessa área custam meses de processo parado e anos de contratos defasados. O custo do improviso é muito maior do que parece no início.</p>
+        <p class="obj-answer">Até dá. Mas erros nessa área custam meses de processo parado. O custo do improviso é muito maior do que parece no início — até descobrir a rota certa, já se perderam anos nisso.</p>
+      </div>
+      <div class="objection-card" data-anim data-delay="1">
+<div class="obj-q">"Fiz o processo pelo site da operadora e estou aguardando"</div>
+        <div class="obj-divider"></div>
+        <div class="obj-answer-label">A resposta</div>
+        <p class="obj-answer">O site é um cemitério de pedidos arquivados. Mais de 95% dos processos, em especial das grandes operadoras, seguem por outro caminho — um atalho real, que leva direto à mesa do analista.</p>
+      </div>
+      <div class="objection-card" data-anim data-delay="2">
+<div class="obj-q">"Já contratei alguém para credenciar e fui enganado(a)"</div>
+        <div class="obj-divider"></div>
+        <div class="obj-answer-label">A resposta</div>
+        <p class="obj-answer">Em todas as áreas da vida existem enganadores que vendem uma facilidade que não existe. Aqui não vendemos promessas, vendemos resultados — veja os relatos de quem já trabalhou com o Edenilson.</p>
       </div>
     </div>
   </div>
