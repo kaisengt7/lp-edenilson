@@ -274,6 +274,30 @@ ul, ol { list-style: none; padding: 0; }
 .testimonial .who .name { font-family: var(--font-display); font-size: 1.2rem; letter-spacing: .02em; }
 .testimonial .who .role { font-size: 12px; color: var(--ink-400); }
 
+/* TESTIMONIAL — print de conversa (screenshot) */
+.testimonial-shot {
+  margin: 0; border-radius: var(--r-xl); overflow: hidden;
+  background: var(--ink-900); border: 1px solid var(--ink-800);
+  cursor: zoom-in; line-height: 0;
+  transition: border-color var(--t-fast), transform var(--t-fast);
+}
+.testimonial-shot:hover { border-color: var(--em-orange); transform: translateY(-2px); }
+.testimonial-shot img { display: block; width: 100%; height: auto; }
+
+/* Lightbox dos prints */
+#shot-lightbox[hidden] { display: none; }
+#shot-lightbox {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,.88);
+  display: flex; align-items: center; justify-content: center;
+  padding: var(--s-5); cursor: zoom-out;
+}
+#shot-lightbox img {
+  max-width: min(520px, 92vw); max-height: 92vh;
+  width: auto; height: auto;
+  border-radius: var(--r-lg); box-shadow: 0 24px 60px rgba(0,0,0,.6);
+}
+
 /* NOTE */
 .note {
   border-left: 3px solid var(--em-orange);
@@ -539,7 +563,8 @@ ul, ol { list-style: none; padding: 0; }
   user-select: none;
 }
 .tc-wrap:hover .tc-track { animation-play-state: paused; }
-.tc-track .testimonial { flex: none; width: clamp(260px, 80vw, 340px); }
+.tc-track .testimonial,
+.tc-track .testimonial-shot { flex: none; width: clamp(260px, 80vw, 340px); align-self: flex-start; }
 .tc-controls { display: none; }
 .tc-btn {
   width: 44px; height: 44px; border-radius: 50%;
@@ -1138,80 +1163,19 @@ ul, ol { list-style: none; padding: 0; }
 <section id="depoimentos" class="lp-s">
   <div class="lp-container">
     <div class="lp-sh" data-anim>
-      <h2 class="h2" style="color:var(--white); margin-top:var(--s-2);">Depoimentos de quem trabalhou direto com <span class="hl">Edenilson</span></h2>
+      <h2 class="h2" style="color:var(--white); margin-top:var(--s-2);">Quem já passou pela <span class="hl">mentoria</span></h2>
     </div>
     <div class="tc-wrap" data-anim>
       <div class="tc-track">
-        <div class="testimonial">
-          <p class="quote">"Edenilson trouxe uma proposta nova com resultados positivos. Buscou conhecer a unidade, os contratos, as negociações e as necessidades. Vem fazendo um trabalho diferenciado, diferente dos profissionais que atuam na mesma área."</p>
-          <div class="who">
-            <div class="avatar">LH</div>
-            <div>
-              <div class="name">Luiza Helena</div>
-              <div class="role">Diretora · Hospital Sermege</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial">
-          <p class="quote">"Edenilson demonstra forte motivação, espírito de liderança e excepcional capacidade de aprendizado. Atua de forma ágil e consciente nos momentos de pressão. É um líder nato."</p>
-          <div class="who">
-            <div class="avatar">GT</div>
-            <div>
-              <div class="name">Geanny Taveira</div>
-              <div class="role">Gestora Administrativa · Itaimagem</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial">
-          <p class="quote">"Dedicado e resiliente, abraça a causa como se fosse sua. Destaca-se pela capacidade de resolver problemas inesperados e de gerir conflitos. Recomendo sem hesitar."</p>
-          <div class="who">
-            <div class="avatar">NC</div>
-            <div>
-              <div class="name">Nailton Carmo</div>
-              <div class="role">CEO · Centro Médico Cuidar</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial">
-          <p class="quote">"Não é só um profissional de excelência, é uma pessoa que coopera e constrói relacionamentos. Sou grata em ter encontrado Edenilson em minha jornada profissional."</p>
-          <div class="who">
-            <div class="avatar">NF</div>
-            <div>
-              <div class="name">Nara Fernandes</div>
-              <div class="role">Fatura Ideal</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial">
-          <p class="quote">"Falar de Edenilson é falar de superação e perseverança. Excelente profissional, recomendo de olhos fechados pela competência e eficiência em tudo que faz."</p>
-          <div class="who">
-            <div class="avatar">JS</div>
-            <div>
-              <div class="name">Jamily Santana</div>
-              <div class="role">Gestora de RH</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial">
-          <p class="quote">"Muita desenvoltura e networking. Domínio da área comercial, persuasão e relacionamento sólido com médicos e operadoras. Um dos profissionais mais versáteis que conheço."</p>
-          <div class="who">
-            <div class="avatar">EC</div>
-            <div>
-              <div class="name">Eugênio Colonzezzi</div>
-              <div class="role">Clínica do Coração</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial">
-          <p class="quote">"Cuidava do relacionamento com convênios com grande desenvoltura e habilidade de negociação. Sempre comprometido, organizado e focado em resultado."</p>
-          <div class="who">
-            <div class="avatar">MS</div>
-            <div>
-              <div class="name">Marcelo Sodré</div>
-              <div class="role">Presidente · Grupo São Jorge</div>
-            </div>
-          </div>
-        </div>
+        <figure class="testimonial-shot">
+          <img src="assets/depoimento-1.webp" alt="Print de conversa no WhatsApp: mentorada relata que já passou por outras 2 mentorias sem sucesso e que com a mentoria de Edenilson conseguiu resolver negativas dos convênios." loading="lazy" width="1080" height="1350" />
+        </figure>
+        <figure class="testimonial-shot">
+          <img src="assets/depoimento-2.webp" alt="Print de conversa no WhatsApp: cliente relata que em aproximadamente 90 dias conseguiu respostas de convênios, negociar valores e fechar contratos." loading="lazy" width="1080" height="1350" />
+        </figure>
+        <figure class="testimonial-shot">
+          <img src="assets/depoimento-3.webp" alt="Print de conversa no WhatsApp: clínica relata que a mentoria foi fator determinante para o êxito na negociação de reajustes e revisão de valores com as operadoras." loading="lazy" width="1080" height="1350" />
+        </figure>
       </div>
     </div>
     <div class="tc-controls" data-anim>
@@ -1645,6 +1609,11 @@ document.getElementById('cookie-reject').addEventListener('click', function () {
 initConsent();
 </script>
 
+<!-- Lightbox dos prints de depoimento -->
+<div id="shot-lightbox" role="dialog" aria-modal="true" aria-label="Depoimento ampliado" hidden>
+  <img src="" alt="" />
+</div>
+
 <script>
 (function () {
   // CTA scroll to target
@@ -1666,11 +1635,48 @@ initConsent();
   }, { threshold: 0.08 });
   document.querySelectorAll('[data-anim]').forEach(function (el) { animObs.observe(el); });
 
-  // Testimonial continuous marquee — duplicate slides for seamless loop
+  // Testimonial continuous marquee — repeat slides until they fill the viewport,
+  // then duplicate the whole run so the -50% loop is seamless
   var tcTrack = document.querySelector('.tc-track');
-  if (tcTrack) {
-    Array.from(tcTrack.querySelectorAll('.testimonial')).forEach(function (s) {
-      tcTrack.appendChild(s.cloneNode(true));
+  var tcWrap  = document.querySelector('.tc-wrap');
+  if (tcTrack && tcWrap) {
+    var tcSlides = Array.from(tcTrack.querySelectorAll('.testimonial, .testimonial-shot'));
+    var setWidth = tcTrack.scrollWidth;
+    if (tcSlides.length && setWidth) {
+      // enough copies to overflow the wrapper, so no gap ever shows
+      var repeats = Math.max(1, Math.ceil(tcWrap.offsetWidth / setWidth));
+      for (var r = 1; r < repeats; r++) {
+        tcSlides.forEach(function (s) { tcTrack.appendChild(s.cloneNode(true)); });
+      }
+      // second identical half consumed by the translateX(-50%) keyframe
+      Array.from(tcTrack.querySelectorAll('.testimonial, .testimonial-shot')).forEach(function (s) {
+        tcTrack.appendChild(s.cloneNode(true));
+      });
+      // keep scroll speed constant (~62px/s) regardless of how many slides exist
+      tcTrack.style.animationDuration = Math.round(setWidth * repeats / 62) + 's';
+    }
+  }
+
+  // Lightbox for testimonial screenshots — the prints are only readable enlarged
+  var shotBox = document.getElementById('shot-lightbox');
+  if (shotBox) {
+    var shotImg = shotBox.querySelector('img');
+    function openShot(src, alt) {
+      shotImg.src = src; shotImg.alt = alt || '';
+      shotBox.hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+    function closeShot() {
+      shotBox.hidden = true; shotImg.src = '';
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('click', function (e) {
+      var fig = e.target.closest && e.target.closest('.testimonial-shot');
+      if (fig) { var i = fig.querySelector('img'); if (i) openShot(i.src, i.alt); return; }
+      if (e.target.closest && e.target.closest('#shot-lightbox')) closeShot();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !shotBox.hidden) closeShot();
     });
   }
 
@@ -1702,5 +1708,6 @@ initConsent();
   }
 })();
 </script>
+
 </body>
 </html>
