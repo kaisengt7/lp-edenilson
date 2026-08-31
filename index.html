@@ -1553,7 +1553,7 @@ ul, ol { list-style: none; padding: 0; }
 <script>
 /* ── Substitua os IDs abaixo pelos seus ── */
 var TRACKING = {
-  metaPixelId:  'SEU_META_PIXEL_ID',   // Ex: 1234567890123456
+  metaPixelId:  '659130597219654',    // Meta Pixel — Edenilson
   gtmId:        'SEU_GTM_ID',          // Ex: GTM-XXXXXXX
   clarityId:    'SEU_CLARITY_ID'       // Ex: abcde12345
 };
@@ -1583,10 +1583,14 @@ function loadClarity(id) {
   y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script',id);
 }
 
+function isConfigured(id) {
+  return id && id.indexOf('SEU_') !== 0;
+}
+
 function loadAllTrackers() {
-  loadMetaPixel(TRACKING.metaPixelId);
-  loadGTM(TRACKING.gtmId);
-  loadClarity(TRACKING.clarityId);
+  if (isConfigured(TRACKING.metaPixelId)) loadMetaPixel(TRACKING.metaPixelId);
+  if (isConfigured(TRACKING.gtmId))       loadGTM(TRACKING.gtmId);
+  if (isConfigured(TRACKING.clarityId))   loadClarity(TRACKING.clarityId);
 }
 
 function initConsent() {
