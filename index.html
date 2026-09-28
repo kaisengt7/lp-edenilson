@@ -1078,25 +1078,24 @@ ul, ol { list-style: none; padding: 0; }
 /* ---- DEPOIMENTOS ---- */
 /* ---- 18 · PROVA SOCIAL ---- */
 #depoimentos { background: var(--ink-1000); }
-/* Faixa de comentários em loop infinito — pausa com o mouse em cima */
+/* Faixa de depoimentos em loop infinito — pausa com o mouse em cima e pode ser arrastada */
 .proof-marquee {
-  overflow-x: auto; scrollbar-width: none;
+  overflow: hidden; touch-action: pan-y; cursor: grab;
+  padding: 28px 0; margin: -28px 0; /* espaço para o brilho do hover não ser cortado */
+  -webkit-user-select: none; user-select: none;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
           mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
-.proof-marquee::-webkit-scrollbar { display: none; }
-.proof-track { display: flex; width: max-content; }
+.proof-marquee.is-dragging { cursor: grabbing; }
+.proof-track { display: flex; width: max-content; will-change: transform; }
 .proof-track > * { flex: none; margin-right: 16px; align-self: flex-start; }
 .proof-track > .comment-stack { width: clamp(280px, 86vw, 400px); }
 .proof-track > .testimonial-shot { width: clamp(260px, 78vw, 320px); }
-@keyframes proofScroll { to { transform: translateX(-50%); } }
-@media (prefers-reduced-motion: no-preference) {
-  .proof-marquee { overflow: hidden; }
-  .proof-marquee.is-looping .proof-track { animation: proofScroll var(--proof-dur, 60s) linear infinite; }
-  .proof-marquee:hover .proof-track,
-  .proof-marquee:focus-within .proof-track,
-  .proof-marquee.is-held .proof-track { animation-play-state: paused; }
-}
+.proof-track > .comment-stack,
+.proof-track > .testimonial-shot { transition: border-color var(--t-fast), transform var(--t-fast), box-shadow .3s var(--ease-out); }
+.proof-track > .comment-stack:hover,
+.proof-track > .testimonial-shot:hover { border-color: var(--em-orange); box-shadow: 0 0 32px rgba(248,152,56,.28), 0 0 10px rgba(248,152,56,.18); }
+.proof-track img { -webkit-user-drag: none; }
 .dep-cta { margin-top: var(--s-10); text-align: center; }
 
 /* ---- 19 · SOBRE ---- */
@@ -3027,27 +3026,64 @@ initConsent();
     });
   });
 
-  // Prova social — faixa em loop: duplica os cards para o translateX(-50%) emendar sem salto
+  // Prova social — faixa em loop que também pode ser arrastada (mouse ou dedo).
+  // Os cards são duplicados e a posição dá a volta a cada metade da faixa, então
+  // tanto o loop automático quanto o arraste emendam sem salto.
   var marquee = document.querySelector('.proof-marquee');
-  if (marquee && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (marquee) {
     var track = marquee.querySelector('.proof-track');
     Array.from(track.children).forEach(function (card) {
       var copy = card.cloneNode(true);
       copy.setAttribute('aria-hidden', 'true');
       track.appendChild(copy);
     });
-    // velocidade constante (~75px/s) independente da largura dos cards
-    function setProofSpeed() {
-      track.style.setProperty('--proof-dur', (track.scrollWidth / 2 / 75) + 's');
+    var SPEED = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 75; // px/s
+    var offset = 0, half = 0, lastT = null;
+    var hovering = false, pressed = false, dragged = false, startX = 0, startOffset = 0, pid = null;
+    function measure() { half = track.scrollWidth / 2; }
+    function place() {
+      if (half) offset = ((offset % half) + half) % half;
+      track.style.transform = 'translate3d(' + (-offset) + 'px,0,0)';
     }
-    setProofSpeed();
-    window.addEventListener('resize', setProofSpeed);
-    window.addEventListener('load', setProofSpeed);
-    marquee.classList.add('is-looping');
-    // toque (sem hover): segurar o dedo pausa
-    marquee.addEventListener('touchstart', function () { marquee.classList.add('is-held'); }, { passive: true });
-    marquee.addEventListener('touchend', function () { marquee.classList.remove('is-held'); });
-    marquee.addEventListener('touchcancel', function () { marquee.classList.remove('is-held'); });
+    function tick(t) {
+      if (lastT !== null && !hovering && !pressed) { offset += SPEED * (t - lastT) / 1000; place(); }
+      lastT = t;
+      requestAnimationFrame(tick);
+    }
+    marquee.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') hovering = true; });
+    marquee.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') hovering = false; });
+    marquee.addEventListener('pointerdown', function (e) {
+      if (e.button !== 0) return;
+      pressed = true; dragged = false; pid = e.pointerId;
+      startX = e.clientX; startOffset = offset;
+    });
+    marquee.addEventListener('pointermove', function (e) {
+      if (!pressed || e.pointerId !== pid) return;
+      var dx = e.clientX - startX;
+      // só vira arraste depois de 5px, para o clique no print continuar abrindo o zoom
+      if (!dragged && Math.abs(dx) > 5) {
+        dragged = true;
+        try { marquee.setPointerCapture(pid); } catch (err) {}
+        marquee.classList.add('is-dragging');
+      }
+      if (dragged) { offset = startOffset - dx; place(); }
+    });
+    function release(e) {
+      if (e.pointerId !== pid) return;
+      pressed = false;
+      marquee.classList.remove('is-dragging');
+    }
+    marquee.addEventListener('pointerup', release);
+    marquee.addEventListener('pointercancel', release);
+    // um arraste não deve abrir o zoom do print ao soltar
+    marquee.addEventListener('click', function (e) {
+      if (dragged) { e.stopPropagation(); e.preventDefault(); dragged = false; }
+    }, true);
+    marquee.addEventListener('dragstart', function (e) { e.preventDefault(); });
+    window.addEventListener('resize', function () { measure(); place(); });
+    window.addEventListener('load', function () { measure(); place(); });
+    measure();
+    requestAnimationFrame(tick);
   }
 
   // Lightbox for testimonial screenshots — the prints are only readable enlarged
