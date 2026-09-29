@@ -1078,25 +1078,26 @@ ul, ol { list-style: none; padding: 0; }
 /* ---- DEPOIMENTOS ---- */
 /* ---- 18 · PROVA SOCIAL ---- */
 #depoimentos { background: var(--ink-1000); }
-/* Faixa de comentários em loop infinito — pausa com o mouse em cima */
+/* Faixa de depoimentos em loop infinito — pausa com o mouse em cima e pode ser arrastada */
 .proof-marquee {
-  overflow-x: auto; scrollbar-width: none;
+  overflow: hidden; touch-action: pan-y; cursor: grab;
+  padding: 28px 0; margin: -28px 0; /* espaço para o brilho do hover não ser cortado */
+  -webkit-user-select: none; user-select: none;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
           mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
-.proof-marquee::-webkit-scrollbar { display: none; }
-.proof-track { display: flex; width: max-content; }
+.proof-marquee.is-dragging { cursor: grabbing; }
+.proof-track { display: flex; width: max-content; will-change: transform; }
 .proof-track > * { flex: none; margin-right: 16px; align-self: flex-start; }
 .proof-track > .comment-stack { width: clamp(280px, 86vw, 400px); }
-@keyframes proofScroll { to { transform: translateX(-50%); } }
-@media (prefers-reduced-motion: no-preference) {
-  .proof-marquee { overflow: hidden; }
-  .proof-marquee.is-looping .proof-track { animation: proofScroll var(--proof-dur, 60s) linear infinite; }
-  .proof-marquee:hover .proof-track,
-  .proof-marquee:focus-within .proof-track,
-  .proof-marquee.is-held .proof-track { animation-play-state: paused; }
-}
+.proof-track > .testimonial-shot { width: clamp(260px, 78vw, 320px); }
+.proof-track > .comment-stack,
+.proof-track > .testimonial-shot { transition: border-color var(--t-fast), transform var(--t-fast), box-shadow .3s var(--ease-out); }
+.proof-track > .comment-stack:hover,
+.proof-track > .testimonial-shot:hover { border-color: var(--em-orange); box-shadow: 0 0 32px rgba(248,152,56,.28), 0 0 10px rgba(248,152,56,.18); }
+.proof-track img { -webkit-user-drag: none; }
 .dep-cta { margin-top: var(--s-10); text-align: center; }
+.dep-cta .btn { max-width: 100%; justify-content: center; white-space: normal; text-align: center; line-height: 1.25; }
 
 /* ---- 19 · SOBRE ---- */
 #sobre { background: var(--ink-900); }
@@ -1211,7 +1212,7 @@ ul, ol { list-style: none; padding: 0; }
     radial-gradient(800px 500px at 0% 80%, rgba(48,72,200,.1), transparent 60%);
   pointer-events: none;
 }
-.cta-inner { display: grid; grid-template-columns: 1fr; gap: var(--s-8); position: relative; }
+.cta-inner { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-8); position: relative; }
 .cta-copy .h2 { color: var(--white); margin: var(--s-3) 0 var(--s-5); line-height: 1.22; }
 .cta-copy .lead { color: var(--ink-300); margin-bottom: var(--s-3); }
 .form-card {
@@ -1246,7 +1247,7 @@ ul, ol { list-style: none; padding: 0; }
 }
 .form-card .select option { background: var(--ink-800); color: var(--white); }
 .form-card .checkbox-row label { color: var(--ink-400); font-weight: 400; font-size: 13px; line-height: 1.5; }
-.btn-submit { width: 100%; justify-content: center; min-height: 48px; font-size: 16px; padding: 13px 18px; }
+.btn-submit { width: 100%; justify-content: center; min-height: 48px; font-size: 16px; padding: 13px 18px; white-space: normal; text-align: center; line-height: 1.25; }
 .cta-copy h3 { font-size: clamp(1.1rem, 3vw, 1.35rem); font-weight: 800; color: var(--em-orange); line-height: 1.35; margin-bottom: var(--s-4); }
 .cta-copy .cta-route-q { font-size: 1.05rem; font-weight: 700; color: var(--white); line-height: 1.5; margin-bottom: var(--s-5); }
 .cta-routes { display: flex; flex-direction: column; gap: var(--s-3); }
@@ -2459,25 +2460,40 @@ html, body { overflow-x: clip; }
           <img src="assets/comentario-cred-laerte.webp" alt="Comentário no Instagram de @drlaertesimoes: “Imperdível. Profissional top 1 na área de credenciamento de planos.”" loading="lazy" width="1296" height="318" />
           <img src="assets/comentario-cred-siomara.webp" alt="Comentário no Instagram de @siomaraoliveiranunes: “Excelente orientação para o credenciamento!”" loading="lazy" width="1296" height="318" />
         </figure>
+        <figure class="testimonial-shot">
+          <img src="assets/depoimento-4.webp" alt="Print de conversa no WhatsApp com Leonardo: gestor parabeniza Edenilson pelos credenciamentos conquistados nos planos de saúde, que ampliaram as oportunidades da instituição e o acesso dos pacientes aos serviços." loading="lazy" width="1080" height="1350" />
+        </figure>
         <figure class="comment-stack">
           <img src="assets/comentario-neg-arlete.webp" alt="Comentário no Instagram de @arletecastanheira: “Fui mentorada do Edenilson. Com ele aprendi como negociar corretamente com os convênios e solicitar credenciamento. Até hoje temos contato, nos quais me esclarece dúvidas e presta ajuda. Excelente profissional! Vale a pena ser mentorada por ele.”" loading="lazy" width="1296" height="534" />
           <img src="assets/comentario-neg-oftalmo.webp" alt="Comentário no Instagram de @oftalmodesucesso, perfil verificado: “Esse aí manja! Tem o conhecimento.”" loading="lazy" width="1296" height="264" />
           <img src="assets/comentario-neg-savio.webp" alt="Comentário no Instagram de @saviofraga_: “Sabe muito, quem tiver assessorado por ele jamais vai ficar atrás nos planos de saúde.”" loading="lazy" width="1296" height="318" />
+        </figure>
+        <figure class="testimonial-shot">
+          <img src="assets/depoimento-1.webp" alt="Print de conversa no WhatsApp com Arlete: cliente relata que já havia tentado outras 2 mentorias sem sucesso e que, com Edenilson, passou a desviar e resolver as negativas dos convênios." loading="lazy" width="1080" height="1350" />
         </figure>
         <figure class="comment-stack">
           <img src="assets/comentario-res-vanessa.webp" alt="Comentário no Instagram de @dravanessa.otorrino, perfil verificado: “Indico para colegas médicos. Tive e tenho resultados.”" loading="lazy" width="1296" height="318" />
           <img src="assets/comentario-res-juliana.webp" alt="Comentário no Instagram de @maia__juliana: “Você foi peça fundamental para alavancar meu negócio. Me fez enxergar e direcionar no ponto chave. Sem dúvidas não só indico como falo: se faz necessário!”" loading="lazy" width="1296" height="426" />
           <img src="assets/comentario-res-jaine.webp" alt="Comentário no Instagram de @jainediandra: “Ter um profissional como aliado com esse preparo faz toda a diferença nos resultados de uma instituição!”" loading="lazy" width="1296" height="372" />
         </figure>
+        <figure class="testimonial-shot">
+          <img src="assets/depoimento-2.webp" alt="Print de conversa no WhatsApp com Edna, psicóloga: relata que a maior dificuldade era a comunicação com os planos de saúde e que, em aproximadamente 90 dias, conseguiu respostas de convênios, negociar valores e fechar contratos." loading="lazy" width="1080" height="1350" />
+        </figure>
         <figure class="comment-stack">
           <img src="assets/comentario-cred-filipe.webp" alt="Comentário no Instagram de @filipeteless: “Ele faz mágica nos credenciamentos!”" loading="lazy" width="1296" height="264" />
           <img src="assets/comentario-cred-nanda.webp" alt="Comentário no Instagram de @nanda___limalima: “Enciclopédia dos planos. Um terror esse rapaz.”" loading="lazy" width="1296" height="264" />
           <img src="assets/comentario-cred-jaine.webp" alt="Comentário no Instagram de @jainediandra: “Sempre indico! Profissional muito competente.”" loading="lazy" width="1296" height="264" />
         </figure>
+        <figure class="testimonial-shot">
+          <img src="assets/depoimento-3.webp" alt="Print de conversa no WhatsApp com Marcos Luiz: clínica relata que o trabalho trouxe contatos eficazes e correta instrução documental, sendo fator determinante para o êxito na negociação de reajustes e revisão de valores com as operadoras." loading="lazy" width="1080" height="1350" />
+        </figure>
         <figure class="comment-stack">
           <img src="assets/comentario-neg-bruna.webp" alt="Comentário no Instagram de @brunaferrazdomkt: “O melhor quando o assunto é negociação com operadoras.”" loading="lazy" width="1296" height="318" />
           <img src="assets/comentario-neg-luis.webp" alt="Comentário no Instagram de @souluistinoco: “Conteúdo de muito valor. Se as clínicas soubessem o quanto elas perdem com contratos defasados…”" loading="lazy" width="1296" height="372" />
           <img src="assets/comentario-neg-nando.webp" alt="Comentário no Instagram de @milhascomnando: “Quando eu abrir um hospital, te contrato pra negociar.”" loading="lazy" width="1296" height="318" />
+        </figure>
+        <figure class="testimonial-shot">
+          <img src="assets/depoimento-5.webp" alt="Print de conversa no WhatsApp com Nubia Estrela, do Laboratório Estrela: relata que conheceu Edenilson pelo Instagram e destaca o conhecimento estratégico dele no relacionamento com as operadoras." loading="lazy" width="1080" height="1350" />
         </figure>
         <figure class="comment-stack">
           <img src="assets/comentario-res-everton.webp" alt="Comentário no Instagram de @evertonteles7e7, perfil verificado: “Esse sabe o que fala e faz! Contra fatos não existem argumentos!”" loading="lazy" width="1296" height="318" />
@@ -3011,27 +3027,64 @@ initConsent();
     });
   });
 
-  // Prova social — faixa em loop: duplica os cards para o translateX(-50%) emendar sem salto
+  // Prova social — faixa em loop que também pode ser arrastada (mouse ou dedo).
+  // Os cards são duplicados e a posição dá a volta a cada metade da faixa, então
+  // tanto o loop automático quanto o arraste emendam sem salto.
   var marquee = document.querySelector('.proof-marquee');
-  if (marquee && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (marquee) {
     var track = marquee.querySelector('.proof-track');
     Array.from(track.children).forEach(function (card) {
       var copy = card.cloneNode(true);
       copy.setAttribute('aria-hidden', 'true');
       track.appendChild(copy);
     });
-    // velocidade constante (~75px/s) independente da largura dos cards
-    function setProofSpeed() {
-      track.style.setProperty('--proof-dur', (track.scrollWidth / 2 / 75) + 's');
+    var SPEED = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 75; // px/s
+    var offset = 0, half = 0, lastT = null;
+    var hovering = false, pressed = false, dragged = false, startX = 0, startOffset = 0, pid = null;
+    function measure() { half = track.scrollWidth / 2; }
+    function place() {
+      if (half) offset = ((offset % half) + half) % half;
+      track.style.transform = 'translate3d(' + (-offset) + 'px,0,0)';
     }
-    setProofSpeed();
-    window.addEventListener('resize', setProofSpeed);
-    window.addEventListener('load', setProofSpeed);
-    marquee.classList.add('is-looping');
-    // toque (sem hover): segurar o dedo pausa
-    marquee.addEventListener('touchstart', function () { marquee.classList.add('is-held'); }, { passive: true });
-    marquee.addEventListener('touchend', function () { marquee.classList.remove('is-held'); });
-    marquee.addEventListener('touchcancel', function () { marquee.classList.remove('is-held'); });
+    function tick(t) {
+      if (lastT !== null && !hovering && !pressed) { offset += SPEED * (t - lastT) / 1000; place(); }
+      lastT = t;
+      requestAnimationFrame(tick);
+    }
+    marquee.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') hovering = true; });
+    marquee.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') hovering = false; });
+    marquee.addEventListener('pointerdown', function (e) {
+      if (e.button !== 0) return;
+      pressed = true; dragged = false; pid = e.pointerId;
+      startX = e.clientX; startOffset = offset;
+    });
+    marquee.addEventListener('pointermove', function (e) {
+      if (!pressed || e.pointerId !== pid) return;
+      var dx = e.clientX - startX;
+      // só vira arraste depois de 5px, para o clique no print continuar abrindo o zoom
+      if (!dragged && Math.abs(dx) > 5) {
+        dragged = true;
+        try { marquee.setPointerCapture(pid); } catch (err) {}
+        marquee.classList.add('is-dragging');
+      }
+      if (dragged) { offset = startOffset - dx; place(); }
+    });
+    function release(e) {
+      if (e.pointerId !== pid) return;
+      pressed = false;
+      marquee.classList.remove('is-dragging');
+    }
+    marquee.addEventListener('pointerup', release);
+    marquee.addEventListener('pointercancel', release);
+    // um arraste não deve abrir o zoom do print ao soltar
+    marquee.addEventListener('click', function (e) {
+      if (dragged) { e.stopPropagation(); e.preventDefault(); dragged = false; }
+    }, true);
+    marquee.addEventListener('dragstart', function (e) { e.preventDefault(); });
+    window.addEventListener('resize', function () { measure(); place(); });
+    window.addEventListener('load', function () { measure(); place(); });
+    measure();
+    requestAnimationFrame(tick);
   }
 
   // Lightbox for testimonial screenshots — the prints are only readable enlarged
