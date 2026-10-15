@@ -53,6 +53,15 @@ function doPost(e) {
   }
 }
 
+// Rode esta função uma vez pelo botão "Executar" do editor: o Google pede a permissão
+// de enviar e-mail e já manda um aviso de teste para NOTIFY_EMAIL.
+function testarAviso() {
+  var sheet = getSheet_();
+  MailApp.getRemainingDailyQuota();   // força o pedido de permissão de e-mail
+  notify_({ nome: 'TESTE - aviso por e-mail', whatsapp: '(75) 98800-6363', email: '', cidade: 'Teste/BA',
+            instagram: '@teste', impacto: 'Teste disparado pelo editor', utm_source: 'teste' }, sheet);
+}
+
 // Falha no e-mail (ex.: cota diária do Gmail) não pode impedir o lead de ser salvo
 function notify_(data, sheet) {
   if (!NOTIFY_EMAIL) return;
