@@ -19,6 +19,17 @@ Site estático servido pelo GitHub Pages a partir da raiz da branch `main`.
 | `assets/og-image.jpg` | Card social 1200×630 gerado por ffmpeg |
 | `design-system.html` | Referência de tokens e componentes (não publicada) |
 
+## Formulário de lead
+
+Formulário próprio em `#cta-final`. Ao enviar: grava uma linha no Google Sheets,
+dispara `Lead` no Meta Pixel (só se ele estiver ativo e houver consentimento) e abre o
+WhatsApp com uma mensagem pronta.
+
+- Configuração em `LEAD_FORM` no `index.html` (`sheetsUrl` e `whatsapp`). Enquanto
+  algum valor começar com `SEU_`, aquela etapa é pulada.
+- Script da planilha e passo a passo de instalação: `integracoes/google-sheets-leads.gs`.
+  As colunas seguem o atributo `name` dos campos; campo novo vira coluna nova sozinho.
+
 ## SEO / GEO
 
 - Meta tags, canonical, Open Graph e Twitter Card no `<head>` do `index.html`.
@@ -92,6 +103,10 @@ mas a copy do hero continua duplicada no DOM. Não é crítico (indexação é m
 porém unificar os dois blocos num só, com CSS responsivo, seria o ideal numa refatoração.
 
 ### 5. Pixel da Meta só dispara após consentimento
+
+> **Inativo desde 2026-10-15.** Pixel, GTM e Clarity estão com IDs `SEU_…`, então nada
+> carrega e o banner de cookies não aparece. Para reativar o Pixel, volte o ID abaixo em
+> `TRACKING.metaPixelId` — o banner volta sozinho e o formulário já dispara `Lead`.
 
 `TRACKING.metaPixelId` = `659130597219654`, carregado apenas depois do aceite no banner
 de cookies. Quem recusa ou ignora não é rastreado — o volume no Gerenciador de Anúncios

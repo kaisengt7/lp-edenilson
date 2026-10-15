@@ -1258,6 +1258,12 @@ ul, ol { list-style: none; padding: 0; }
 .cta-routes .rota-shield.is-plus { background: var(--ink-1000); color: var(--em-orange); }
 .form-card .form-sub { font-size: 13px; color: var(--ink-400); line-height: 1.5; margin-bottom: var(--s-2); }
 .form-card .field .opt { font-weight: 400; color: var(--ink-500); }
+.form-card .is-invalid { border-color: var(--danger) !important; }
+.form-card [hidden] { display: none !important; }
+.form-error { font-size: 13px; color: #FF8A8A; line-height: 1.5; }
+.form-success { display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--s-3); padding: var(--s-6) 0; }
+.form-success p { color: var(--ink-300); font-size: 14px; line-height: 1.6; }
+.form-success a { color: var(--em-orange); font-weight: 700; }
 .form-disclaimer { font-size: 12px; color: var(--ink-600); text-align: center; font-family: var(--font-mono); letter-spacing: .04em; line-height: 1.6; }
 
 /* ================================================================
@@ -2730,8 +2736,7 @@ html, body { overflow-x: clip; }
 
 <!-- ================================================================
      24 · CTA FINAL + 25 · FORMULÁRIO
-     (formulário enxuto, decidido na reunião; o questionário completo vai para o Respondi)
-     TODO: o botão ainda não envia os dados — definir integração (Respondi / WhatsApp / CRM)
+     (formulário enxuto, decidido na reunião). Ao enviar: grava no Google Sheets e abre o WhatsApp
      ================================================================ -->
 <section id="cta-final" class="lp-s">
   <div class="lp-container">
@@ -2752,42 +2757,47 @@ html, body { overflow-x: clip; }
           <li><span class="rota-shield is-plus"><small>E</small><b>+</b></span>Do contrato à rentabilidade</li>
         </ul>
       </div>
-      <div class="form-card" data-anim data-delay="1">
+      <form class="form-card" id="lead-form" novalidate data-anim data-delay="1">
         <div class="form-title">Quero receber prioridade</div>
         <div class="field">
           <label for="f-nome">Nome</label>
-          <input class="input" id="f-nome" type="text" placeholder="Seu nome completo" autocomplete="name" />
+          <input class="input" id="f-nome" name="nome" type="text" required placeholder="Seu nome completo" autocomplete="name" />
         </div>
         <div class="field">
           <label for="f-tel">WhatsApp</label>
-          <input class="input" id="f-tel" type="tel" inputmode="tel" placeholder="(00) 00000-0000" autocomplete="tel" />
+          <input class="input" id="f-tel" name="whatsapp" type="tel" required inputmode="tel" placeholder="(00) 00000-0000" autocomplete="tel" />
         </div>
         <div class="field">
           <label for="f-email">E-mail</label>
-          <input class="input" id="f-email" type="email" placeholder="voce@clinica.com.br" autocomplete="email" />
+          <input class="input" id="f-email" name="email" type="email" required placeholder="voce@clinica.com.br" autocomplete="email" />
         </div>
         <div class="field">
           <label for="f-cidade">Cidade/Estado</label>
-          <input class="input" id="f-cidade" type="text" placeholder="Cidade / UF" autocomplete="address-level2" />
+          <input class="input" id="f-cidade" name="cidade" type="text" required placeholder="Cidade / UF" autocomplete="address-level2" />
         </div>
         <div class="field">
           <label for="f-insta">Instagram da clínica</label>
-          <input class="input" id="f-insta" type="text" placeholder="@suaclinica" autocapitalize="off" spellcheck="false" />
+          <input class="input" id="f-insta" name="instagram" type="text" placeholder="@suaclinica" autocapitalize="off" spellcheck="false" />
         </div>
         <div class="field">
           <label for="f-impacto">Se esse problema fosse resolvido, qual seria o principal impacto para sua clínica?</label>
-          <textarea class="textarea" id="f-impacto" rows="3" placeholder="Conte brevemente o que mudaria"></textarea>
+          <textarea class="textarea" id="f-impacto" name="impacto" rows="3" placeholder="Conte brevemente o que mudaria"></textarea>
         </div>
         <div class="checkbox-row">
-          <input type="checkbox" id="f-consent" />
+          <input type="checkbox" id="f-consent" name="consentimento" required />
           <label for="f-consent">Aceito que meus dados sejam usados para contato via WhatsApp conforme a <a href="politica-de-privacidade.html" target="_blank" style="color:var(--em-orange);">Política de Privacidade</a>.</label>
         </div>
-        <button class="btn btn-primary btn-submit" type="button">
+        <p class="form-error" id="lead-error" role="alert" hidden></p>
+        <button class="btn btn-primary btn-submit" type="submit">
           Quero receber prioridade na próxima turma
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </button>
         <p class="form-disclaimer">As informações serão utilizadas para entender o momento da sua clínica e direcionar a próxima etapa.<br/>Dados tratados conforme a LGPD (Lei 13.709/2018).</p>
-      </div>
+        <div class="form-success" id="lead-success" hidden>
+          <div class="form-title">Recebemos seus dados!</div>
+          <p>Estamos abrindo o WhatsApp para você falar com a equipe do Edenilson.<br/>Se não abrir sozinho, <a id="lead-whats-link" href="#" target="_blank" rel="noopener">toque aqui</a>.</p>
+        </div>
+      </form>
     </div>
   </div>
 </section>
@@ -2815,6 +2825,7 @@ html, body { overflow-x: clip; }
       <div>
         <h6>Contato</h6>
         <ul>
+          <li><a href="https://wa.me/5575988006363" target="_blank" rel="noopener">WhatsApp (75) 98800-6363</a></li>
           <li><a class="js-email" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=agilitegestaosaude@gmail.com&amp;su=Mapa%20do%20Credenciamento%20-%20Quero%20saber%20mais&amp;body=Ol%C3%A1%2C%20Edenilson!%0A%0ATenho%20interesse%20no%20Mapa%20do%20Credenciamento%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.%0A%0ANome%3A%20%0ACl%C3%ADnica%3A%20%0ACidade%2FEstado%3A%20%0A" target="_blank" rel="noopener">agilitegestaosaude@gmail.com</a></li>
         </ul>
       </div>
@@ -2850,7 +2861,7 @@ html, body { overflow-x: clip; }
 <script>
 /* ── Substitua os IDs abaixo pelos seus ── */
 var TRACKING = {
-  metaPixelId:  '659130597219654',    // Meta Pixel — Edenilson
+  metaPixelId:  'SEU_META_PIXEL_ID',  // Inativo. Para reativar: '659130597219654' (Meta Pixel — Edenilson)
   gtmId:        'SEU_GTM_ID',          // Ex: GTM-XXXXXXX
   clarityId:    'SEU_CLARITY_ID'       // Ex: abcde12345
 };
@@ -2891,6 +2902,9 @@ function loadAllTrackers() {
 }
 
 function initConsent() {
+  // Sem nenhum rastreador ativo não há o que consentir: o banner nem aparece
+  var anyActive = [TRACKING.metaPixelId, TRACKING.gtmId, TRACKING.clarityId].some(isConfigured);
+  if (!anyActive) return;
   var consent = localStorage.getItem(CONSENT_KEY);
   if (consent === 'accepted') { loadAllTrackers(); return; }
   if (consent === 'rejected') return;
@@ -2908,6 +2922,111 @@ document.getElementById('cookie-reject').addEventListener('click', function () {
 });
 
 initConsent();
+</script>
+
+<!-- ================================================================
+     FORMULÁRIO DE LEAD — salva no Google Sheets e abre o WhatsApp
+     ================================================================ -->
+<script>
+var LEAD_FORM = {
+  sheetsUrl: 'https://script.google.com/macros/s/AKfycbyWxWkCMWPuHDgJIMQc36MQoFPxvVdyHlwu_fy9BPH0iM9fsGNTMvmCRT0_ZCTY0nxQ/exec',
+  whatsapp:  '5575988006363'          // Só números, com DDI e DDD
+};
+
+(function () {
+  var form = document.getElementById('lead-form');
+  if (!form) return;
+  var errorEl   = document.getElementById('lead-error');
+  var successEl = document.getElementById('lead-success');
+  var tel       = document.getElementById('f-tel');
+
+  // Máscara (00) 00000-0000
+  tel.addEventListener('input', function () {
+    var d = tel.value.replace(/\D/g, '').slice(0, 11);
+    if (d.length > 6)      tel.value = '(' + d.slice(0, 2) + ') ' + d.slice(2, d.length - 4) + '-' + d.slice(-4);
+    else if (d.length > 2) tel.value = '(' + d.slice(0, 2) + ') ' + d.slice(2);
+    else if (d.length)     tel.value = '(' + d;
+  });
+
+  function isValid(el) {
+    if (el.type === 'checkbox') return el.checked;
+    if (el.id === 'f-tel')      return el.value.replace(/\D/g, '').length >= 10;
+    if (el.type === 'email')    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());
+    return el.value.trim() !== '';
+  }
+
+  function utms() {
+    var out = {}, q = new URLSearchParams(location.search);
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function (k) {
+      out[k] = q.get(k) || '';
+    });
+    return out;
+  }
+
+  // sendBeacon não é cancelado quando a página navega para o WhatsApp logo em seguida
+  function saveLead(data) {
+    if (!isConfigured(LEAD_FORM.sheetsUrl)) return;
+    var body = JSON.stringify(data);
+    if (navigator.sendBeacon && navigator.sendBeacon(LEAD_FORM.sheetsUrl, new Blob([body], { type: 'text/plain' }))) return;
+    fetch(LEAD_FORM.sheetsUrl, { method: 'POST', mode: 'no-cors', keepalive: true, body: body });
+  }
+
+  function whatsUrl() {
+    var msg = 'Olá! Acabei de preencher o formulário do diagnóstico gratuito.';
+    return 'https://wa.me/' + LEAD_FORM.whatsapp + '?text=' + encodeURIComponent(msg);
+  }
+
+  form.querySelectorAll('[required]').forEach(function (el) {
+    el.addEventListener(el.type === 'checkbox' ? 'change' : 'input', function () {
+      if (isValid(el)) el.classList.remove('is-invalid');
+    });
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var invalid = Array.prototype.filter.call(form.querySelectorAll('[required]'), function (el) {
+      var bad = !isValid(el);
+      el.classList.toggle('is-invalid', bad && el.type !== 'checkbox');
+      return bad;
+    });
+    if (invalid.length) {
+      errorEl.textContent = invalid.length === 1 && invalid[0].type === 'checkbox'
+        ? 'Marque a autorização de contato para continuar.'
+        : 'Confira os campos destacados.';
+      errorEl.hidden = false;
+      invalid[0].focus();
+      return;
+    }
+    errorEl.hidden = true;
+
+    var data = {
+      nome:      form.nome.value.trim(),
+      whatsapp:  tel.value.trim(),
+      email:     form.email.value.trim(),
+      cidade:    form.cidade.value.trim(),
+      instagram: form.instagram.value.trim(),
+      impacto:   form.impacto.value.trim(),
+      pagina:    location.href
+    };
+    var u = utms();
+    for (var k in u) data[k] = u[k];
+
+    saveLead(data);
+    if (window.fbq) fbq('track', 'Lead');
+
+    // Troca os campos pela confirmação
+    Array.prototype.forEach.call(form.children, function (el) {
+      if (el !== successEl) el.hidden = true;
+    });
+    successEl.hidden = false;
+
+    if (!isConfigured(LEAD_FORM.whatsapp)) return;
+    var url = whatsUrl();
+    document.getElementById('lead-whats-link').href = url;
+    // pequena espera para o Pixel e o beacon saírem antes de trocar de página
+    setTimeout(function () { location.href = url; }, 600);
+  });
+})();
 </script>
 
 <!-- Lightbox dos prints de depoimento -->
