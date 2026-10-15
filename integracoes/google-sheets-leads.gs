@@ -18,6 +18,7 @@
  */
 
 var SHEET_NAME = 'Leads';
+var NOTIFY_EMAIL = 'agilitegestaosaude@gmail.com';   // recebe um aviso a cada lead ('' desliga)
 var DEFAULT_COLUMNS = [
   'data', 'nome', 'whatsapp', 'email', 'cidade', 'instagram', 'impacto',
   'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'pagina'
@@ -45,9 +46,39 @@ function doPost(e) {
       var v = data[col] == null ? '' : String(data[col]);
       return /^[=+\-@]/.test(v) || col === 'whatsapp' ? "'" + v : v;
     }));
+    notify_(data, sheet);
     return ContentService.createTextOutput('ok');
   } finally {
     lock.releaseLock();
+  }
+}
+
+// Falha no e-mail (ex.: cota diária do Gmail) não pode impedir o lead de ser salvo
+function notify_(data, sheet) {
+  if (!NOTIFY_EMAIL) return;
+  try {
+    var whats = String(data.whatsapp || '').replace(/\D/g, '');
+    var linhas = [
+      'Nome: ' + (data.nome || ''),
+      'WhatsApp: ' + (data.whatsapp || '') + (whats ? '  →  https://wa.me/55' + whats : ''),
+      'E-mail: ' + (data.email || ''),
+      'Cidade: ' + (data.cidade || ''),
+      'Instagram: ' + (data.instagram || ''),
+      'Impacto: ' + (data.impacto || ''),
+      '',
+      'Origem: ' + (data.utm_source || 'direto') + (data.utm_campaign ? ' / ' + data.utm_campaign : ''),
+      '',
+      'Planilha: ' + sheet.getParent().getUrl()
+    ];
+    var msg = {
+      to: NOTIFY_EMAIL,
+      subject: 'Novo lead na LP: ' + (data.nome || 'sem nome'),
+      body: linhas.join('\n')
+    };
+    if (data.email) msg.replyTo = data.email;   // "Responder" no Gmail já vai para o lead
+    MailApp.sendEmail(msg);
+  } catch (err) {
+    console.error('Falha ao enviar notificação: ' + err);
   }
 }
 
