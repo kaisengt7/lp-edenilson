@@ -1192,6 +1192,19 @@ ul, ol { list-style: none; padding: 0; }
 .cta-routes .rota-shield small { font-size: 6px; }
 .cta-routes .rota-shield b { font-size: 1.2rem; }
 .cta-routes .rota-shield.is-plus { background: var(--ink-1000); color: var(--em-orange); }
+/* Garantia de 7 dias — selo ao lado do formulário */
+.guarantee { margin-top: var(--s-8); display: flex; gap: var(--s-5); align-items: flex-start; padding: var(--s-5); border-radius: var(--r-xl); background: rgba(31,138,91,.08); border: 1px solid rgba(31,138,91,.45); }
+.guarantee-seal { position: relative; flex: none; width: 72px; height: 80px; color: var(--success); display: grid; place-items: center; }
+.guarantee-seal svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.guarantee-seal span { position: relative; display: flex; flex-direction: column; align-items: center; font-family: var(--font-mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--white); line-height: 1; margin-top: -4px; }
+.guarantee-seal b { font-family: var(--font-display); font-weight: 400; font-size: 1.9rem; letter-spacing: 0; color: var(--white); }
+.guarantee h4 { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(1.3rem, 3.5vw, 1.6rem); line-height: 1.05; color: var(--white); }
+.guarantee-lead { font-weight: 800; color: #4fd197; margin: var(--s-1) 0 var(--s-2); }
+.guarantee p { font-size: 14px; color: var(--ink-300); line-height: 1.6; }
+.guarantee p + p { margin-top: var(--s-2); }
+.guarantee p strong { color: var(--white); }
+@keyframes sealPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+@media (prefers-reduced-motion: no-preference) { .in-view .guarantee-seal { animation: sealPulse 2.6s ease-in-out infinite; } }
 .form-card .form-sub { font-size: 13px; color: var(--ink-400); line-height: 1.5; margin-bottom: var(--s-2); }
 .form-card .field .opt { font-weight: 400; color: var(--ink-500); }
 .form-card .is-invalid { border-color: var(--danger) !important; }
@@ -2415,7 +2428,7 @@ html, body { overflow-x: clip; }
         <h2 class="h2" style="color:var(--white); margin-top:var(--s-3);">
           Dúvidas <span class="hl">frequentes</span>
         </h2>
-        <p>Perguntas que aparecem com frequência na minha caixinha de perguntas e nos conteúdos do Instagram.</p>
+        <p>As perguntas que mais aparecem sobre o M.A.P.A.</p>
       </div>
       <div class="faq-list">
         <details class="faq-item">
@@ -2486,6 +2499,18 @@ html, body { overflow-x: clip; }
           <li><span class="rota-shield"><small>ROTA</small><b>3</b></span>Da negociação ao contrato</li>
           <li><span class="rota-shield is-plus"><small>E</small><b>+</b></span>Do contrato à rentabilidade</li>
         </ul>
+        <div class="guarantee">
+          <div class="guarantee-seal" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span><b>7</b>dias</span>
+          </div>
+          <div>
+            <h4>Garantia incondicional de 7 dias</h4>
+            <p class="guarantee-lead">Risco zero para você.</p>
+            <p>Quando a turma abrir e você garantir sua inscrição, terá acesso imediato às aulas gravadas. Durante 7 dias, você poderá explorar todo o conteúdo liberado, assistir às aulas e já começar a aplicar.</p>
+            <p>Se, por qualquer motivo, decidir que o M.A.P.A não é para você, basta solicitar o reembolso dentro desse prazo e <strong>devolveremos 100% do valor, sem burocracia.</strong></p>
+          </div>
+        </div>
       </div>
       <form class="form-card" id="lead-form" novalidate data-anim data-delay="1">
         <div class="form-title">Quero receber prioridade</div>
