@@ -755,34 +755,6 @@ ul, ol { list-style: none; padding: 0; }
 .bb-key h3 { margin-top: var(--s-2); font-family: var(--font-display); text-transform: uppercase; font-size: clamp(1.5rem, 4.5vw, 2.1rem); line-height: 1.02; color: var(--em-orange); }
 .cp-closer { margin-top: var(--s-5); font-size: 15px; color: var(--ink-400); font-style: italic; }
 
-/* ---- 08 · O CONTATO CERTO ---- */
-#contato-certo { background: var(--paper); color: var(--ink-900); }
-.rt-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); margin-bottom: var(--s-12); }
-.rt { border-radius: var(--r-lg); padding: var(--s-4); }
-.rt.generic { border: 2px dashed var(--ink-300); color: var(--ink-500); }
-.rt.right { background: var(--ink-1000); border: 2px solid var(--ink-1000); color: var(--white); box-shadow: 0 20px 50px rgba(10,10,12,.16); }
-.rt-title { display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; margin-bottom: var(--s-4); }
-.rt.right .rt-title { color: var(--em-orange); }
-.rt-steps { display: flex; flex-direction: column; align-items: flex-start; }
-.rt-step { display: flex; align-items: center; gap: var(--s-2); font-size: 13px; font-weight: 700; line-height: 1.25; }
-.rt-step::before { content: ""; width: 12px; height: 12px; flex: none; border-radius: 50%; border: 2px solid currentColor; background: transparent; }
-.rt.generic .rt-step { color: var(--ink-500); }
-.rt.right .rt-step::before { border-color: var(--em-orange); }
-.rt-link { width: 0; height: 20px; margin: 3px 0 3px 5px; border-left: 2px dashed var(--ink-300); }
-.rt.right .rt-link { border-left: 2px solid var(--em-orange); }
-.rt-end { padding: 6px 10px; border-radius: 999px; }
-.rt-end::before { display: none; }
-.rt.generic .rt-end { background: rgba(199,56,56,.1); color: var(--danger); }
-.rt.right .rt-end { background: var(--em-orange); color: var(--ink-1000); }
-.cc-inner { display: grid; grid-template-columns: 1fr; gap: var(--s-8); align-items: start; }
-.cc-label { font-size: 1rem; font-weight: 700; color: var(--ink-900); margin-bottom: var(--s-4); }
-.cc-list { display: flex; flex-direction: column; }
-.cc-list li { display: flex; gap: var(--s-3); align-items: baseline; padding: var(--s-3) 0; border-bottom: 1px solid var(--ink-200); font-size: 1rem; color: var(--ink-700); line-height: 1.45; }
-.cc-list li::before { content: "→"; color: var(--em-orange); font-weight: 800; flex: none; }
-.cc-card { background: var(--ink-1000); border-radius: var(--r-xl); padding: var(--s-8) var(--s-6); }
-.cc-card h3 { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(1.5rem, 4.5vw, 2.1rem); line-height: 1.02; color: var(--ink-300); margin-bottom: var(--s-4); }
-.cc-card p { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(1.7rem, 5vw, 2.5rem); line-height: 1; color: var(--em-orange); }
-
 /* ---- 09 · O JOGO DE CINTURA ---- */
 #jogo-cintura { background: var(--ink-1000); }
 .jc-inner { display: grid; grid-template-columns: 1fr; gap: var(--s-10); align-items: start; }
@@ -1309,7 +1281,7 @@ html, body { overflow-x: clip; }
   [data-anim][data-delay="3"] { --d: .36s; }
   [data-anim][data-delay="4"] { --d: .48s; }
   .fb-art, .gd-mock, .cc-card, .form-card, .or-stats, .nao-answer, .fc-map { --a: anRight; }
-  .map-board, .rt-wrap, .dif-compare, .rec-closer, .gd-closer, .nao-closer, .promessa-closer, .or-closer, .fb-closer { --a: anZoom; }
+  .map-board, .dif-compare, .rec-closer, .gd-closer, .nao-closer, .promessa-closer, .or-closer, .fb-closer { --a: anZoom; }
 
   /* Cascata (classe .stagger aplicada via JS; --i = índice do filho) */
   .stagger:not(.in-view) > *:not([data-anim]) { opacity: 0; }
@@ -1377,11 +1349,11 @@ html, body { overflow-x: clip; }
 
 /* Cards levantando no hover */
 .momento-card, .vr-card, .rota-card, .rt, .dif-think, .fc-path { transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out), border-color .35s var(--ease-out); }
-.momento-card:hover, .vr-card:hover, .rota-card:hover, .rt:hover, .dif-think:hover, .fc-path:hover { transform: translateY(-4px); }
+.momento-card:hover, .vr-card:hover, .rota-card:hover, .dif-think:hover, .fc-path:hover { transform: translateY(-4px); }
 .map-card { transition: transform .35s var(--ease-out), border-color .35s var(--ease-out); }
 .map-card:hover { transform: translateY(-4px); }
-.forks li, .criteria li, .cc-list li, .jc-list li { transition: transform .3s var(--ease-out); }
-.forks li:hover, .cc-list li:hover, .jc-list li:hover { transform: translateX(6px); }
+.forks li, .criteria li li, .jc-list li { transition: transform .3s var(--ease-out); }
+.forks li:hover li:hover, .jc-list li:hover { transform: translateX(6px); }
 .criteria li:hover { transform: translateY(-2px); }
 .jc-sign { transition: transform .4s var(--ease-spring); }
 .jc-list li:hover .jc-sign { transform: rotate(45deg) scale(1.12); }
@@ -1456,14 +1428,6 @@ html, body { overflow-x: clip; }
   .cp-inner { grid-template-columns: 1fr 1.35fr; gap: var(--s-16); }
   .bb-body { padding: var(--s-10) var(--s-8) var(--s-8); }
   .bb-q { grid-template-columns: 1fr 1fr; gap: var(--s-4) var(--s-6); }
-  .rt-wrap { grid-template-columns: 1fr; gap: var(--s-4); }
-  .rt { padding: var(--s-5) var(--s-6); display: grid; grid-template-columns: 170px 1fr; align-items: center; }
-  .rt-title { margin-bottom: 0; }
-  .rt-steps { flex-direction: row; align-items: center; }
-  .rt-step { font-size: 14px; white-space: nowrap; }
-  .rt-link { flex: 1; height: 0; min-width: 24px; margin: 0 var(--s-3); border-left: none; border-top: 2px dashed var(--ink-300); }
-  .rt.right .rt-link { border-left: none; border-top: 2px solid var(--em-orange); }
-  .cc-inner { grid-template-columns: 1.2fr 1fr; gap: var(--s-12); }
   .jc-inner { grid-template-columns: 1fr 1fr; gap: var(--s-16); align-items: center; }
   .jc-closer { grid-template-columns: 1fr 1fr; gap: var(--s-16); align-items: center; }
   .fb-inner { grid-template-columns: 1fr 1fr; gap: var(--s-16); }
@@ -1931,61 +1895,6 @@ html, body { overflow-x: clip; }
           </div>
         </div>
         <p class="cp-closer">Essa é a parte da experiência que normalmente não está escrita em um formulário.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================================================================
-     08 · O CONTATO CERTO
-     ================================================================ -->
-<section id="contato-certo" class="lp-s">
-  <div class="lp-container">
-    <div class="lp-sh" data-anim>
-      <h2 class="h2" style="color:var(--ink-900); margin-top:var(--s-2);">
-        O contato certo pode <span style="color:var(--em-orange);">mudar a conversa.</span>
-      </h2>
-      <p class="lead" style="margin-top:var(--s-4); max-width:680px;">
-        Encontrar o contato responsável por uma negociação pode ser muito diferente de enviar mais uma mensagem para um canal genérico.
-      </p>
-    </div>
-
-    <div class="rt-wrap" data-anim>
-      <div class="rt generic">
-        <span class="rt-title">Canal genérico</span>
-        <div class="rt-steps">
-          <span class="rt-step">Sua clínica</span><span class="rt-link"></span>
-          <span class="rt-step">Formulário / SAC</span><span class="rt-link"></span>
-          <span class="rt-step">Fila de mensagens</span><span class="rt-link"></span>
-          <span class="rt-step rt-end">✕ Resposta automática</span>
-        </div>
-      </div>
-      <div class="rt right">
-        <span class="rt-title">Contato certo</span>
-        <div class="rt-steps">
-          <span class="rt-step">Sua clínica</span><span class="rt-link"></span>
-          <span class="rt-step">Quem é responsável</span><span class="rt-link"></span>
-          <span class="rt-step">Abordagem estruturada</span><span class="rt-link"></span>
-          <span class="rt-step rt-end">✓ Conversa certa</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="cc-inner">
-      <div data-anim>
-        <p class="cc-label">No M.A.P.A, você vai entender estratégias para:</p>
-        <ul class="cc-list">
-          <li>identificar quem procurar;</li>
-          <li>buscar contatos dentro das estruturas das operadoras;</li>
-          <li>chegar às pessoas responsáveis quando houver caminhos possíveis;</li>
-          <li>estruturar a abordagem;</li>
-          <li>apresentar sua clínica de maneira estratégica;</li>
-          <li>conduzir a conversa a partir do contexto da operadora.</li>
-        </ul>
-      </div>
-      <div class="cc-card" data-anim data-delay="1">
-        <h3>O contato certo não garante o credenciamento.</h3>
-        <p>Mas pode colocar sua clínica na conversa certa.</p>
       </div>
     </div>
   </div>
@@ -3051,8 +2960,8 @@ var LEAD_FORM = {
 
   // Cascatas: [seletores, animação, intervalo entre itens]
   var STAGGERS = [
-    ['.route, .tries-list, .forks, .cc-list, .gd-list, .fc-stops, .for-list, .not-for-list, .rota-list, .dc-branches, .existe, .sobre-bullets, .cta-routes, .mail-reaction, .jc-list', 'stLeft', 90],
-    ['.criteria, .transf-steps, .bb-q, .jr, .vr-exists, .fc-words, .rec-eq, .case-steps, .rt-steps, .gd-logos, .momento-card ul, .fc-axis', 'stUp', 70],
+    ['.route, .tries-list, .forks, .gd-list, .fc-stops, .for-list, .not-for-list, .rota-list, .dc-branches, .existe, .sobre-bullets, .cta-routes, .mail-reaction, .jc-list', 'stLeft', 90],
+    ['.criteria, .transf-steps, .bb-q, .jr, .vr-exists, .fc-words, .rec-eq, .case-steps, .gd-logos, .momento-card ul, .fc-axis', 'stUp', 70],
     ['.faq-list', 'stLeft', 110],
     ['.chat', 'stPop', 260],
     ['.or-stamps', 'stamp', 140]
