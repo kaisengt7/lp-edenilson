@@ -826,6 +826,23 @@ ul, ol { list-style: none; padding: 0; }
 .rota-warn div { display: flex; gap: var(--s-3); align-items: center; padding: var(--s-4) var(--s-5); border-radius: var(--r-md); background: var(--ink-1000); color: var(--white); font-weight: 800; font-size: 15px; line-height: 1.4; }
 .rota-warn svg { width: 22px; height: 22px; flex: none; color: var(--em-orange); }
 
+/* ---- Estratégias práticas (antiga dobra das rotas) ---- */
+.es-lead { max-width: 920px; margin-bottom: var(--s-10); font-family: var(--font-body); font-weight: 800; font-size: clamp(1.3rem, 3vw, 1.85rem); line-height: 1.35; color: var(--ink-900); text-transform: none; }
+.es-lead span { color: var(--em-orange); }
+.es-grid { display: grid; grid-template-columns: 1fr; gap: var(--s-4); }
+.es-card { background: var(--white); border: 1px solid var(--ink-200); border-radius: var(--r-xl); padding: var(--s-6); transition: transform .4s var(--ease-out), border-color .3s ease, box-shadow .4s var(--ease-out); }
+.es-card:hover { transform: translateY(-4px); border-color: rgba(248,152,56,.5); box-shadow: 0 16px 34px -18px rgba(248,152,56,.45); }
+.es-ico { width: 44px; height: 44px; border-radius: var(--r-md); display: grid; place-items: center; background: var(--em-orange-50); color: var(--em-orange); margin-bottom: var(--s-4); }
+.es-ico svg { width: 22px; height: 22px; }
+.es-card h3 { font-family: var(--font-body); font-weight: 800; font-size: 1.05rem; color: var(--ink-900); line-height: 1.3; margin-bottom: var(--s-2); text-transform: none; }
+.es-card p { font-size: 15px; color: var(--ink-600); line-height: 1.55; }
+.es-warn { margin-top: var(--s-10); display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-5); padding: var(--s-8) var(--s-6); background: var(--ink-1000); border-radius: var(--r-xl); border-left: 6px solid var(--em-orange); box-shadow: 0 24px 60px -24px rgba(10,10,12,.55); }
+.es-warn-ico { flex: none; width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; background: rgba(248,152,56,.14); color: var(--em-orange); }
+.es-warn-ico svg { width: 32px; height: 32px; }
+.es-warn p { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(1.7rem, 5vw, 3rem); line-height: 1.02; color: var(--white); }
+.es-warn p span { color: var(--em-orange); }
+.es-warn p b { font-weight: 400; color: var(--ink-1000); background: var(--em-orange); padding: 0 .15em; }
+
 /* ---- 13 · E DEPOIS DO CONTRATO? ---- */
 #depois-contrato { background: var(--ink-900); }
 .dc-inner { display: grid; grid-template-columns: 1fr; gap: var(--s-10); align-items: center; }
@@ -1438,6 +1455,11 @@ html, body { overflow-x: clip; }
   .jr-node--end { left: auto; right: -12px; bottom: auto; top: -12px; }
   .jr-end-label { left: auto; right: -12px; bottom: auto; top: -40px; }
   .rotas-grid { grid-template-columns: 1fr 1fr; gap: var(--s-6); }
+  /* 5 cards: 3 em cima e 2 embaixo, ocupando a largura toda */
+  .es-grid { grid-template-columns: repeat(6, 1fr); gap: var(--s-5); }
+  .es-card { grid-column: span 2; padding: var(--s-8) var(--s-6); }
+  .es-card:nth-child(n+4) { grid-column: span 3; }
+  .es-warn { flex-direction: row; align-items: center; gap: var(--s-8); padding: var(--s-10) var(--s-12); }
   .rota-card { padding: var(--s-8); }
   .rota-card--wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto auto auto 1fr; gap: 0 var(--s-12); }
   .rota-card--wide .rota-head, .rota-card--wide > p { grid-column: 1; }
@@ -2050,50 +2072,39 @@ html, body { overflow-x: clip; }
      ================================================================ -->
 <section id="rotas" class="lp-s">
   <div class="lp-container">
-    <div class="rotas-grid">
-      <article class="rota-card" data-anim data-delay="1">
-        <div class="rota-head">
-          <span class="rota-shield"><small>ROTA</small><b>1</b></span>
-          <h3>Do zero ao contato</h3>
-        </div>
-        <p class="rota-for">Para quem ainda não sabe por onde começar.</p>
-        <p>Você vai entender como mapear oportunidades, analisar quais operadoras fazem sentido, estruturar sua clínica e buscar os caminhos para chegar até elas.</p>
-        <div class="rota-goal"><div><span>O objetivo</span><strong>Sair da inércia e começar a entrar nas conversas certas.</strong></div></div>
-      </article>
-      <article class="rota-card" data-anim data-delay="2">
-        <div class="rota-head">
-          <span class="rota-shield"><small>ROTA</small><b>2</b></span>
-          <h3>Do contato à negociação</h3>
-        </div>
-        <p class="rota-for">Para quem já conseguiu chegar até uma operadora, mas precisa saber como conduzir a conversa.</p>
-        <p>Aqui entram posicionamento, abordagem, análise da oportunidade, condução do processo e negociação.</p>
-        <div class="rota-goal"><div><span>O objetivo</span><strong>Não apenas conseguir uma resposta, mas saber o que fazer com ela.</strong></div></div>
-      </article>
-      <article class="rota-card rota-card--wide" data-anim>
-        <div class="rota-head">
-          <span class="rota-shield"><small>ROTA</small><b>3</b></span>
-          <h3>Da negociação ao contrato</h3>
-        </div>
-        <p class="rota-for">Porque fechar um contrato não significa simplesmente conseguir uma assinatura.</p>
-        <p>É preciso transformar a negociação em um acordo que faça sentido para a clínica.</p>
-        <p><strong style="color:var(--ink-900);">E também evitar armadilhas que podem prejudicar o futuro.</strong></p>
-        <div class="rota-side">
-          <p style="font-size:15px; color:var(--ink-600); margin-top:var(--s-5);">Você vai entender como analisar e negociar condições considerando:</p>
-          <ul class="rota-list">
-            <li>legislação;</li>
-            <li>regras do setor;</li>
-            <li>condições contratuais;</li>
-            <li>impactos sobre reajustes futuros;</li>
-            <li>responsabilidades da clínica;</li>
-            <li>consequências de determinadas cláusulas;</li>
-            <li>sustentabilidade daquela relação comercial.</li>
-          </ul>
-          <div class="rota-warn"><div>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>
-            Um contrato mal negociado hoje pode limitar sua negociação de amanhã.
-          </div></div>
-        </div>
-      </article>
+    <h2 class="es-lead" data-anim>
+      Estratégias práticas para <span>acelerar o faturamento da sua clínica</span>, construídas a partir da minha experiência direta à frente da gestão comercial de diversos serviços de saúde:
+    </h2>
+    <ul class="es-grid">
+      <li class="es-card">
+        <span class="es-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v3h6V3M9 12l2 2 4-4M9 17h6"/></svg></span>
+        <h3>Prática com casos reais</h3>
+        <p>O que realmente funciona no mercado de hoje, longe de achismos e teorias vazias.</p>
+      </li>
+      <li class="es-card">
+        <span class="es-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M5 16l5-5 4 4 6-7"/><path d="M15 8h5v5"/></svg></span>
+        <h3>Estratégia comercial e escala</h3>
+        <p>Visão de gestão para faturar mais, credenciando os serviços certos e mais rentáveis.</p>
+      </li>
+      <li class="es-card">
+        <span class="es-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 21h10"/><path d="M5 7h14"/><path d="M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z"/></svg></span>
+        <h3>Segurança jurídica</h3>
+        <p>Critérios claros para barrar exigências abusivas e armadilhas das operadoras.</p>
+      </li>
+      <li class="es-card">
+        <span class="es-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <h3>Blindagem contratual</h3>
+        <p>Análise cirúrgica de cláusulas para evitar glosas, passivos e prejuízos.</p>
+      </li>
+      <li class="es-card">
+        <span class="es-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M12 8v8M9.5 10.5c0-1 1-1.5 2.5-1.5s2.5.6 2.5 1.6c0 2.4-5 1.2-5 3.6 0 1 1 1.6 2.5 1.6s2.5-.5 2.5-1.5"/></svg></span>
+        <h3>Reajustes periódicos</h3>
+        <p>Regras contratuais que asseguram correções financeiras e lucro real no caixa.</p>
+      </li>
+    </ul>
+    <div class="es-warn" data-anim>
+      <span class="es-warn-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span>
+      <p>Um <span>credenciamento feito de qualquer jeito</span>, sem expertise, pode te dar <b>prejuízo</b> e não ganhos!</p>
     </div>
   </div>
 </section>
@@ -2960,6 +2971,7 @@ var LEAD_FORM = {
     ['.route, .tries-list, .forks, .gd-list, .fc-stops, .for-list, .not-for-list, .rota-list, .dc-branches, .existe, .sobre-bullets, .cta-routes, .mail-reaction, .jc-list', 'stLeft', 90],
     ['.criteria, .transf-steps, .bb-q, .jr, .vr-exists, .fc-words, .rec-eq, .case-steps, .gd-logos, .momento-card ul, .fc-axis', 'stUp', 70],
     ['.faq-list', 'stLeft', 110],
+    ['.es-grid', 'stUp', 90],
     ['.chat', 'stPop', 260],
     ['.or-stamps', 'stamp', 140]
   ];
