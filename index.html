@@ -546,6 +546,27 @@ ul, ol { list-style: none; padding: 0; }
 }
 .mobile-cta-bar .btn { flex: 1; justify-content: center; font-size: 14px; padding: 14px 12px; }
 
+/* ---- BOTÃO FLUTUANTE (desktop) ---- */
+.desk-cta { display: none; }
+@media (min-width: 980px) {
+  .desk-cta {
+    display: block; position: fixed; right: 28px; bottom: calc(28px + var(--desk-cta-offset, 0px)); z-index: 95;
+    opacity: 0; pointer-events: none; transform: translate3d(0, 24px, 0) scale(.92);
+    transition: opacity .45s var(--ease-out), transform .55s var(--ease-spring), bottom .35s var(--ease-out);
+  }
+  .desk-cta.is-visible { opacity: 1; pointer-events: auto; transform: none; }
+  .desk-cta .btn { gap: var(--s-3); padding: 16px 24px; border-radius: 999px; box-shadow: 0 14px 34px rgba(248,152,56,.45), 0 0 0 1px rgba(255,255,255,.08) inset; }
+  .desk-cta .btn:hover { transform: translateY(-2px); }
+  .desk-cta-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--ink-1000); box-shadow: 0 0 0 0 rgba(10,10,12,.5); }
+}
+@media (min-width: 980px) and (prefers-reduced-motion: no-preference) {
+  .desk-cta.is-visible .btn { animation: ctaGlow 2.8s ease-in-out infinite; }
+  .desk-cta.is-visible .desk-cta-dot { animation: deskDot 1.8s ease-out infinite; }
+  .desk-cta .btn svg { animation: nudgeX 1.6s ease-in-out infinite; }
+}
+@keyframes deskDot { 0% { box-shadow: 0 0 0 0 rgba(10,10,12,.45); } 100% { box-shadow: 0 0 0 8px rgba(10,10,12,0); } }
+@media (prefers-reduced-motion: reduce) { .desk-cta { transition: opacity .2s linear; transform: none !important; } }
+
 /* ---- HERO ---- */
 #hero { background: var(--ink-1000); overflow: hidden; }
 .hero-photo-mobile {
@@ -1436,6 +1457,15 @@ html, body { overflow-x: clip; }
 
 
 <!-- Mobile CTA bar -->
+<!-- Botão flutuante (desktop) que leva ao formulário -->
+<div class="desk-cta" aria-hidden="true">
+  <button class="btn btn-primary btn-lg" data-scroll-to="cta-final" tabindex="-1">
+    <span class="desk-cta-dot" aria-hidden="true"></span>
+    Quero receber prioridade
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+  </button>
+</div>
+
 <div class="mobile-cta-bar">
   <button class="btn btn-primary" data-scroll-to="cta-final">
     Quero receber prioridade
@@ -2822,6 +2852,28 @@ var LEAD_FORM = {
         '&body=' + encodeURIComponent(q.get('body') || '');
       a.removeAttribute('target');
     });
+  }
+
+  // Botão flutuante (desktop): aparece depois do topo e some enquanto o formulário está na tela
+  var deskCta = document.querySelector('.desk-cta');
+  var heroEl = document.getElementById('hero');
+  var formSec = document.getElementById('cta-final');
+  if (deskCta && heroEl && formSec && 'IntersectionObserver' in window) {
+    var heroOn = true, formOn = false;
+    var deskBtn = deskCta.querySelector('button');
+    function syncDeskCta() {
+      var show = !heroOn && !formOn;
+      deskCta.classList.toggle('is-visible', show);
+      deskCta.setAttribute('aria-hidden', show ? 'false' : 'true');
+      deskBtn.tabIndex = show ? 0 : -1;
+      // sobe o botão enquanto o aviso de cookies estiver aberto
+      var cookie = document.getElementById('cookie-banner');
+      var off = cookie && getComputedStyle(cookie).display !== 'none' ? cookie.offsetHeight + 12 : 0;
+      deskCta.style.setProperty('--desk-cta-offset', off + 'px');
+    }
+    new IntersectionObserver(function (en) { heroOn = en[0].isIntersecting; syncDeskCta(); }, { threshold: 0, rootMargin: '0px 0px -40% 0px' }).observe(heroEl);
+    new IntersectionObserver(function (en) { formOn = en[0].isIntersecting; syncDeskCta(); }, { threshold: 0.15 }).observe(formSec);
+    document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('#cookie-accept, #cookie-reject')) setTimeout(syncDeskCta, 50); });
   }
 
   // FAQ — acordeão com altura animada, uma pergunta aberta por vez
