@@ -653,7 +653,7 @@ ul, ol { list-style: none; padding: 0; }
 .forks li { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-3) var(--s-4); background: var(--ink-800); border: 1px solid var(--ink-700); border-radius: var(--r-md); font-size: 15px; font-weight: 700; color: var(--white); }
 .forks li::before { content: ""; width: 18px; height: 18px; flex: none; background: var(--em-orange); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 3v12'/%3E%3Ccircle cx='18' cy='6' r='3'/%3E%3Ccircle cx='6' cy='18' r='3'/%3E%3Cpath d='M18 9a9 9 0 0 1-9 9'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 3v12'/%3E%3Ccircle cx='18' cy='6' r='3'/%3E%3Ccircle cx='6' cy='18' r='3'/%3E%3Cpath d='M18 9a9 9 0 0 1-9 9'/%3E%3C/svg%3E") center / contain no-repeat; }
 .nao-closer { margin-top: var(--s-12); background: var(--ink-1000); border-radius: var(--r-xl); padding: var(--s-8); text-align: center; }
-.nao-closer h3 { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(1.4rem, 4vw, 2.2rem); line-height: 1.1; color: var(--white); margin-bottom: var(--s-3); }
+.nao-closer h3 { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(1.4rem, 4vw, 2.2rem); line-height: 1.1; color: var(--white); max-width: 820px; margin: 0 auto; }
 .nao-closer p { font-size: 1.05rem; color: var(--ink-300); line-height: 1.6; max-width: 620px; margin: 0 auto; }
 .nao-closer p strong { color: var(--em-orange); }
 
@@ -1746,8 +1746,7 @@ html, body { overflow-x: clip; }
       </div>
     </div>
     <div class="nao-closer" data-anim>
-      <h3>O M.A.P.A não promete transformar todo “não” em “sim”.</h3>
-      <p>Ele mostra como <strong>analisar o cenário, buscar alternativas e aumentar suas possibilidades de avançar.</strong></p>
+      <h3>O M.A.P.A mostra como <span style="color:var(--em-orange);">analisar o cenário, buscar alternativas e aumentar suas possibilidades de avançar.</span></h3>
     </div>
   </div>
 </section>
