@@ -1124,6 +1124,14 @@ ul, ol { list-style: none; padding: 0; }
 .fc-words { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-bottom: var(--s-5); }
 .fc-words li { padding: var(--s-2) var(--s-4); border-radius: var(--r-md); background: var(--em-orange); color: var(--ink-1000); font-family: var(--font-display); text-transform: uppercase; font-size: 1.25rem; line-height: 1; }
 .fc-map .end { margin-top: auto; font-size: 15px; color: var(--ink-300); line-height: 1.55; }
+/* Fechamento só com o card escuro, centralizado */
+.fc-path.fc-solo { max-width: 920px; margin: 0 auto; align-items: center; text-align: center; padding: var(--s-10) var(--s-6); }
+.fc-solo-title { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(2rem, 6vw, 3.4rem); line-height: 1; color: var(--white); margin-bottom: var(--s-6); }
+.fc-solo .fc-words { justify-content: center; margin-bottom: var(--s-8); }
+.fc-solo .fc-words li { font-size: clamp(1.3rem, 3.5vw, 1.8rem); padding: var(--s-3) var(--s-5); }
+.fc-solo-lead { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(1.4rem, 4vw, 2.1rem); line-height: 1.08; color: var(--white); max-width: 760px; margin-bottom: var(--s-4); }
+.fc-solo-lead span { color: var(--em-orange); }
+.fc-solo .end { margin-top: 0; font-size: 1.05rem; max-width: 600px; }
 
 
 /* ---- CTA FINAL ---- */
@@ -2377,37 +2385,16 @@ html, body { overflow-x: clip; }
      ================================================================ -->
 <section id="fechamento" class="lp-s">
   <div class="lp-container">
-    <div class="fc-head" data-anim>
-      <h2 class="h1">Do contato ao <span class="hl">contrato</span>.</h2>
-      <h3>E do contrato a uma relação mais estratégica com as operadoras.</h3>
-      <div class="fc-axis" aria-hidden="true">
-        <span>Zero</span><i></i><span>Contato</span><i></i><span>Negociação</span><i></i><b>Contrato</b><i></i><span>Rentabilidade</span>
-      </div>
-    </div>
-    <div class="fc-paths">
-      <div class="fc-path fc-alone" data-anim data-delay="1">
-        <span class="tag">Caminho 1 · Sozinho</span>
-        <p class="lead-in">Você pode continuar tentando sozinho.</p>
-        <ul class="fc-stops">
-          <li>Enviando e-mails.</li>
-          <li>Preenchendo formulários.</li>
-          <li>Esperando respostas.</li>
-          <li>Aceitando o primeiro valor.</li>
-          <li>Assinando contratos sem saber o impacto das condições futuras.</li>
-        </ul>
-      </div>
-      <div class="fc-path fc-map" data-anim data-delay="2">
-        <span class="tag">Caminho 2 · Com o M.A.P.A</span>
-        <p class="lead-in">Ou pode ter acesso a uma experiência que levou <strong style="color:var(--white);">mais de 11 anos</strong> para ser construída.</p>
-        <h3>O M.A.P.A do Credenciamento existe para <span style="color:var(--em-orange);">encurtar esse caminho.</span></h3>
-        <ul class="fc-words">
-          <li>Método.</li>
-          <li>Experiência.</li>
-          <li>Acompanhamento.</li>
-          <li>Estratégia.</li>
-        </ul>
-        <p class="end">Tudo para ajudar você a tomar decisões melhores no mercado de planos de saúde.</p>
-      </div>
+    <div class="fc-path fc-map fc-solo" data-anim>
+      <h2 class="fc-solo-title">O M.A.P.A é:</h2>
+      <ul class="fc-words">
+        <li>Método.</li>
+        <li>Experiência.</li>
+        <li>Acompanhamento.</li>
+        <li>Estratégia.</li>
+      </ul>
+      <p class="fc-solo-lead">É o que você precisava para tornar o <span>atendimento de plano de saúde lucrativo.</span></p>
+      <p class="end">Tudo que você sempre buscou, para credenciar e negociar com as operadoras de planos de saúde.</p>
     </div>
   </div>
 </section>
