@@ -747,7 +747,9 @@ ul, ol { list-style: none; padding: 0; }
 .bb-body::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 220px; background: radial-gradient(70% 100% at 50% 0%, rgba(248,152,56,.22), transparent 70%); pointer-events: none; }
 .bb-q { position: relative; display: grid; grid-template-columns: 1fr; gap: var(--s-3); }
 .bb-q li { display: flex; align-items: flex-start; gap: var(--s-3); font-size: 15px; font-weight: 600; color: var(--ink-200); line-height: 1.4; }
-.bb-q li::before { content: "?"; flex: none; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; background: rgba(248,152,56,.15); color: var(--em-orange); font-size: 13px; font-weight: 800; }
+.bb-q li::before { content: "→"; flex: none; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; background: rgba(248,152,56,.15); color: var(--em-orange); font-size: 13px; font-weight: 800; }
+.cp-cta { margin-top: var(--s-8); }
+.cp-cta .btn { white-space: normal; text-align: left; }
 .bb-key { position: relative; margin-top: var(--s-6); padding-top: var(--s-5); border-top: 1px dashed var(--ink-700); }
 .bb-key span { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-400); }
 .bb-key h3 { margin-top: var(--s-2); font-family: var(--font-display); text-transform: uppercase; font-size: clamp(1.5rem, 4.5vw, 2.1rem); line-height: 1.02; color: var(--em-orange); }
@@ -1900,25 +1902,31 @@ html, body { overflow-x: clip; }
           “Conseguiu o credenciamento.”
         </div>
         <p class="cp-but">Mas existe muito mais acontecendo por trás.</p>
+        <div class="cp-cta">
+          <button class="btn btn-primary btn-lg" data-scroll-to="cta-final">
+            Quero receber prioridade na próxima turma
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </button>
+        </div>
       </div>
       <div data-anim data-delay="1">
         <div class="blackbox">
           <div class="bb-lid" aria-hidden="true">Caixa-preta</div>
           <div class="bb-body">
             <ul class="bb-q">
-              <li>Como encontrar oportunidades?</li>
-              <li>Como identificar quem realmente pode ajudar?</li>
-              <li>Como chegar ao contato certo?</li>
-              <li>Como abordar uma operadora?</li>
-              <li>Como interpretar uma negativa?</li>
-              <li>Como lidar com exigências?</li>
-              <li>Como conduzir uma negociação?</li>
-              <li>Como buscar uma oportunidade que parece impossível?</li>
-              <li>Como saber quando insistir?</li>
+              <li>Encontrar oportunidades</li>
+              <li>Identificar quem realmente pode ajudar</li>
+              <li>Chegar ao contato certo</li>
+              <li>Abordar uma operadora</li>
+              <li>Interpretar uma negativa</li>
+              <li>Lidar com exigências</li>
+              <li>Conduzir uma negociação</li>
+              <li>Buscar uma oportunidade que parece impossível</li>
+              <li>Saber quando insistir</li>
             </ul>
             <div class="bb-key">
               <span>E, principalmente:</span>
-              <h3>Como tomar decisões que não prejudiquem a clínica lá na frente?</h3>
+              <h3>Tomar decisões que não prejudiquem a clínica lá na frente.</h3>
             </div>
           </div>
         </div>
