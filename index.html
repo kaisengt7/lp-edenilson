@@ -859,8 +859,13 @@ ul, ol { list-style: none; padding: 0; }
 .or-inner { display: grid; grid-template-columns: 1fr; gap: var(--s-10); align-items: center; }
 .or-text p { font-size: 1.05rem; color: var(--ink-300); line-height: 1.6; }
 .or-text p + p { margin-top: var(--s-3); }
-.or-stamps { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: var(--s-6); }
-.or-stamps li { padding: var(--s-2) var(--s-4); border: 2px dashed rgba(248,152,56,.7); border-radius: var(--r-md); font-family: var(--font-display); text-transform: uppercase; font-size: 1.15rem; letter-spacing: .03em; color: var(--em-orange); transform: rotate(-2deg); }
+/* 3 em cima e 3 embaixo em qualquer tela */
+.or-stamps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3) var(--s-2); margin-top: var(--s-6); }
+.or-stamps li { display: flex; align-items: center; justify-content: center; text-align: center; padding: var(--s-2) var(--s-2); border: 2px dashed rgba(248,152,56,.7); border-radius: var(--r-md); font-family: var(--font-display); text-transform: uppercase; font-size: clamp(.82rem, 3.4vw, 1.15rem); line-height: 1.05; letter-spacing: 0; color: var(--em-orange); transform: rotate(-2deg); }
+@media (min-width: 640px) {
+  .or-stamps { grid-template-columns: repeat(3, auto); justify-content: start; gap: var(--s-3); }
+  .or-stamps li { padding: var(--s-2) var(--s-4); letter-spacing: .03em; }
+}
 .or-stamps li:nth-child(even) { transform: rotate(1.5deg); }
 .or-stats { background: var(--ink-1000); border: 1px solid var(--ink-800); border-radius: var(--r-xl); padding: var(--s-6); }
 .or-stat + .or-stat { margin-top: var(--s-5); padding-top: var(--s-5); border-top: 1px solid var(--ink-800); }
