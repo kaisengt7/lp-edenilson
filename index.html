@@ -675,9 +675,6 @@ ul, ol { list-style: none; padding: 0; }
 .nao-answer .nem + p { font-size: 1rem; color: var(--ink-300); line-height: 1.6; margin-bottom: var(--s-5); }
 .nao-answer .nem + p strong { color: var(--white); }
 /* Caminhos alternativos: bifurcações a partir do "não" */
-.forks { display: flex; flex-direction: column; gap: var(--s-2); }
-.forks li { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-3) var(--s-4); background: var(--ink-800); border: 1px solid var(--ink-700); border-radius: var(--r-md); font-size: 15px; font-weight: 700; color: var(--white); }
-.forks li::before { content: ""; width: 18px; height: 18px; flex: none; background: var(--em-orange); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 3v12'/%3E%3Ccircle cx='18' cy='6' r='3'/%3E%3Ccircle cx='6' cy='18' r='3'/%3E%3Cpath d='M18 9a9 9 0 0 1-9 9'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 3v12'/%3E%3Ccircle cx='18' cy='6' r='3'/%3E%3Ccircle cx='6' cy='18' r='3'/%3E%3Cpath d='M18 9a9 9 0 0 1-9 9'/%3E%3C/svg%3E") center / contain no-repeat; }
 .nao-closer { margin-top: var(--s-12); background: var(--ink-1000); border-radius: var(--r-xl); padding: var(--s-8); text-align: center; }
 .nao-closer h3 { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(1.4rem, 4vw, 2.2rem); line-height: 1.1; color: var(--white); max-width: 820px; margin: 0 auto; }
 .nao-closer p { font-size: 1.05rem; color: var(--ink-300); line-height: 1.6; max-width: 620px; margin: 0 auto; }
@@ -688,10 +685,6 @@ ul, ol { list-style: none; padding: 0; }
 .criteria { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-2); margin-top: var(--s-3); }
 .criteria li { display: flex; align-items: center; gap: var(--s-2); padding: var(--s-3); background: var(--white); border: 1px solid var(--ink-200); border-radius: var(--r-md); font-size: 14px; font-weight: 700; color: var(--ink-900); line-height: 1.25; }
 .criteria svg { width: 18px; height: 18px; flex: none; color: var(--em-orange); }
-.licit-h3 { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(1.5rem, 4.5vw, 2.1rem); line-height: 1; color: var(--ink-900); margin-bottom: var(--s-3); }
-.licit-h3 + p { font-size: 1rem; color: var(--ink-600); margin-bottom: var(--s-2); }
-#licitacao .transf-step { align-items: center; }
-#licitacao .transf-title { margin-bottom: 0; }
 
 /* ---- 05 · A PROMESSA FÁCIL ---- */
 #promessa { background: var(--ink-900); }
@@ -705,22 +698,11 @@ ul, ol { list-style: none; padding: 0; }
 .promessa-after { margin-top: var(--s-6); font-size: 1.05rem; color: var(--ink-300); line-height: 1.6; }
 .promessa-after strong { color: var(--white); }
 .promessa-h3 { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(1.6rem, 5vw, 2.3rem); line-height: 1; color: var(--white); margin-bottom: var(--s-6); }
-.existe { display: flex; flex-direction: column; gap: var(--s-2); margin-bottom: var(--s-5); }
-.existe li { display: flex; align-items: baseline; gap: var(--s-3); font-family: var(--font-display); text-transform: uppercase; font-size: clamp(1.3rem, 4vw, 1.75rem); line-height: 1.1; color: var(--ink-500); }
-.existe li b { color: var(--em-orange); font-weight: 400; }
 .promessa-note { font-size: 1rem; color: var(--ink-300); line-height: 1.6; }
 .promessa-closer { margin-top: var(--s-12); padding: var(--s-6) var(--s-6); border: 1px solid rgba(248,152,56,.35); background: rgba(248,152,56,.06); border-radius: var(--r-xl); text-align: center; font-family: var(--font-display); text-transform: uppercase; font-size: clamp(1.4rem, 4vw, 2.1rem); line-height: 1.1; color: var(--white); }
 .transformacao-inner { display: grid; grid-template-columns: 1fr; gap: var(--s-8); }
 .transformacao-intro .h2 { color: var(--ink-900); }
 .transformacao-intro .lead { color: var(--ink-700); margin-top: var(--s-4); }
-.transf-steps { display: flex; flex-direction: column; gap: 0; }
-.transf-step {
-  display: grid; grid-template-columns: 52px 1fr; gap: var(--s-4);
-  padding: var(--s-5) 0; border-top: 1px solid var(--ink-200);
-}
-.transf-step:last-child { border-bottom: 1px solid var(--ink-200); }
-.transf-num { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); color: var(--em-orange); line-height: .9; }
-.transf-title { font-size: 1.15rem; font-weight: 700; color: var(--ink-900); margin-bottom: var(--s-1); }
 .transf-desc { font-size: 14px; color: var(--ink-600); line-height: 1.6; }
 .transf-note {
   margin-top: var(--s-8);
@@ -787,9 +769,6 @@ ul, ol { list-style: none; padding: 0; }
 /* ---- 12 · AS ROTAS DO MAPA ---- */
 #rotas { background: var(--paper); color: var(--ink-900); }
 /* Placa estilo rodovia */
-.rota-shield { flex: none; width: 58px; height: 64px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--em-orange); color: var(--ink-1000); border-radius: 8px 8px 50% 50% / 8px 8px 38% 38%; box-shadow: inset 0 0 0 3px var(--white), 0 0 0 2px var(--em-orange); }
-.rota-shield small { font-family: var(--font-mono); font-size: 8px; letter-spacing: .16em; font-weight: 700; }
-.rota-shield b { font-family: var(--font-display); font-weight: 400; font-size: 1.9rem; line-height: .9; }
 
 /* ---- Estratégias práticas (antiga dobra das rotas) ---- */
 .es-lead { max-width: 920px; margin-bottom: var(--s-10); font-family: var(--font-body); font-weight: 800; font-size: clamp(1.3rem, 3vw, 1.85rem); line-height: 1.35; color: var(--ink-900); text-transform: none; }
@@ -1041,13 +1020,6 @@ ul, ol { list-style: none; padding: 0; }
 .form-card .checkbox-row label { color: var(--ink-400); font-weight: 400; font-size: 13px; line-height: 1.5; }
 .btn-submit { width: 100%; justify-content: center; min-height: 48px; font-size: 16px; padding: 13px 18px; white-space: normal; text-align: center; line-height: 1.25; }
 .cta-copy h3 { font-size: clamp(1.1rem, 3vw, 1.35rem); font-weight: 800; color: var(--em-orange); line-height: 1.35; margin-bottom: var(--s-4); }
-.cta-copy .cta-route-q { font-size: 1.05rem; font-weight: 700; color: var(--white); line-height: 1.5; margin-bottom: var(--s-5); }
-.cta-routes { display: flex; flex-direction: column; gap: var(--s-3); }
-.cta-routes li { display: flex; align-items: center; gap: var(--s-3); font-size: 15px; font-weight: 700; color: var(--ink-200); }
-.cta-routes .rota-shield { width: 38px; height: 42px; box-shadow: inset 0 0 0 2px var(--ink-1000), 0 0 0 2px var(--em-orange); }
-.cta-routes .rota-shield small { font-size: 6px; }
-.cta-routes .rota-shield b { font-size: 1.2rem; }
-.cta-routes .rota-shield.is-plus { background: var(--ink-1000); color: var(--em-orange); }
 /* Garantia de 7 dias — selo ao lado do formulário */
 .guarantee { margin-top: var(--s-8); display: flex; gap: var(--s-5); align-items: flex-start; padding: var(--s-5); border-radius: var(--r-xl); background: rgba(31,138,91,.08); border: 1px solid rgba(31,138,91,.45); }
 .guarantee-seal { position: relative; flex: none; width: 72px; height: 80px; color: var(--success); display: grid; place-items: center; }
@@ -1165,8 +1137,8 @@ html, body { overflow-x: clip; }
 /* Cards levantando no hover */
 .momento-card { transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out), border-color .35s var(--ease-out); }
 .momento-card:hover { transform: translateY(-4px); }
-.forks li, .criteria li li, .jc-list li { transition: transform .3s var(--ease-out); }
-.forks li:hover li:hover, .jc-list li:hover { transform: translateX(6px); }
+.criteria li li, .jc-list li { transition: transform .3s var(--ease-out); }
+.jc-list li:hover { transform: translateX(6px); }
 .criteria li:hover { transform: translateY(-2px); }
 .jc-sign { transition: transform .4s var(--ease-spring); }
 .jc-list li:hover .jc-sign { transform: rotate(45deg) scale(1.12); }
@@ -1254,8 +1226,6 @@ html, body { overflow-x: clip; }
   .or-bottom { grid-template-columns: 1fr 1fr; gap: var(--s-12); }
   .or-closer { padding: var(--s-8); }
   .problema-inner { grid-template-columns: 1.1fr 1fr; gap: var(--s-12); }
-  .transformacao-inner { grid-template-columns: 1fr 1.4fr; gap: var(--s-16); align-items: start; }
-  .transformacao-sticky { position: sticky; top: 96px; }
   .sobre-inner { grid-template-columns: 1fr 1.5fr; gap: var(--s-16); align-items: start; }
   .qual-grid { grid-template-columns: 1.4fr 1fr; gap: var(--s-6); align-items: stretch; }
   .for-card, .not-for-card { padding: var(--s-8); }
@@ -1510,13 +1480,6 @@ html, body { overflow-x: clip; }
         <h3 class="h3">Mas esse “não” significa que acabou?</h3>
         <p class="nem">Nem sempre.</p>
         <p>Pode significar que <strong>aquele caminho não funcionou.</strong></p>
-        <ul class="forks">
-          <li>Pode haver outro contato.</li>
-          <li>Outra abordagem.</li>
-          <li>Outro momento.</li>
-          <li>Outra necessidade da rede.</li>
-          <li>Outra forma de apresentar a oportunidade.</li>
-        </ul>
       </div>
     </div>
     <div class="nao-closer" data-anim>
@@ -1531,7 +1494,7 @@ html, body { overflow-x: clip; }
 <section id="licitacao" class="lp-s">
   <div class="lp-container">
     <div class="transformacao-inner">
-      <div class="transformacao-intro transformacao-sticky" data-anim>
+      <div class="transformacao-intro" data-anim>
         <h2 class="h2" style="color:var(--ink-900); margin-top:var(--s-3);">
           Não existe uma prateleira de <span style="color:var(--em-orange);">“credenciamentos fáceis”</span> esperando pela sua clínica.
         </h2>
@@ -1545,32 +1508,6 @@ html, body { overflow-x: clip; }
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Capacidade de atendimento</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>Perfil de serviço</li>
         </ul>
-      </div>
-      <div data-anim data-delay="1">
-        <h3 class="licit-h3">Por isso, credenciamento não é simplesmente preencher um formulário e esperar.</h3>
-        <p>É entender:</p>
-        <div class="transf-steps">
-          <div class="transf-step">
-            <span class="transf-num">01</span>
-            <div class="transf-title">onde existe oportunidade,</div>
-          </div>
-          <div class="transf-step">
-            <span class="transf-num">02</span>
-            <div class="transf-title">quem precisa ser acessado,</div>
-          </div>
-          <div class="transf-step">
-            <span class="transf-num">03</span>
-            <div class="transf-title">como apresentar a clínica,</div>
-          </div>
-          <div class="transf-step">
-            <span class="transf-num">04</span>
-            <div class="transf-title">como conduzir o processo</div>
-          </div>
-          <div class="transf-step">
-            <span class="transf-num">05</span>
-            <div class="transf-title">e quando vale a pena insistir.</div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -1603,14 +1540,7 @@ html, body { overflow-x: clip; }
       </div>
       <div data-anim data-delay="2">
         <h3 class="promessa-h3">O problema é que credenciamento <span style="color:var(--em-orange);">não é um botão</span> que alguém aperta.</h3>
-        <ul class="existe">
-          <li>Existe <b>estratégia.</b></li>
-          <li>Existe <b>relacionamento.</b></li>
-          <li>Existe <b>análise.</b></li>
-          <li>Existe <b>negociação.</b></li>
-          <li>Existe <b>timing.</b></li>
-        </ul>
-        <p class="promessa-note">E existe uma série de decisões que podem mudar completamente o caminho.</p>
+        <p class="promessa-note">E existe uma série de <span style="color:#3DD68C; font-weight:700;">decisões</span> que podem mudar completamente o caminho.</p>
       </div>
     </div>
     <div class="promessa-closer" data-anim>
@@ -1879,7 +1809,7 @@ html, body { overflow-x: clip; }
   <div class="lp-container">
     <div class="qual-grid">
       <div class="for-card" data-anim>
-        <h3>O M.A.P.A é para você se:</h3>
+        <h3>O M.A.P.A <span style="color:var(--success);">é para</span> você se:</h3>
         <ul class="for-list">
           <li>Não sabe por onde começar ou só recebe negativas genéricas das operadoras há anos.</li>
           <li>Já se frustrou com assessorias ou promessas milagrosas sem resultado.</li>
@@ -1890,7 +1820,7 @@ html, body { overflow-x: clip; }
         </ul>
       </div>
       <div class="not-for-card" data-anim data-delay="1">
-        <h3>O M.A.P.A <span style="color:var(--danger);">não</span> é para você se:</h3>
+        <h3>O M.A.P.A <span style="color:var(--danger);">não é para</span> você se:</h3>
         <ul class="not-for-list">
           <li>Acredita que só credencia quem tem “padrinho” dentro da operadora.</li>
           <li>Procura fórmulas mágicas, soluções para ontem ou promessas de “aprovação garantida”.</li>
@@ -2083,16 +2013,6 @@ html, body { overflow-x: clip; }
           Quero entrar no <span class="hl">M.A.P.A</span>
         </h2>
         <h3>Receba prioridade na próxima turma do M.A.P.A do Credenciamento.</h3>
-        <p class="lead" style="color:var(--ink-300);">
-          Preencha seus dados e conte brevemente em que momento sua clínica está.
-        </p>
-        <p class="cta-route-q">A partir disso, vamos entender qual rota faz mais sentido para você.</p>
-        <ul class="cta-routes" aria-label="Rotas do M.A.P.A">
-          <li><span class="rota-shield"><small>ROTA</small><b>1</b></span>Do zero ao contato</li>
-          <li><span class="rota-shield"><small>ROTA</small><b>2</b></span>Do contato à negociação</li>
-          <li><span class="rota-shield"><small>ROTA</small><b>3</b></span>Da negociação ao contrato</li>
-          <li><span class="rota-shield is-plus"><small>E</small><b>+</b></span>Do contrato ao dinheiro no caixa</li>
-        </ul>
         <div class="guarantee">
           <div class="guarantee-seal" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -2455,8 +2375,8 @@ var LEAD_FORM = {
 
   // Cascatas: [seletores, animação, intervalo entre itens]
   var STAGGERS = [
-    ['.route, .tries-list, .forks, .for-list, .not-for-list, .rota-list, .existe, .sobre-bullets, .cta-routes, .mail-reaction, .jc-list', 'stLeft', 90],
-    ['.criteria, .transf-steps, .jr, .case-steps, .momento-card ul', 'stUp', 70],
+    ['.route, .tries-list, .for-list, .not-for-list, .rota-list, .sobre-bullets, .mail-reaction, .jc-list', 'stLeft', 90],
+    ['.criteria, .jr, .case-steps, .momento-card ul', 'stUp', 70],
     ['.faq-list', 'stLeft', 110],
     ['.es-grid', 'stUp', 90],
     ['.ent-strip', 'stUp', 110],
